@@ -1,6 +1,6 @@
 # space-explorer
-<img style="height: 1rem" src="https://github.com/SpooRe91/space-explorer/blob/main/space-explorer/src/assets/favicon1.webp?raw=true">
-![favicon](https://github.com/SpooRe91/space-explorer/assets/85784810/d20b54ba-0563-4d79-8406-11021f8debc7)
+<img style="height: 1rem" src="https://github.com/SpooRe91/space-explorer/assets/85784810/d20b54ba-0563-4d79-8406-11021f8debc7?raw=true">
+
 
 A website about space, NASA and everything in that regard
 
