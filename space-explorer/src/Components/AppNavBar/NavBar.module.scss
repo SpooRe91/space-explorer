@@ -1,0 +1,197 @@
+@mixin nav-buttons {
+    width: 165px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: white;
+    padding: 5px 5px;
+    font-weight: 600;
+    box-shadow: 0px 0px 7px 1px #1e4d94, 0px 0px 12px 3px #1e4d94;
+    transition: all 250ms ease-in-out;
+}
+
+@mixin nav-buttons-hover {
+    cursor: pointer;
+    color: #4990be;
+    box-shadow: 0px 0px 7px 1px #1e4d94, 0px 0px 12px 3px #a7a6a6;
+    text-shadow: 0px 0px 20px #000000;
+    backdrop-filter: blur(5px);
+}
+
+@mixin nav-button-active {
+    transition: all 150ms ease-in-out;
+    background-color: rgba($color: #797979, $alpha: 0.35);
+}
+
+.main-nav-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10rem;
+    justify-content: space-evenly;
+    position: sticky;
+    top: 0;
+    margin-top: 2rem;
+    z-index: 1;
+
+    .secondary-nav-container {
+        width: 1322px;
+        height: 80px;
+        max-width: 1322px;
+        max-height: 91px;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.45);
+        padding: 0.8rem;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px 4px #1e4d94;
+        transition: all 250ms ease-in-out;
+
+        .nav-links {
+            width: 815px;
+            height: 52px;
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            justify-content: flex-start;
+
+            .nav-link-item {
+                width: 43px;
+
+                a {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #ffffff;
+                    text-decoration: none;
+                    border: none;
+                    border-radius: 10px;
+                    padding: 5px 7px;
+                    transition: all 250ms ease-in-out;
+                }
+
+                a:hover {
+                    @include nav-buttons-hover();
+                }
+
+                a:active {
+                    @include nav-button-active();
+                }
+            }
+        }
+
+        .nav-navbar-collapse {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            width: 306px;
+            height: 52px;
+            justify-content: space-evenly;
+
+            .nav-item-nasa {
+                background-color: transparent;
+                border: none;
+                border-radius: 10px;
+                text-decoration: none;
+                color: white;
+                font-size: 1.1rem;
+                font-weight: 700;
+                padding: 5px 7px;
+                transition: all 250ms ease-in-out;
+            }
+
+            .nav-item-nasa:hover {
+                @include nav-buttons-hover();
+            }
+            .nav-item-nasa:active {
+                @include nav-button-active();
+            }
+
+            .nav-item-pod {
+                @include nav-buttons;
+            }
+            .nav-item-pod:hover {
+                @include nav-buttons-hover();
+            }
+
+            .nav-item-pod:active {
+                @include nav-button-active();
+            }
+        }
+
+        .nav-toggler-contaier {
+            .nav-toggler-item {
+                color: white;
+                background-color: transparent;
+                border: none;
+                font-size: 1.1rem;
+                display: flex;
+                align-items: center;
+                z-index: 1;
+                position: relative;
+
+                svg {
+                    font-size: 2.4rem;
+                    width: 38px;
+                    z-index: 0;
+                    line-height: 1;
+                }
+            }
+
+            .nav-toggler-item:hover {
+                cursor: pointer;
+                color: #4990be;
+                text-shadow: 0px 0px 20px rgba($color: #a7a6a6, $alpha: 1);
+            }
+
+            .nav-toggler-item:active {
+                @include nav-button-active();
+                background-color: transparent;
+            }
+        }
+    }
+
+    .nav-logo-container {
+        width: 187px;
+        height: 80px;
+        align-items: center;
+        display: flex;
+
+        .nav-logo-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include nav-buttons();
+            width: 195px;
+            height: 80px;
+        }
+
+        .nav-logo-item:hover {
+            @include nav-buttons-hover();
+        }
+
+        .nav-logo-item:active {
+            @include nav-button-active();
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: contain;
+            margin-right: 6px;
+            z-index: -1;
+            transition: all 250ms ease-in-out;
+        }
+    }
+}
+.secondary-nav-container:hover {
+    box-shadow: 0px 0px 15px 6.6px #1e4d97;
+}
+
+.secondary-nav-container:not(:hover) {
+    box-shadow: 0px 0px 15px 4px #1e4d94;
+}
