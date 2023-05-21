@@ -1,10 +1,18 @@
 import { Link, NavLink } from "react-router-dom";
-import { BiDotsVerticalRounded } from 'react-icons/bi';
+import { BiDotsVerticalRounded, BiDotsHorizontalRounded } from 'react-icons/bi';
+import { useAppDispatch, useAppSelector } from "../../App/hooks";
+import { globalState, setShowSideNav } from "../../redux-slices/globalSlice";
+
 import styles from "./NavBar.module.scss";
 import icon from "../../assets/icons/android-chrome-192x192.png";
+import { SideBar } from "../../all-imported-components";
 
 
 const NavBar = () => {
+
+    const globalData = useAppSelector(globalState);
+    const dispatch = useAppDispatch();
+
     return (
         <div className={styles["main-nav-container"]}>
             <div className={styles["nav-logo-container"]}>
@@ -49,7 +57,17 @@ const NavBar = () => {
                     </button>
                 </div>
                 <div className={styles["nav-toggler-contaier"]}>
-                    <button className={styles["nav-toggler-item"]}><BiDotsVerticalRounded /></button>
+                    <button
+                        onMouseOver={() => dispatch(setShowSideNav(true))}
+                        onMouseLeave={() => dispatch(setShowSideNav(false))}
+                        className={styles["nav-toggler-item"]}><BiDotsHorizontalRounded />
+                    </button>
+                </div>
+                <div
+                    className={styles[globalData.showSideNav
+                        ? "nav-sidebar-container-visible"
+                        : "nav-sidebar-container-hidden"]}>
+                    <SideBar />
                 </div>
             </nav>
         </div>
