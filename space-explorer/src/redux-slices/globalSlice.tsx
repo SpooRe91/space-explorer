@@ -4,7 +4,8 @@ import { IGlobal } from "../Interfaces/globalInterface";
 
 const initialState: IGlobal = {
     loading: false,
-    error: ''
+    error: '',
+    showSideNav: false
 }
 
 export const globalActions = createSlice({
@@ -17,10 +18,14 @@ export const globalActions = createSlice({
 
         setError: (state, action) => {
             state.error = action.payload;
+        },
+
+        setShowSideNav: (state, action) => {
+            state.showSideNav = action.payload;
         }
     }
 });
 
-export const { setIsLoading, setError } = globalActions.actions;
+export const { setIsLoading, setError, setShowSideNav } = globalActions.actions;
 export const globalState = (state: RootState) => state.globalSlice;
 export default globalActions.reducer;
