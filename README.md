@@ -1,5 +1,5 @@
 # space-explorer
-![favicon](https://github.com/SpooRe91/space-explorer/assets/85784810/27050df0-10b4-4f3b-bde6-e7e3ef9b2298)
+![android-chrome-256x256](https://github.com/SpooRe91/space-explorer/assets/85784810/ec9910ef-bd4c-4e1a-ac56-0f5f161a7416)
 
 
 A website about space, NASA and everything in that regard
