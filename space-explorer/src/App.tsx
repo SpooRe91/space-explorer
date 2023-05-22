@@ -14,7 +14,7 @@ function App() {
           ?
           <component.GlobalLoader />
           :
-          <div>Page loaded</div>
+          <component.HomePage />
       }
     </>
   )

@@ -1,4 +1,6 @@
 @import url("ResetCSS.scss");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&family=Titillium+Web&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&family=Titillium+Web&family=Ubuntu&display=swap");
 :root {
   background-image: url("../assets/space-explorer-deep-space-main-bgr.webp");
   background-position: center;
@@ -7,7 +9,7 @@
   background-attachment: fixed;
   width: 100%;
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Titillium Web", "PT Sans", "Ubuntu", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 

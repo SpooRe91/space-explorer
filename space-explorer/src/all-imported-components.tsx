@@ -1,8 +1,11 @@
-import NavBar from "./Components/AppNavBar/NavBar";
-import GlobalLoader from "./Components/GlobalLoader/GlobalLoader";
-import SideBar from "./Components/AppNavBar/SideBar/SideBar";
+import NavBar from "./Layouts/AppNavBar/NavBar";
+import SideBar from "./Layouts/AppNavBar/SideBar/SideBar";
+import GlobalLoader from "./Layouts/GlobalLoader/GlobalLoader";
+import HomePage from "./Pages/HomePage";
+
 export {
     NavBar,
     GlobalLoader,
-    SideBar
+    SideBar,
+    HomePage
 }
