@@ -1,8 +1,40 @@
+import styles from "./index.module.scss";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import RocketIcon from '@mui/icons-material/Rocket';
 
 const HomePage = () => {
     return (
-        <div></div>
-    )
-}
+        <section id="home" className={styles["home-hero-section"]}>
+            <div className={styles["home-hero-container"]}>
+                <span className={styles["background"]}></span>
+                <div className={styles["home-hero-heading-container"]}>
 
-export default HomePage
+                    <h1 className={styles["home-hero-header1"]}>
+                        Space Explorer
+                        <span className={styles["home-hero-icon1"]}><RocketIcon /></span>
+                    </h1>
+
+                    <h3 className={styles["home-hero-header3"]}>
+                        Delve into the vast cosmos, read many topics and articles, find
+                        astronomy images and videos, learn with NASA.
+                    </h3>
+
+                    <div className={styles["home-hero-small-text-container"]}>
+                        <p className={styles["home-hero-small-text"]}>
+                            Discover the experience
+                        </p>
+                        <a href="#gallery" className={styles["home-hero-small-text-link"]}>
+                            <ArrowDownwardIcon />
+                        </a>
+                    </div>
+                    <div className={styles["home-hero-image-container"]}>
+                        {/* ADD SOME STATIC IMAGES FOR THE MAIN PAGE, ILLUSTRATING PARTS OF THE WEBSITE */}
+                        {/* <img className={styles[""]} src="" alt="" /> */}
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default HomePage;
