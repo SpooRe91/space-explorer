@@ -1,6 +1,6 @@
 import type { RootState } from "../App/store";
 import { createSlice } from "@reduxjs/toolkit";
-import { IGlobal } from "../Interfaces/globalInterface";
+import { IGlobal } from "../Interfaces and types/Interfaces/interfaces";
 
 const initialState: IGlobal = {
     loading: false,
