@@ -23,13 +23,15 @@ const HomePage = () => {
                         <p className={styles["home-hero-small-text"]}>
                             Discover the experience
                         </p>
+                        <p>
+                            Go to gallery
+                        </p>
                         <a href="#gallery" className={styles["home-hero-small-text-link"]}>
+
                             <ArrowDownwardIcon />
                         </a>
                     </div>
                     <div className={styles["home-hero-image-container"]}>
-                        {/* ADD SOME STATIC IMAGES FOR THE MAIN PAGE, ILLUSTRATING PARTS OF THE WEBSITE */}
-                        {/* <img className={styles[""]} src="" alt="" /> */}
                     </div>
                 </div>
             </div>
