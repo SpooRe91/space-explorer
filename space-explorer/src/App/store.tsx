@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import globalSlice from "../redux-slices/globalSlice";
+import imageSlice from "../redux-slices/imagesSlice";
 
 
 export const store = configureStore({
     reducer: {
-        globalSlice: globalSlice
+        globalSlice: globalSlice,
+        imageSlice: imageSlice,
     }
 });
 

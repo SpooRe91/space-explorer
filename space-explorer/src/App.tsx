@@ -13,9 +13,12 @@ function App() {
         globalData.loading
           ?
           <component.GlobalLoader />
-          :
-          <component.HomePage />
+          : <>
+            <component.HomePage />
+            <component.ImagePage />
+          </>
       }
+
     </>
   )
 }
