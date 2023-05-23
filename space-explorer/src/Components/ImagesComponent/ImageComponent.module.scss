@@ -1,0 +1,54 @@
+.card-component {
+    background-color: #000000a6;
+    backdrop-filter: blur(5px);
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 6.6px #1e4d97;
+    overflow: hidden;
+    max-width: 345px;
+    max-height: 400px;
+    transition: all 200ms ease-in-out;
+
+    img {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 0.8rem;
+
+        p {
+            color: rgba($color: #ffffff, $alpha: 1);
+            padding: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        button {
+            background-color: #00000073;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            color: #2c70dd;
+            width: fit-content;
+            border-radius: 10px;
+            transition: all 100ms ease-in-out;
+        }
+    }
+
+    button:hover {
+        cursor: pointer;
+        box-shadow: inset 0px 0px 2px 2px #1e4d97;
+    }
+
+    button:active {
+        box-shadow: inset 0px 0px 9px 2px rgba(255, 254, 254, 0.76), 0px 0px 20px 11px rgba(66, 66, 66, 0.76);
+    }
+}
+.card-component:hover {
+    box-shadow: 0px 0px 15px 6.6px #4990be;
+}
