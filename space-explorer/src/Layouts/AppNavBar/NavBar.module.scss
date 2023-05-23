@@ -10,7 +10,7 @@
     padding: 5px 5px;
     font-weight: 600;
     box-shadow: 0px 0px 7px 1px #1e4d94, 0px 0px 12px 3px #1e4d94;
-    transition: all 250ms ease-in-out;
+    transition: all 150ms ease-in-out;
 }
 
 @mixin nav-buttons-hover {
@@ -50,7 +50,7 @@
         padding: 0.8rem;
         border-radius: 10px;
         box-shadow: 0px 0px 15px 4px #1e4d94;
-        transition: all 250ms ease-in-out;
+        transition: all 150ms ease-in-out;
 
         .nav-links {
             width: 815px;
@@ -71,7 +71,7 @@
                     border: none;
                     border-radius: 10px;
                     padding: 5px 7px;
-                    transition: all 250ms ease-in-out;
+                    transition: all 150ms ease-in-out;
                 }
 
                 a:hover {
@@ -101,7 +101,7 @@
                 font-size: 1.1rem;
                 font-weight: 700;
                 padding: 5px 7px;
-                transition: all 250ms ease-in-out;
+                transition: all 150ms ease-in-out;
             }
 
             .nav-item-nasa:hover {
@@ -187,7 +187,7 @@
             object-fit: contain;
             margin-right: 6px;
             z-index: -1;
-            transition: all 250ms ease-in-out;
+            transition: all 150ms ease-in-out;
         }
     }
 

@@ -30,9 +30,9 @@ const NavBar = () => {
                         </NavLink>
                     </li>
                     <li className={styles["nav-link-item"]}>
-                        <NavLink to={"/gallery"}>
+                        <a href={"#gallery"}>
                             Gallery
-                        </NavLink>
+                        </a>
                     </li>
                     <li className={styles["nav-link-item"]}>
                         <NavLink to={"/articles"}>
