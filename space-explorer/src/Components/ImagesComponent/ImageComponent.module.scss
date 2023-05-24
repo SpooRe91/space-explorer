@@ -10,7 +10,7 @@
     transition: all 200ms ease-in-out;
 
     a:hover {
-        cursor: url("/public/pointer.png"), auto;
+        cursor: url("/pointer.png"), auto;
     }
 
     img {
@@ -45,7 +45,7 @@
     }
 
     button:hover {
-        cursor: url("/public/pointer.png"), auto;
+        cursor: url("/pointer.png"), auto;
         box-shadow: inset 0px 0px 2px 2px #1e4d97;
     }
 
