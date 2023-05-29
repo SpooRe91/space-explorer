@@ -3,7 +3,7 @@
     backdrop-filter: blur(5px);
     color: rgba(0, 0, 0, 0.87);
     border-radius: 10px;
-    box-shadow: 0px 0px 15px 6.6px #1e4d97;
+    box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
     overflow: hidden;
     max-width: 345px;
     max-height: 400px;
@@ -25,7 +25,8 @@
         gap: 0.3rem;
         padding: 0.8rem;
 
-        p {
+        .card-content-title,
+        .card-content-description {
             color: rgba($color: #ffffff, $alpha: 1);
             padding: 0.5rem;
             white-space: nowrap;
@@ -34,19 +35,20 @@
         }
 
         button {
-            background-color: #00000073;
+            background-color: rgb(48 48 48);
             border: none;
             padding: 0.4rem 0.8rem;
-            color: #2c70dd;
+            color: var(--card-text-collor-button);
             width: fit-content;
             border-radius: 10px;
+            box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button);
             transition: all 100ms ease-in-out;
         }
     }
 
     button:hover {
         cursor: url("/pointer.png"), auto;
-        box-shadow: inset 0px 0px 2px 2px #1e4d97;
+        box-shadow: inset 0px 0px 2px 2px var(--card-box-shadow-collor-button-hover);
     }
 
     button:active {
@@ -54,5 +56,5 @@
     }
 }
 .card-component:hover {
-    box-shadow: 0px 0px 15px 6.6px #4990be;
+    box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color-hover);
 }
