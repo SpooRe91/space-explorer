@@ -1,12 +1,14 @@
 
 import { useEffect } from "react";
-import { globalState, setError, setIsLoading } from "../../redux-slices/globalSlice";
+import { setError, setIsLoading } from "../../redux-slices/globalSlice";
 import { imageState, setImageData } from "../../redux-slices/imagesSlice";
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
 
 import styles from './index.module.scss';
-import { imagesApi } from "../../utils/Api";
+import { fetchImages } from "../../utils/Api";
 import { GlobalLoader, ImageComponent } from "../../all-imported-components";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { ImageListItem } from "@mui/material";
 
 const ImagePage = () => {
 
@@ -14,33 +16,35 @@ const ImagePage = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        const fetchImages = (async () => {
-            try {
-                const res = await imagesApi.get(`search?q=solar%20system%20planets&media_type=image`);
-                dispatch(setIsLoading(true));
 
-                if (res.status === 200) {
-                    dispatch(setImageData(res.data.collection.items));
-                    dispatch(setIsLoading(false));
-                }
-            } catch (error) {
-                dispatch(setError(error?.message));
-                dispatch(setIsLoading(false));
-            }
+        (async function () {
+            const data = await fetchImages();
+            dispatch(setIsLoading(true));
+            typeof data === typeof [data]
+                ? (dispatch(setIsLoading(false)), dispatch(setImageData(data)))
+                : (dispatch(setIsLoading(false)), dispatch(setError(data)))
         })();
     }, [])
 
     return (
         <section id="gallery" className={styles["image-container"]}>
+            <div className={styles["image-container-heading-container"]}>
+                <h1>Gallery</h1>
+            </div>
             {
                 imageData.allData[0].href !== ''
-                    ? imageData.allData.slice(0, 20).map((item) => {
-                        return <ImageComponent {...item} key={item.data[0].nasa_id} />
-                    })
+                    ?
+                    <div className={styles["image-list"]}>
+                        {imageData.allData.map((item) => (
+                            <ImageListItem key={item.data[0].nasa_id} >
+                                <ImageComponent {...item} />
+                            </ImageListItem>
+                        ))}
+                    </div>
                     : <GlobalLoader />
             }
 
-        </section>
+        </section >
     )
 }
 
