@@ -74,11 +74,36 @@
                     transition: all 150ms ease-in-out;
                 }
 
-                a:hover {
+                .active {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #0bacc9;
+                    text-decoration: none;
+                    border: none;
+                    border-radius: 10px;
+                    padding: 5px 7px;
+                    transition: all 150ms ease-in-out;
                     @include nav-buttons-hover();
                 }
 
-                a:active {
+                .pending {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #ffffff;
+                    text-decoration: none;
+                    border: none;
+                    border-radius: 10px;
+                    padding: 5px 7px;
+                    transition: all 150ms ease-in-out;
+                }
+
+                .active:hover,
+                .pending:hover {
+                    @include nav-buttons-hover();
+                }
+
+                .active:hover,
+                .pending:hover {
                     @include nav-button-active();
                 }
             }
