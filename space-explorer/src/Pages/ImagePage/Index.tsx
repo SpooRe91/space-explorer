@@ -7,7 +7,6 @@ import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import styles from './index.module.scss';
 import { fetchImages } from "../../utils/Api";
 import { GlobalLoader, ImageComponent } from "../../all-imported-components";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ImageListItem } from "@mui/material";
 
 const ImagePage = () => {

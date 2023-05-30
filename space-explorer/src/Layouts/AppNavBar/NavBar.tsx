@@ -1,17 +1,33 @@
-import { Link, NavLink } from "react-router-dom";
-import { BiDotsVerticalRounded, BiDotsHorizontalRounded } from 'react-icons/bi';
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { BiDotsHorizontalRounded } from 'react-icons/bi';
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import { globalState, setShowSideNav } from "../../redux-slices/globalSlice";
 
 import styles from "./NavBar.module.scss";
 import icon from "../../assets/icons/android-chrome-192x192.png";
 import { SideBar } from "../../all-imported-components";
-
+import { useEffect } from "react";
 
 const NavBar = () => {
 
     const globalData = useAppSelector(globalState);
     const dispatch = useAppDispatch();
+    const { pathname, hash, key } = useLocation();
+
+    useEffect(() => {
+        if (pathname === '/home') { window.scrollTo(0, 0) }
+        if (pathname !== '') { hash.replace(hash, "") }
+
+        if (hash !== '') {
+            setTimeout(() => {
+                const id = hash.replace('#', '');
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView();
+                }
+            }, 0);
+        }
+    }, [pathname, hash, key]);
 
     return (
         <div className={styles["main-nav-container"]}>
@@ -25,22 +41,46 @@ const NavBar = () => {
 
                 <ul className={styles["nav-links"]} role="list">
                     <li className={styles["nav-link-item"]}>
-                        <NavLink to={"/home"}>
+                        <NavLink aria-label="Home" to={"/home"}
+                            className={({ isActive, isPending }) =>
+                                isPending
+                                    ? styles['pending']
+                                    : isActive
+                                        ? styles["active"]
+                                        : styles['pending']
+                            }>
                             Home
                         </NavLink>
                     </li>
                     <li className={styles["nav-link-item"]}>
-                        <a href={"#gallery"}>
+                        <NavLink aria-label="Gallery" to="/#gallery"
+                            className={() =>
+                                hash.includes("#gallery")
+                                    ? styles["active"]
+                                    : styles['pending']
+                            }>
                             Gallery
-                        </a>
+                        </NavLink>
                     </li>
                     <li className={styles["nav-link-item"]}>
-                        <NavLink to={"/articles"}>
+                        <NavLink aria-label="Articles" to="/#articles"
+                            className={() =>
+                                hash.includes("#articles")
+                                    ? styles["active"]
+                                    : styles['pending']
+                            }>
                             Articles
                         </NavLink>
                     </li>
                     <li className={styles["nav-link-item"]}>
-                        <NavLink to={"/about"}>
+                        <NavLink aria-label="About" to={"/about"}
+                            className={({ isActive, isPending }) =>
+                                isPending
+                                    ? styles['pending']
+                                    : isActive
+                                        ? styles["active"]
+                                        : styles['pending']
+                            }>
                             About
                         </NavLink>
                     </li>
@@ -69,7 +109,7 @@ const NavBar = () => {
                     <SideBar />
                 </div>
             </nav>
-        </div>
+        </div >
     )
 }
 

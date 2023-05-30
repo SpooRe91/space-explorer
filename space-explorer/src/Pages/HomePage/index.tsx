@@ -1,6 +1,7 @@
 import styles from "./index.module.scss";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import RocketIcon from '@mui/icons-material/Rocket';
+import { NavLink } from "react-router-dom";
 
 const HomePage = () => {
     return (
@@ -26,10 +27,10 @@ const HomePage = () => {
                         <p>
                             Go to gallery
                         </p>
-                        <a href="#gallery" className={styles["home-hero-small-text-link"]}>
-
+                        <NavLink aria-label="Articles" to="/#gallery"
+                            className={styles["home-hero-small-text-link"]}>
                             <ArrowDownwardIcon />
-                        </a>
+                        </NavLink>
                     </div>
                     <div className={styles["home-hero-image-container"]}>
                     </div>
