@@ -24,11 +24,16 @@ const initialState: IImageData = {
     }]
 }
 
+type action = {
+    payload: any,
+    type: string
+}
+
 export const imageSlice = createSlice({
     name: 'imageSlice',
     initialState,
     reducers: {
-        setImageData: (state, action) => {
+        setImageData: (state: IImageData, action: action) => {
             state.allData = action.payload;
         }
     }

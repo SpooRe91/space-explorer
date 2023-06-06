@@ -8,6 +8,7 @@ import styles from './index.module.scss';
 import { fetchImages } from "../../utils/Api";
 import { GlobalLoader, ImageComponent } from "../../all-imported-components";
 import { ImageListItem } from "@mui/material";
+import { TImageData } from "../../Interfaces and types/Types/types";
 
 const ImagePage = () => {
 
@@ -34,7 +35,7 @@ const ImagePage = () => {
                 imageData.allData[0].href !== ''
                     ?
                     <div className={styles["image-list"]}>
-                        {imageData.allData.map((item) => (
+                        {imageData.allData.map((item: TImageData) => (
                             <ImageListItem key={item.data[0].nasa_id} >
                                 <ImageComponent {...item} />
                             </ImageListItem>

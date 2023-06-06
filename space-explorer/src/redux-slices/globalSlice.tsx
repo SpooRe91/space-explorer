@@ -7,20 +7,24 @@ const initialState: IGlobal = {
     error: '',
     showSideNav: false
 }
+type action = {
+    payload: any,
+    type: string
+}
 
 export const globalActions = createSlice({
     name: 'globalSlice',
     initialState,
     reducers: {
-        setIsLoading: (state, action) => {
+        setIsLoading: (state: IGlobal, action: action) => {
             state.loading = action.payload;
         },
 
-        setError: (state, action) => {
+        setError: (state: IGlobal, action: action) => {
             state.error = action.payload;
         },
 
-        setShowSideNav: (state, action) => {
+        setShowSideNav: (state: IGlobal, action: action) => {
             state.showSideNav = action.payload;
         }
     }
