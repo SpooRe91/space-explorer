@@ -73,13 +73,11 @@ const NavBar = () => {
                         </NavLink>
                     </li>
                     <li className={styles["nav-link-item"]}>
-                        <NavLink aria-label="About" to={"/about"}
-                            className={({ isActive, isPending }) =>
-                                isPending
-                                    ? styles['pending']
-                                    : isActive
-                                        ? styles["active"]
-                                        : styles['pending']
+                        <NavLink aria-label="About" to={"/#about"}
+                            className={() =>
+                                hash.includes("#about")
+                                    ? styles["active"]
+                                    : styles['pending']
                             }>
                             About
                         </NavLink>
