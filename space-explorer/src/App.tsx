@@ -9,12 +9,12 @@ function App() {
 
   return (
     <div className="main">
+      <component.NavBar />
       {
         globalData.loading
           ?
           <component.GlobalLoader />
           : <>
-            <component.NavBar />
             <component.HomePage />
             <component.ImagePage />
             <component.AboutPage />
