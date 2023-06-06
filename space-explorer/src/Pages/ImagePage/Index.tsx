@@ -1,5 +1,5 @@
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { setError, setIsLoading } from "../../redux-slices/globalSlice";
 import { imageState, setImageData } from "../../redux-slices/imagesSlice";
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
@@ -15,11 +15,14 @@ const ImagePage = () => {
     const imageData = useAppSelector(imageState);
     const dispatch = useAppDispatch();
 
-    useEffect(() => {
+    const controller: AbortController = (new AbortController());
+    const { signal }: { signal: AbortSignal } = controller;
 
+    useEffect(() => {
         (async function () {
-            const data = await fetchImages();
+            const data = await fetchImages(signal, controller);
             dispatch(setIsLoading(true));
+
             typeof data === typeof [data]
                 ? (dispatch(setIsLoading(false)), dispatch(setImageData(data)))
                 : (dispatch(setIsLoading(false)), dispatch(setError(data)))
