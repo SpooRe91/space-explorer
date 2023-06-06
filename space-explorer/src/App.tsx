@@ -20,7 +20,6 @@ function App() {
             <component.AboutPage />
           </>
       }
-
     </ >
   )
 }
