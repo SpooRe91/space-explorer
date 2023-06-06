@@ -1,5 +1,5 @@
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { setError, setIsLoading } from "../../redux-slices/globalSlice";
 import { imageState, setImageData } from "../../redux-slices/imagesSlice";
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
