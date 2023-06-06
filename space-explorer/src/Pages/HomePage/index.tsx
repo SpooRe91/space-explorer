@@ -4,6 +4,7 @@ import RocketIcon from '@mui/icons-material/Rocket';
 import { NavLink } from "react-router-dom";
 
 const HomePage = () => {
+
     return (
         <section id="home" className={styles["home-hero-section"]}>
             <div className={styles["home-hero-container"]}>
