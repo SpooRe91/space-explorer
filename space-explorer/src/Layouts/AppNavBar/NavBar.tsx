@@ -32,7 +32,7 @@ const NavBar = () => {
     return (
         <div className={styles["main-nav-container"]}>
             <div className={styles["nav-logo-container"]}>
-                <NavLink to={'/home'} className={styles["nav-logo-item"]}>
+                <NavLink to={'/#home'} className={styles["nav-logo-item"]}>
                     <img src={icon} alt="logo" />
                     Space Explorer
                 </NavLink>
@@ -41,19 +41,17 @@ const NavBar = () => {
 
                 <ul className={styles["nav-links"]} role="list">
                     <li className={styles["nav-link-item"]}>
-                        <NavLink aria-label="Home" to={"/home"}
-                            className={({ isActive, isPending }) =>
-                                isPending
-                                    ? styles['pending']
-                                    : isActive
-                                        ? styles["active"]
-                                        : styles['pending']
+                        <NavLink aria-label="Home" to={"/#home"}
+                            className={() =>
+                                hash.includes("#home")
+                                    ? styles["active"]
+                                    : styles['pending']
                             }>
                             Home
                         </NavLink>
                     </li>
                     <li className={styles["nav-link-item"]}>
-                        <NavLink aria-label="Gallery" to="/#gallery"
+                        <NavLink aria-label="Gallery" to={"/#gallery"}
                             className={() =>
                                 hash.includes("#gallery")
                                     ? styles["active"]
@@ -63,7 +61,7 @@ const NavBar = () => {
                         </NavLink>
                     </li>
                     <li className={styles["nav-link-item"]}>
-                        <NavLink aria-label="Articles" to="/#articles"
+                        <NavLink aria-label="Articles" to={"/#articles"}
                             className={() =>
                                 hash.includes("#articles")
                                     ? styles["active"]
