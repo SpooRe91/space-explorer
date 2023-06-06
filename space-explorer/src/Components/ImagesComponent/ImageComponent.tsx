@@ -8,6 +8,7 @@ const ImageComponent = (item: TImageData) => {
         <div className={styles["card-component"]}>
             <Link to={`${item?.links[0]?.href}`} rel="noopenner" target="_blank">
                 <img
+                    loading="lazy"
                     src={item?.links[0]?.href}
                     alt="#"
                 />
