@@ -10,7 +10,7 @@ export const AboutPage = () => {
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                setIsVisible(state => true);
+                setIsVisible(true);
                 observer.unobserve(entry.target);
             }
         }),
