@@ -1,6 +1,7 @@
-import { useAppSelector } from "./App/hooks"
-import * as component from "./all-imported-components"
-import { globalState } from "./redux-slices/globalSlice"
+import { useAppSelector } from "./App/hooks";
+import { globalState } from "./redux-slices/globalSlice";
+
+import * as component from "./all-imported-components";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           : <>
             <component.HomePage />
             <component.ImagePage />
+            <component.AboutPage />
           </>
       }
 
