@@ -8,20 +8,19 @@ function App() {
   const globalData = useAppSelector(globalState);
 
   return (
-    <>
-      < component.NavBar />
+    <div className="main">
       {
         globalData.loading
           ?
           <component.GlobalLoader />
           : <>
+            <component.NavBar />
             <component.HomePage />
             <component.ImagePage />
             <component.AboutPage />
           </>
       }
-    </ >
+    </div>
   )
 }
-
 export default App
