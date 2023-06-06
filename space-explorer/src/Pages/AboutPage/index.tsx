@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import styles from "./index.module.scss";
 
 export const AboutPage = () => {
+
     return (
         //TODO: NEED TO STYLE THIS AND ADD SOME ADDITIONAL ELEMENTS!
         <>
             {/* <div className={styles["dark-bg"]} /> */}
-            <div className={styles["centered"]} id="about">
+            <div className={styles["centered"]}
+                id="about"
+            >
                 <div className={styles["already-reg"]}>
                     <h1 className={styles["already-reg"]}>About <span>"Space-explorer"</span></h1>
                     <p className={styles["already-reg"]}>
