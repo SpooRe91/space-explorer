@@ -10,7 +10,7 @@ const ImageComponent = (item: TImageData) => {
                 <img
                     loading="lazy"
                     src={item?.links[0]?.href}
-                    alt="#"
+                    alt="../../assets/icons/img not found.png"
                 />
             </Link>
             <div className={styles["card-content"]}>
