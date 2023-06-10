@@ -1,11 +1,12 @@
 .card-component {
-    background-color: #000000a6;
+    background-color: rgba(0, 0, 0, 0.6509803922);
     backdrop-filter: blur(5px);
     color: rgba(0, 0, 0, 0.87);
     border-radius: 10px;
     box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
     overflow: hidden;
-    max-width: 345px;
+    width: 375px;
+    max-width: 375px;
     max-height: 400px;
     transition: all 200ms ease-in-out;
 
@@ -45,16 +46,8 @@
             transition: all 100ms ease-in-out;
         }
     }
-
-    button:hover {
-        cursor: url("/pointer.png"), auto;
-        box-shadow: inset 0px 0px 2px 2px var(--card-box-shadow-collor-button-hover);
-    }
-
-    button:active {
-        box-shadow: inset 0px 0px 9px 2px rgba(255, 254, 254, 0.76), 0px 0px 20px 11px rgba(66, 66, 66, 0.76);
-    }
 }
 .card-component:hover {
+    cursor: url("/pointer.png"), auto;
     box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color-hover);
 }
