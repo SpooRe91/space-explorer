@@ -15,6 +15,10 @@ const ImageModal = () => {
         dispatch(setToExpandImage({ bool: false, href: '', title: '' }));
     }
 
+    const handleCloseModal = (e: React.MouseEvent<HTMLSpanElement>) => {
+        e.preventDefault();
+    }
+
     return (
         <div
             className={styles["modal-image-container"]}
@@ -23,16 +27,16 @@ const ImageModal = () => {
             <section className={styles["modal-image-and-title-container"]}>
                 {
                     !globalData.modalImageHref
-                        ? < GlobalLoader />
-                        :
-                        <Link
+                        ? <GlobalLoader />
+                        : <Link
                             to={globalData.modalImageHref}
                             target="_blank"
                             rel="noopener">
-                            <img
+                            <img className={styles["image-loaded"]}
                                 src={globalData.modalImageHref}
                                 alt="#"
-                                loading={"lazy"} />
+                                loading={"lazy"}
+                            />
                         </Link>
                 }
                 <p className={styles["modal-image-title"]}>
@@ -42,14 +46,10 @@ const ImageModal = () => {
                     to="#"
                     className={styles["span-link"]}>
                     <span
-                        onClick={() =>
-                            dispatch(setToExpandImage(
-                                {
-                                    bool: false,
-                                    href: '',
-                                    title: ''
-                                }
-                            ))}>
+                        onClick={(e) =>
+                            [handleModalClick(e),
+                            handleCloseModal(e)]
+                        }>
                         X
                     </span>
                 </Link>

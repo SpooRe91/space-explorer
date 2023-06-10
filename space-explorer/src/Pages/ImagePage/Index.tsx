@@ -1,6 +1,6 @@
 
-import { useEffect } from "react";
-import { setError, setIsLoading } from "../../redux-slices/globalSlice";
+import { lazy, useEffect, Suspense } from "react";
+import { globalState, setError, setIsLoading } from "../../redux-slices/globalSlice";
 import { imageState, setImageData } from "../../redux-slices/imagesSlice";
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
 
@@ -12,7 +12,10 @@ import { TImageData } from "../../Interfaces and types/Types/types";
 
 const ImagePage = () => {
 
+    const ImageModal = lazy(() => import('../../Components/ImageModal/ImageModal'));
+
     const imageData = useAppSelector(imageState);
+    const globalData = useAppSelector(globalState);
     const dispatch = useAppDispatch();
 
     const controller: AbortController = (new AbortController());
@@ -35,6 +38,13 @@ const ImagePage = () => {
                 <h1>Gallery</h1>
             </div>
             {
+                globalData.toExpandImage
+                    ? <Suspense fallback={<GlobalLoader />}>
+                        <ImageModal />
+                    </Suspense>
+                    : null
+            }
+            {
                 imageData.allData[0].href !== ''
                     ?
                     <div className={styles["image-list"]}>
@@ -46,6 +56,7 @@ const ImagePage = () => {
                     </div>
                     : <GlobalLoader />
             }
+
         </section >
     )
 }

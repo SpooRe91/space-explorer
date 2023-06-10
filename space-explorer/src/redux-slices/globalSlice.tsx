@@ -5,7 +5,10 @@ import { IGlobal } from "../Interfaces and types/Interfaces/interfaces";
 const initialState: IGlobal = {
     loading: false,
     error: '',
-    showSideNav: false
+    showSideNav: false,
+    toExpandImage: false,
+    modalImageHref: '',
+    modalImageTitle: '',
 }
 type action = {
     payload: any,
@@ -26,10 +29,16 @@ export const globalActions = createSlice({
 
         setShowSideNav: (state: IGlobal, action: action) => {
             state.showSideNav = action.payload;
+        },
+
+        setToExpandImage: (state: IGlobal, action: action) => {
+            state.toExpandImage = action.payload.bool;
+            state.modalImageHref = action.payload.href;
+            state.modalImageTitle = action.payload.title;
         }
     }
 });
 
-export const { setIsLoading, setError, setShowSideNav } = globalActions.actions;
+export const { setIsLoading, setError, setShowSideNav, setToExpandImage } = globalActions.actions;
 export const globalState = (state: RootState) => state.globalSlice;
 export default globalActions.reducer;
