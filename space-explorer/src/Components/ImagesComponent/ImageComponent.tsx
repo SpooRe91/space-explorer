@@ -1,5 +1,5 @@
 import { TImageData } from "../../Interfaces and types/Types/types";
-import { GlobalLoader } from "../../all-imported-components";
+
 import styles from './ImageComponent.module.scss';
 
 import { useAppDispatch } from "../../App/hooks";
@@ -15,15 +15,11 @@ const ImageComponent = (item: TImageData) => {
             onClick={() => dispatch(setToExpandImage({ bool: true, href: item?.links[0]?.href, title: item?.data[0].title }))}
             className={styles["card-component"]} >
             {
-                item?.links[0]?.href
-                    ?
-                    <img
-                        loading="lazy"
-                        src={item?.links[0]?.href}
-                        alt="../../assets/icons/img not found.png"
-                    />
-                    :
-                    <GlobalLoader />
+                <img
+                    loading="lazy"
+                    src={item?.links[0]?.href}
+                    alt="No image, sorry! Imagine something cool!"
+                />
             }
             <div className={styles["card-content"]}>
                 <p className={styles["card-content-title"]}>
