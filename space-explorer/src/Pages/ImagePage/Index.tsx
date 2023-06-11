@@ -36,8 +36,10 @@ const ImagePage = () => {
     }, [])
 
     return (
-        <section id="gallery" className={styles["image-container"]}>
-            <div className={styles["image-container-heading-container"]}>
+        <section id="gallery" className={styles[isActive
+            ? "image-container"
+            : "image-container-not-active"]}>
+            <div ref={divRef} className={styles["image-container-heading-container"]}>
                 <h1>Gallery</h1>
             </div>
             {
@@ -49,7 +51,7 @@ const ImagePage = () => {
             {
                 imageData.allData[0].href !== ''
                     ?
-                    <div ref={divRef} className={styles[isActive
+                    <div className={styles[isActive
                         ? "image-list"
                         : "image-list-not-active"
                     ]}>

@@ -7,7 +7,7 @@ import { lazy } from "react";
 import ErrorMessage from "./Layouts/ErrorMessage/ErrorMessage";
 
 const HomePage = lazy(() => import('./Pages/HomePage/index'));
-const ImagePage = lazy(() => import('./Pages/ImagePage/index'));
+const ImagePage = lazy(() => import('./Pages/ImagePage/'));
 const AboutPage = lazy(() => import('./Pages/AboutPage/index'));
 
 export {

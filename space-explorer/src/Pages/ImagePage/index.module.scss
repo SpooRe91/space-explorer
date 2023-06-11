@@ -49,7 +49,7 @@
     }
 }
 
-.image-container {
+.image-container-not-active {
     @include image-container();
     .image-list-not-active {
         @include image-list();
