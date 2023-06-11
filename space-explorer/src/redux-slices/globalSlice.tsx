@@ -9,6 +9,10 @@ const initialState: IGlobal = {
     toExpandImage: false,
     modalImageHref: '',
     modalImageTitle: '',
+    activeNavElement: {
+        isActive: false,
+        activeEl: ''
+    }
 }
 type action = {
     payload: any,
@@ -35,10 +39,14 @@ export const globalActions = createSlice({
             state.toExpandImage = action.payload.bool;
             state.modalImageHref = action.payload.href;
             state.modalImageTitle = action.payload.title;
+        },
+        setActiveNavElement: (state: IGlobal, action: action) => {
+            state.activeNavElement.isActive = action.payload.isActive;
+            state.activeNavElement.activeEl = action.payload.activeEl;
         }
     }
 });
 
-export const { setIsLoading, setError, setShowSideNav, setToExpandImage } = globalActions.actions;
+export const { setIsLoading, setError, setShowSideNav, setToExpandImage, setActiveNavElement } = globalActions.actions;
 export const globalState = (state: RootState) => state.globalSlice;
 export default globalActions.reducer;
