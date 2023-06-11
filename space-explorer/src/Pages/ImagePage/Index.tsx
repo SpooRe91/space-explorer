@@ -1,18 +1,17 @@
 
-import { lazy, useEffect, Suspense } from "react";
+import { useEffect, useRef } from "react";
+import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import { globalState, setError, setIsLoading } from "../../redux-slices/globalSlice";
 import { imageState, setImageData } from "../../redux-slices/imagesSlice";
-import { useAppDispatch, useAppSelector } from "../../App/hooks";
+import { ImageListItem } from "@mui/material";
+import { fetchImages } from "../../utils/Api";
 
 import styles from './index.module.scss';
-import { fetchImages } from "../../utils/Api";
-import { GlobalLoader, ImageComponent } from "../../all-imported-components";
-import { ImageListItem } from "@mui/material";
+import { ErrorMessage, GlobalLoader, ImageComponent, ImageModal } from "../../all-imported-components";
 import { TImageData } from "../../Interfaces and types/Types/types";
+import useIntersectionHook from "../../customHooks/useIntersectionHook";
 
 const ImagePage = () => {
-
-    const ImageModal = lazy(() => import('../../Components/ImageModal/ImageModal'));
 
     const imageData = useAppSelector(imageState);
     const globalData = useAppSelector(globalState);
@@ -20,6 +19,10 @@ const ImagePage = () => {
 
     const controller: AbortController = (new AbortController());
     const { signal }: { signal: AbortSignal } = controller;
+
+    const divRef = useRef<HTMLDivElement>(null);
+
+    const isActive = useIntersectionHook(divRef, 'imagePage');
 
     useEffect(() => {
         (async function () {
@@ -39,22 +42,31 @@ const ImagePage = () => {
             </div>
             {
                 globalData.toExpandImage
-                    ? <Suspense fallback={<GlobalLoader />}>
-                        <ImageModal />
-                    </Suspense>
+                    ?
+                    <ImageModal />
                     : null
             }
             {
                 imageData.allData[0].href !== ''
                     ?
-                    <div className={styles["image-list"]}>
+                    <div ref={divRef} className={styles[isActive
+                        ? "image-list"
+                        : "image-list-not-active"
+                    ]}>
                         {imageData.allData.map((item: TImageData) => (
                             <ImageListItem key={item.data[0].nasa_id} >
                                 <ImageComponent {...item} />
                             </ImageListItem>
                         ))}
                     </div>
-                    : <GlobalLoader />
+                    :
+                    <div>
+                        {
+                            globalData
+                                ? <ErrorMessage />
+                                : <GlobalLoader />
+                        }
+                    </div>
             }
 
         </section >
