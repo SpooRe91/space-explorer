@@ -15,17 +15,18 @@ const NavBar = () => {
     const { pathname, hash, key } = useLocation();
 
     useEffect(() => {
-        if (pathname === '/home') { window.scrollTo(0, 0) }
         if (pathname !== '') { hash.replace(hash, "") }
 
-        if (hash !== '') {
+        if (hash) {
             setTimeout(() => {
-                const id = hash.replace('#', '');
-                const element = document.getElementById(id);
+                const element = document.querySelector(hash);
                 if (element) {
-                    element.scrollIntoView();
+                    element?.scrollIntoView();
                 }
             }, 0);
+        }
+        return () => {
+            clearTimeout(0);
         }
     }, [pathname, hash, key]);
 
@@ -43,7 +44,7 @@ const NavBar = () => {
                     <li className={styles["nav-link-item"]}>
                         <NavLink aria-label="Home" to={"/#home"}
                             className={() =>
-                                hash.includes("#home")
+                                globalData.activeNavElement.activeEl.includes("homePage")
                                     ? styles["active"]
                                     : styles['pending']
                             }>
@@ -53,7 +54,7 @@ const NavBar = () => {
                     <li className={styles["nav-link-item"]}>
                         <NavLink aria-label="Gallery" to={"/#gallery"}
                             className={() =>
-                                hash.includes("#gallery")
+                                globalData.activeNavElement.activeEl.includes("imagePage")
                                     ? styles["active"]
                                     : styles['pending']
                             }>
@@ -63,7 +64,7 @@ const NavBar = () => {
                     <li className={styles["nav-link-item"]}>
                         <NavLink aria-label="Articles" to={"/#articles"}
                             className={() =>
-                                hash.includes("#articles")
+                                globalData.activeNavElement.activeEl.includes("articlesPage")
                                     ? styles["active"]
                                     : styles['pending']
                             }>
@@ -73,7 +74,7 @@ const NavBar = () => {
                     <li className={styles["nav-link-item"]}>
                         <NavLink aria-label="About" to={"/#about"}
                             className={() =>
-                                hash.includes("#about")
+                                globalData.activeNavElement.activeEl.includes("aboutPage")
                                     ? styles["active"]
                                     : styles['pending']
                             }>
