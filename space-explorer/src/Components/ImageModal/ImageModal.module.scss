@@ -35,12 +35,6 @@
         align-content: center;
         align-items: center;
         z-index: 12;
-        a {
-            border-radius: 10px;
-        }
-        a:hover {
-            cursor: url("/pointer.png"), auto;
-        }
 
         .image-loaded {
             object-fit: cover;
