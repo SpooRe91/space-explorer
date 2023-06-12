@@ -1,14 +1,19 @@
-import { useAppSelector } from "./App/hooks"
-import { globalState } from "./redux-slices/globalSlice";
+import { useAppDispatch, useAppSelector } from "./App/hooks"
+import { globalState, setIsLoading } from "./redux-slices/globalSlice";
 
 import * as component from "./all-imported-components";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { useLocation } from "react-router";
 
 function App() {
 
   const globalData = useAppSelector(globalState);
+  const dispatch = useAppDispatch();
   const { hash } = useLocation();
+
+  useEffect(() => {
+    dispatch(setIsLoading(false));
+  }, []);
 
   return (
     <div className="main"
