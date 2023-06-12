@@ -2,13 +2,16 @@ import { Link } from "react-router-dom";
 import styles from "./index.module.scss";
 import { useRef } from "react";
 import useIntersectionHook from "../../customHooks/useIntersectionHook";
+import icon from "../../assets/icons/android-chrome-256x256.png";
 
 export const AboutPage = () => {
 
     const divRef = useRef<HTMLDivElement>(null);
-    const isActive = useIntersectionHook(divRef, 'aboutPage');
+    // THIS CONTROLS WHETHER THE CURRENT REF ELEMENT IS ACTIVE, SO IT CAN APPLY STYLES TO IT
+    const isActive = useIntersectionHook(divRef, '#about');
 
     return (
+        // IF THE CURRENT REF ELEMENT IS ACTIVE, IT WILL APPLY A SPECIFIC SYLE TO IT
         <div id="about" ref={divRef} className={styles["about-container"]}>
             <div className={styles[isActive ? "slide-in" : "slide-out"]}>
                 <h2 className={styles["already-reg"]}>About <span>"Space-explorer"</span></h2>
@@ -20,6 +23,10 @@ export const AboutPage = () => {
                     and reach me on
                     <Link to={"https://www.linkedin.com/in/mbogdanov9110/"}> LinkedIn </Link>
                 </p>
+                <img
+                    src={icon}
+                    alt="logo"
+                    className={styles[isActive ? "slide-in-img" : "slide-out-img"]} />
             </div>
         </div>
 
