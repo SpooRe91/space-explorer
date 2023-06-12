@@ -7,9 +7,10 @@ import { ImageListItem } from "@mui/material";
 import { fetchImages } from "../../utils/Api";
 
 import styles from './index.module.scss';
-import { ErrorMessage, GlobalLoader, ImageComponent, ImageModal } from "../../all-imported-components";
+import * as component from "../../all-imported-components";
 import { TImageData } from "../../Interfaces and types/Types/types";
 import useIntersectionHook from "../../customHooks/useIntersectionHook";
+
 
 const ImagePage = () => {
 
@@ -22,7 +23,7 @@ const ImagePage = () => {
 
     const divRef = useRef<HTMLDivElement>(null);
 
-    const isActive = useIntersectionHook(divRef, 'imagePage');
+    const isActive = useIntersectionHook(divRef, '#gallery');
 
     useEffect(() => {
         (async function () {
@@ -43,12 +44,14 @@ const ImagePage = () => {
                 <h1>Gallery</h1>
             </div>
             {
+                // IF MODAL IS TO BE SHOWN
                 globalData.toExpandImage
                     ?
-                    <ImageModal />
+                    <component.ImageModal />
                     : null
             }
             {
+                // IF THERE ARE IMAGES IN THE GLOBAL DATA, SHOW THE LIST OF IMAGES
                 imageData.allData[0].href !== ''
                     ?
                     <div className={styles[isActive
@@ -57,16 +60,19 @@ const ImagePage = () => {
                     ]}>
                         {imageData.allData.map((item: TImageData) => (
                             <ImageListItem key={item.data[0].nasa_id} >
-                                <ImageComponent {...item} />
+                                <component.ImageComponent {...item} />
                             </ImageListItem>
                         ))}
                     </div>
                     :
-                    <div>
+                    // IF THERE ARE NO IMAGES, CHECK IF IT'S STILL LOADING OR IF THERE IS AN ERROR
+                    <div className={styles['loader-error']}>
                         {
-                            globalData
-                                ? <ErrorMessage />
-                                : <GlobalLoader />
+                            globalData.loading
+                                ? <component.GlobalLoader />
+                                : globalData.error
+                                    ? <component.ErrorMessage error={globalData.error} />
+                                    : null
                         }
                     </div>
             }

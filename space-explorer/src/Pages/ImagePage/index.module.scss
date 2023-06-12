@@ -54,6 +54,9 @@
     .image-list-not-active {
         @include image-list();
     }
+    .loader-error {
+        width: 100%;
+    }
 }
 .image-container {
     @include image-container();
@@ -61,5 +64,8 @@
     .image-list {
         @include image-list();
         box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
+    }
+    .loader-error {
+        width: 100%;
     }
 }
