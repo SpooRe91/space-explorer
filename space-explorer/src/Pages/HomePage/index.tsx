@@ -8,7 +8,7 @@ import useIntersectionHook from "../../customHooks/useIntersectionHook";
 const HomePage = () => {
 
     const divRef = useRef<HTMLDivElement>(null);
-    const isActive = useIntersectionHook(divRef, 'homePage');
+    const isActive = useIntersectionHook(divRef, '#home');
 
     return (
         <section id="home" className={styles["home-hero-section"]}>
