@@ -2,7 +2,7 @@ import { TImageData } from "../Types/types";
 
 export interface IGlobal {
     loading: boolean;
-    error: '' | null;
+    error: string;
     showSideNav: boolean;
     toExpandImage: boolean;
     modalImageHref: string;
