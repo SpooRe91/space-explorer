@@ -1,13 +1,18 @@
 import Alert from '@mui/material/Alert';
 import { useAppSelector } from '../../App/hooks';
 import { globalState } from '../../redux-slices/globalSlice';
-const ErrorMessage = () => {
+
+const ErrorMessage = ({ error }: { error: string }) => {
 
     const globalData = useAppSelector(globalState);
-
+    globalData.error
     return (
         <div>
-            <Alert severity="error">Sorry, there seems to be a {globalData.error}, please try again later!</Alert>
+            <Alert style={{ fontSize: "1.5rem" }}
+                severity="error">
+                {/* IF THERE IS AN ERORR PASSED - DISPLAY THAT, OTHERWISE DISPLAY THE GLOBAL ERROR */}
+                Sorry, there seems to be a {error ? error : globalData.error}, please try again later!
+            </Alert>
         </div>
     )
 }
