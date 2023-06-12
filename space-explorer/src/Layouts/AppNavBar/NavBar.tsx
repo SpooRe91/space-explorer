@@ -44,7 +44,7 @@ const NavBar = () => {
                     <li className={styles["nav-link-item"]}>
                         <NavLink aria-label="Home" to={"/#home"}
                             className={() =>
-                                globalData.activeNavElement.activeEl.includes("homePage")
+                                globalData.activeNavElement.activeEl.includes("home")
                                     ? styles["active"]
                                     : styles['pending']
                             }>
@@ -54,7 +54,7 @@ const NavBar = () => {
                     <li className={styles["nav-link-item"]}>
                         <NavLink aria-label="Gallery" to={"/#gallery"}
                             className={() =>
-                                globalData.activeNavElement.activeEl.includes("imagePage")
+                                globalData.activeNavElement.activeEl.includes("gallery")
                                     ? styles["active"]
                                     : styles['pending']
                             }>
@@ -64,7 +64,7 @@ const NavBar = () => {
                     <li className={styles["nav-link-item"]}>
                         <NavLink aria-label="Articles" to={"/#articles"}
                             className={() =>
-                                globalData.activeNavElement.activeEl.includes("articlesPage")
+                                globalData.activeNavElement.activeEl.includes("articles")
                                     ? styles["active"]
                                     : styles['pending']
                             }>
@@ -74,7 +74,7 @@ const NavBar = () => {
                     <li className={styles["nav-link-item"]}>
                         <NavLink aria-label="About" to={"/#about"}
                             className={() =>
-                                globalData.activeNavElement.activeEl.includes("aboutPage")
+                                globalData.activeNavElement.activeEl.includes("about")
                                     ? styles["active"]
                                     : styles['pending']
                             }>
