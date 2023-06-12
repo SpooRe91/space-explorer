@@ -4,7 +4,7 @@ import styles from './GlobalLoader.module.scss';
 const GlobalLoader = () => {
     return (
         <div className={styles['global-loader-container']}>
-            <div className={styles['global-loader-single-container']}>
+            <div className={styles['global-loader-single-container-loading']}>
                 <p className={styles['global-loader-text']}>
                     Loading...
                 </p>
