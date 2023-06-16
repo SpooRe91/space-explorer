@@ -38,3 +38,13 @@
   --hero-text-shadow-additional: rgba(187, 187, 187, 0.76);
   --component-bgr-transparent-color: rgba(0, 0, 0, 0.76);
 }
+
+.main {
+  .loader-comp {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 500;
+  }
+}

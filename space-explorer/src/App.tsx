@@ -4,6 +4,7 @@ import { globalState, setIsLoading } from "./redux-slices/globalSlice";
 import * as component from "./all-imported-components";
 import { Suspense, useEffect } from "react";
 import { useLocation } from "react-router";
+import "./styles/index.scss";
 
 function App() {
 
@@ -22,19 +23,22 @@ function App() {
         : null}
     >
       <component.NavBar />
-      {
-        globalData.loading
-          ?
-          <component.GlobalLoader />
-          : <>
-            <Suspense>
-              <component.HomePage />
-              <component.ImagePage />
-              <component.AboutPage />
-            </Suspense>
-          </>
-      }
-    </div>
+      <>
+        {
+          globalData.loading
+            ?
+            <div className="loader-comp">
+              <component.GlobalLoader />
+            </div>
+            : null
+        }
+        < Suspense >
+          <component.HomePage />
+          <component.ImagePage />
+          <component.AboutPage />
+        </Suspense>
+      </>
+    </div >
   )
 }
 export default App
