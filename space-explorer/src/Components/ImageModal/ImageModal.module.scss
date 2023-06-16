@@ -1,6 +1,4 @@
-.modal-image-container {
-    width: 100%;
-    height: 100%;
+.modal-image-container-expanded {
     position: absolute;
     display: flex;
     inset: 0;
@@ -14,6 +12,16 @@
     z-index: 1;
     box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
 
+    &:before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(5px);
+        z-index: -1;
+    }
+
     .modal-image-and-title-container {
         width: 100%;
         position: relative;
@@ -24,17 +32,20 @@
         align-items: center;
         justify-content: center;
         gap: 2rem;
+        transition: 200ms transofrm ease-in-out;
 
-        position: relative;
-        width: 100%;
-        min-width: 35%;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        gap: 1rem;
-        align-content: center;
-        align-items: center;
-        z-index: 12;
+        .image-loading-text {
+            color: #ffffff;
+            letter-spacing: 2mm;
+            text-shadow: 0px 0px 2px rgba($color: #ffffff, $alpha: 1);
+            font-size: 2rem;
+            animation: infinite;
+            animation-name: text-color;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            text-align: center;
+        }
 
         .image-loaded {
             object-fit: cover;
@@ -44,6 +55,8 @@
             max-height: 633px;
             border: 1px solid var(--card-box-shadow-collor-button);
             border-radius: 10px;
+            animation: expand 200ms forwards ease-in;
+            -webkit-animation: expand 200ms forwards ease-in;
         }
 
         .modal-image-title {
@@ -70,21 +83,23 @@
             background-color: var(--component-bgr-transparent-color);
             border-radius: 10px;
             box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button-hover);
-        }
-        .span-link:hover,
-        .span-close-x:hover {
-            cursor: url("/pointer.png"), auto;
-            color: var(--about-link-collor-hover);
-            box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button);
+
+            &:hover {
+                cursor: url("/pointer.png"), auto;
+                color: var(--about-link-collor-hover);
+                box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button);
+            }
         }
     }
 }
-.modal-image-and-title-container:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(5px);
-    z-index: -1;
+@keyframes expand {
+    0% {
+        width: 0%;
+        height: 0%;
+    }
+
+    100% {
+        width: 100%;
+        height: 100%;
+    }
 }

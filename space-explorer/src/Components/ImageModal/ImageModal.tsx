@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
-import { globalState, setToExpandImage } from "../../redux-slices/globalSlice";
+import { globalState, setIsLoading, setToExpandImage } from "../../redux-slices/globalSlice";
 
 import styles from "./ImageModal.module.scss";
 import { useState } from "react";
-import { RingLoader } from "react-spinners";
 
 const ImageModal = () => {
 
@@ -16,47 +15,50 @@ const ImageModal = () => {
     const handleModalClick = (e: React.MouseEvent<HTMLSpanElement>) => {
         if (e.target === e.currentTarget) {
             e.stopPropagation();
+            e.preventDefault();
             dispatch(setToExpandImage({ bool: false, href: '', title: '' }));
+            dispatch(setIsLoading(false));
         }
     }
 
-    const handleCloseModal = (e: React.MouseEvent<HTMLSpanElement>) => {
-        e.preventDefault();
+    const handleImageLoaded = (): void => {
+        setImageLoaded(true);
+        dispatch(setIsLoading(false));
     }
 
-    const handleImageLoaded = (): void => {
-        setImageLoaded(() => true);
-    }
 
     return (
         <div
-            className={styles["modal-image-container"]}>
+            className={styles[globalData.toExpandImage
+                ? "modal-image-container-expanded"
+                : "modal-image-container"]}
+            onFocus={() => dispatch(setIsLoading(false))}>
             <section
                 className={styles["modal-image-and-title-container"]}
-                onClick={(e: React.MouseEvent<HTMLSpanElement>) => handleModalClick(e)}
+                onClick={(e: React.MouseEvent<HTMLSpanElement>) =>
+                    handleModalClick(e)}
             >
                 {
                     !globalData.modalImageHref
                         ?
-                        <RingLoader
-                            size={100}
-                            color='#36d7b7' />
+                        null
                         :
                         <>
                             <img
                                 onLoad={() => handleImageLoaded()}
-                                className={styles["image-loaded"]}
+                                className={styles[imageLoaded
+                                    ? "image-loaded"
+                                    : '']}
                                 src={globalData.modalImageHref}
                                 alt={"Sorry, there was supposed to be an image here, but something went wrong!"}
                                 title={globalData.modalImageTitle}
-                                loading={"lazy"}
                             />
                             {
                                 !imageLoaded
                                     ?
-                                    <RingLoader
-                                        size={100}
-                                        color='#36d7b7' />
+                                    <p className={styles["image-loading-text"]}>
+                                        Loading...
+                                    </p>
                                     : null
                             }
                             {
@@ -71,10 +73,7 @@ const ImageModal = () => {
                                 to="#"
                                 className={styles["span-link"]}>
                                 <span className={"span-close-x"}
-                                    onClick={(e) =>
-                                        [handleModalClick(e),
-                                        handleCloseModal(e)]
-                                    }>
+                                    onClick={(e) => handleModalClick(e)}>
                                     X
                                 </span>
                             </Link>
