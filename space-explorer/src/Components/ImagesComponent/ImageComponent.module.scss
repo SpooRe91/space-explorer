@@ -8,6 +8,7 @@
     width: 375px;
     max-width: 375px;
     max-height: 400px;
+    overflow: hidden;
     transition: all 200ms ease-in-out;
 
     a:hover {
@@ -18,6 +19,11 @@
         height: 200px;
         object-fit: cover;
         width: 100%;
+        transition: transform 200ms ease-in-out;
+
+        &:hover {
+            transform: scale(1.2);
+        }
     }
 
     .card-content {

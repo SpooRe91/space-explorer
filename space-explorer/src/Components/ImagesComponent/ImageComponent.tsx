@@ -3,7 +3,7 @@ import { TImageData } from "../../Interfaces and types/Types/types";
 import styles from './ImageComponent.module.scss';
 
 import { useAppDispatch } from "../../App/hooks";
-import { setToExpandImage } from "../../redux-slices/globalSlice";
+import { setIsLoading, setToExpandImage } from "../../redux-slices/globalSlice";
 
 
 const ImageComponent = (item: TImageData) => {
@@ -12,7 +12,14 @@ const ImageComponent = (item: TImageData) => {
 
     return (
         <div
-            onClick={() => dispatch(setToExpandImage({ bool: true, href: item?.links[0]?.href, title: item?.data[0].title }))}
+            onClick={() => [
+                dispatch(setToExpandImage(
+                    {
+                        bool: true,
+                        href: item?.links[0]?.href,
+                        title: item?.data[0].title
+                    })),
+                dispatch(setIsLoading(true))]}
             className={styles["card-component"]} >
             {
                 <img
