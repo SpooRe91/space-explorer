@@ -13,11 +13,17 @@ export const AboutPage = () => {
     return (
         // IF THE CURRENT REF ELEMENT IS ACTIVE, IT WILL APPLY A SPECIFIC SYLE TO IT
         <div id="about" ref={divRef} className={styles["about-container"]}>
-            <div className={styles[isActive ? "slide-in" : "slide-out"]}>
+            <div
+                className={styles[isActive ? "slide-in" : "slide-out"]}
+            >
                 <h2 className={styles["already-reg"]}>About <span>"Space-explorer"</span></h2>
+                <p className={styles["already-reg"]}>This is a personal project made with:
+                </p>
+                <span className={styles["emph-text"]}>
+                    React, Redux, TypeScript, SCSS, ReactRouter, AXIOS, MaterialUi.
+                </span>
                 <p className={styles["already-reg"]}>
-                    This is a personal project made with React, TypeScript, SCSS, ReactRouter, AXIOS, MaterialUi.
-                    Fan page of space exploration, different articles and images from the NASA APIs.
+                    A fan page of space exploration, different articles and images from the NASA APIs.
                     If you enjoy the website, you can follow me on
                     <Link to={'https://github.com/SpooRe91'}> GitHub </Link>
                     and reach me on
@@ -28,7 +34,7 @@ export const AboutPage = () => {
                     alt="logo"
                     className={styles[isActive ? "slide-in-img" : "slide-out-img"]} />
             </div>
-        </div>
+        </div >
 
     );
 }
