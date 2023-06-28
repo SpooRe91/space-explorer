@@ -16,12 +16,18 @@
             text-decoration: none;
             color: var(--about-link-collor);
             transition: all 200ms ease-in-out;
+            &:hover {
+                cursor: url("/pointer.png"), auto;
+                color: var(--about-link-collor-hover);
+                text-shadow: 0px 0px 0px var(--text-color-shadow);
+            }
         }
     }
-    a:hover {
-        cursor: url("/pointer.png"), auto;
-        color: var(--about-link-collor-hover);
-        text-shadow: 0px 0px 0px var(--text-color-shadow);
+    .emph-text {
+        color: var(--emphasized-text-about);
+        font-size: 1.33rem;
+        width: 50%;
+        text-align: center;
     }
 }
 .about-container {
@@ -70,12 +76,16 @@
 
         @include container-text-content();
         .slide-in-img {
-            animation: slide-in-img 2s forwards;
-            -webkit-animation: slide-in-img 2s forwards;
+            width: 250px;
+            height: 250px;
+            animation: slide-in-img 1.3s forwards;
+            -webkit-animation: slide-in-img 1.3s forwards;
         }
         .slide-out-img {
-            animation: slide-out-img 2s forwards;
-            -webkit-animation: slide-out-img 2s forwards;
+            width: 250px;
+            height: 250px;
+            animation: slide-out-img 1.3s forwards;
+            -webkit-animation: slide-out-img 1.3s forwards;
         }
     }
 }

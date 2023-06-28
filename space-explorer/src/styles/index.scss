@@ -23,7 +23,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   overflow-y: overlay;
-  overflow-x: overlay;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 
   --card-box-shadow-color: #1e4d97;
@@ -37,6 +37,7 @@
   --text-color-shadow: rgba(255, 255, 255, 0.87);
   --hero-text-shadow-additional: rgba(187, 187, 187, 0.76);
   --component-bgr-transparent-color: rgba(0, 0, 0, 0.76);
+  --emphasized-text-about: rgba(175, 177, 255, 1);
 }
 
 .main {
