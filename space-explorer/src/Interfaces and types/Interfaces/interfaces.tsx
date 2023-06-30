@@ -8,9 +8,14 @@ export interface IGlobal {
     modalImageHref: string;
     modalImageTitle: string;
     activeNavElement: { isActive: boolean, activeEl: string };
+    showPoD: boolean;
 }
 
 export interface IImageData {
     allData: [object: TImageData],
 }
 
+export interface IAction<T, P> {
+    readonly type: T;
+    readonly payload: P;
+}

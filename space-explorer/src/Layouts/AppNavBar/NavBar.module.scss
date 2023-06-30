@@ -84,6 +84,13 @@
                     padding: 5px 7px;
                     transition: all 150ms ease-in-out;
                     @include nav-buttons-hover();
+
+                    &:hover {
+                        @include nav-buttons-hover();
+                    }
+                    &:active {
+                        @include nav-button-active();
+                    }
                 }
 
                 .pending {
@@ -95,16 +102,12 @@
                     border-radius: 10px;
                     padding: 5px 7px;
                     transition: all 150ms ease-in-out;
-                }
-
-                .active:hover,
-                .pending:hover {
-                    @include nav-buttons-hover();
-                }
-
-                .active:hover,
-                .pending:hover {
-                    @include nav-button-active();
+                    &:hover {
+                        @include nav-buttons-hover();
+                    }
+                    &:active {
+                        @include nav-button-active();
+                    }
                 }
             }
         }
@@ -127,24 +130,22 @@
                 font-weight: 700;
                 padding: 5px 7px;
                 transition: all 150ms ease-in-out;
-            }
-
-            .nav-item-nasa:hover {
-                @include nav-buttons-hover();
-            }
-            .nav-item-nasa:active {
-                @include nav-button-active();
+                &:hover {
+                    @include nav-buttons-hover();
+                }
+                &:active {
+                    @include nav-button-active();
+                }
             }
 
             .nav-item-pod {
                 @include nav-buttons;
-            }
-            .nav-item-pod:hover {
-                @include nav-buttons-hover();
-            }
-
-            .nav-item-pod:active {
-                @include nav-button-active();
+                &:hover {
+                    @include nav-buttons-hover();
+                }
+                &:active {
+                    @include nav-button-active();
+                }
             }
         }
 
@@ -166,17 +167,15 @@
                     z-index: 0;
                     line-height: 1;
                 }
-            }
-
-            .nav-toggler-item:hover {
-                cursor: url("/pointer.png"), auto;
-                color: #4990be;
-                text-shadow: 0px 0px 20px rgba($color: #a7a6a6, $alpha: 1);
-            }
-
-            .nav-toggler-item:active {
-                @include nav-button-active();
-                background-color: transparent;
+                &:hover {
+                    cursor: url("/pointer.png"), auto;
+                    color: #4990be;
+                    text-shadow: 0px 0px 20px rgba($color: #a7a6a6, $alpha: 1);
+                }
+                &:active {
+                    @include nav-button-active();
+                    background-color: transparent;
+                }
             }
         }
     }
@@ -195,14 +194,12 @@
             @include nav-buttons();
             width: 195px;
             height: 80px;
-        }
-
-        .nav-logo-item:hover {
-            @include nav-buttons-hover();
-        }
-
-        .nav-logo-item:active {
-            @include nav-button-active();
+            &:hover {
+                @include nav-buttons-hover();
+            }
+            &:active {
+                @include nav-button-active();
+            }
         }
 
         img {

@@ -1,0 +1,32 @@
+import type { RootState } from "../App/store";
+import { createSlice } from "@reduxjs/toolkit";
+import { TPicOfTheDay } from "../Interfaces and types/Types/types";
+import { IAction } from "../Interfaces and types/Interfaces/interfaces";
+
+const initialState: TPicOfTheDay = {
+    date: '',
+    explanation: '',
+    hdurl: '',
+    media_type: '',
+    title: '',
+    url: ''
+}
+
+export const podActions = createSlice({
+    name: 'podSlice',
+    initialState,
+    reducers: {
+        setPodData: (state: TPicOfTheDay,
+            action: IAction<string, TPicOfTheDay>) => {
+            state.date = action.payload.date;
+            state.explanation = action.payload.explanation;
+            state.hdurl = action.payload.hdurl;
+            state.title = action.payload.title;
+            state.url = action.payload.url;
+        }
+    }
+});
+
+export const { setPodData } = podActions.actions;
+export const podState = (state: RootState) => state.podSlice;
+export default podActions.reducer;

@@ -12,17 +12,22 @@ const ImageComponent = (item: TImageData) => {
 
     return (
         <div
-            onClick={() => [
-                dispatch(setToExpandImage(
-                    {
-                        bool: true,
-                        href: item?.links[0]?.href,
-                        title: item?.data[0].title
-                    })),
-                dispatch(setIsLoading(true))]}
+            onClick={() => item.links[0]?.href !== undefined
+                && item?.data[0].title !== undefined
+                ?
+                [
+                    dispatch(setToExpandImage(
+                        {
+                            bool: true,
+                            href: item.links[0]?.href,
+                            title: item?.data[0].title
+                        })),
+                    dispatch(setIsLoading(true))]
+                : null
+            }
             className={styles["card-component"]} >
             {
-                <img
+                < img
                     loading="lazy"
                     src={item?.links[0]?.href}
                     alt="No image, sorry! Imagine something cool!"

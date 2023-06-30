@@ -22,3 +22,12 @@ type TDataObject = {
     secondary_creator?: string,
     title: string
 }
+
+export type TPicOfTheDay = {
+    date: string,
+    explanation: string,
+    hdurl: string,
+    media_type: string,
+    title: string,
+    url: string
+}

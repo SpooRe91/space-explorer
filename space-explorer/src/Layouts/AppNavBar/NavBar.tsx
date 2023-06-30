@@ -1,7 +1,7 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
-import { globalState, setShowSideNav } from "../../redux-slices/globalSlice";
+import { globalState, setIsLoading, setShowSideNav, setToShowPoD } from "../../redux-slices/globalSlice";
 
 import styles from "./NavBar.module.scss";
 import icon from "../../assets/icons/android-chrome-192x192.png";
@@ -33,7 +33,8 @@ const NavBar = () => {
     return (
         <div className={styles["main-nav-container"]}>
             <div className={styles["nav-logo-container"]}>
-                <NavLink to={'/#home'} className={styles["nav-logo-item"]}>
+                <NavLink to={'/#home'} className={styles["nav-logo-item"]}
+                    onClick={() => dispatch(setToShowPoD(false))}>
                     <img src={icon} alt="logo" />
                     Space Explorer
                 </NavLink>
@@ -43,6 +44,7 @@ const NavBar = () => {
                 <ul className={styles["nav-links"]} role="list">
                     <li className={styles["nav-link-item"]}>
                         <NavLink aria-label="Home" to={"/#home"}
+                            onClick={() => dispatch(setToShowPoD(false))}
                             className={() =>
                                 globalData.activeNavElement.activeEl.includes("home")
                                     ? styles["active"]
@@ -53,6 +55,7 @@ const NavBar = () => {
                     </li>
                     <li className={styles["nav-link-item"]}>
                         <NavLink aria-label="Gallery" to={"/#gallery"}
+                            onClick={() => dispatch(setToShowPoD(false))}
                             className={() =>
                                 globalData.activeNavElement.activeEl.includes("gallery")
                                     ? styles["active"]
@@ -63,6 +66,7 @@ const NavBar = () => {
                     </li>
                     <li className={styles["nav-link-item"]}>
                         <NavLink aria-label="Articles" to={"/#articles"}
+                            onClick={() => dispatch(setToShowPoD(false))}
                             className={() =>
                                 globalData.activeNavElement.activeEl.includes("articles")
                                     ? styles["active"]
@@ -73,6 +77,7 @@ const NavBar = () => {
                     </li>
                     <li className={styles["nav-link-item"]}>
                         <NavLink aria-label="About" to={"/#about"}
+                            onClick={() => dispatch(setToShowPoD(false))}
                             className={() =>
                                 globalData.activeNavElement.activeEl.includes("about")
                                     ? styles["active"]
@@ -89,7 +94,12 @@ const NavBar = () => {
                         target="_blank">
                         NASA
                     </Link>
-                    <button className={styles["nav-item-pod"]}>
+                    <button
+                        className={styles["nav-item-pod"]}
+                        onClick={() => [
+                            dispatch(setToShowPoD(!globalData.showPoD)),
+                            dispatch(setIsLoading(true))
+                        ]}>
                         Picture of the day
                     </button>
                 </div>

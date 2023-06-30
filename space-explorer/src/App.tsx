@@ -32,10 +32,20 @@ function App() {
             </div>
             : null
         }
-        < Suspense >
+        <Suspense fallback={
+          <div className="loader-comp">
+            <component.GlobalLoader />
+          </div>
+        }>
           <component.HomePage />
           <component.ImagePage />
           <component.AboutPage />
+          {
+            globalData.showPoD
+              ?
+              <component.PoDComponent />
+              : null
+          }
         </Suspense>
       </>
     </div >

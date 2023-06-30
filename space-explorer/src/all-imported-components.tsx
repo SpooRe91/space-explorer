@@ -5,6 +5,8 @@ import GlobalLoader from "./Layouts/GlobalLoader/GlobalLoader";
 import ImageModal from "./Components/ImageModal/ImageModal";
 import { lazy } from "react";
 import ErrorMessage from "./Layouts/ErrorMessage/ErrorMessage";
+import PoDComponent from "./Pages/PoDPage";
+import PoDModal from "./Components/PoDModal/PoDModal";
 
 const HomePage = lazy(() => import('./Pages/HomePage/index'));
 const ImagePage = lazy(() => import('./Pages/ImagePage/Index'));
@@ -19,5 +21,7 @@ export {
     SideBar,
     ImageComponent,
     ImageModal,
-    ErrorMessage
+    ErrorMessage,
+    PoDComponent,
+    PoDModal
 };
