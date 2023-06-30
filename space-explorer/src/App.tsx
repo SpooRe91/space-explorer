@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "./App/hooks"
 import { globalState, setIsLoading } from "./redux-slices/globalSlice";
 
 import * as component from "./all-imported-components";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router";
 import "./styles/index.scss";
 
@@ -32,21 +32,15 @@ function App() {
             </div>
             : null
         }
-        <Suspense fallback={
-          <div className="loader-comp">
-            <component.GlobalLoader />
-          </div>
-        }>
-          <component.HomePage />
-          <component.ImagePage />
-          <component.AboutPage />
-          {
-            globalData.showPoD
-              ?
-              <component.PoDComponent />
-              : null
-          }
-        </Suspense>
+        <component.HomePage />
+        <component.ImagePage />
+        <component.AboutPage />
+        {
+          globalData.showPoD
+            ?
+            <component.PoDPage />
+            : null
+        }
       </>
     </div >
   )

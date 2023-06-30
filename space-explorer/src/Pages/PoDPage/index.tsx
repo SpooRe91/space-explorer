@@ -7,9 +7,9 @@ import { fetchImageOfTheDay } from "../../utils/Picture-of-the-day-api";
 import { setError, setIsLoading } from "../../redux-slices/globalSlice";
 import { setPodData } from "../../redux-slices/PODslice";
 
-import KeepMountedModal from "../../Components/PoDModal/PoDModal";
+import PoDModal from "../../Components/PoDModal/PoDModal";
 
-const PoDComponent = () => {
+const PoDPage = () => {
 
     const controller = new AbortController();
     const { signal } = controller;
@@ -29,9 +29,9 @@ const PoDComponent = () => {
 
     return (
         <div className={styles["pod-main-container"]}>
-            <KeepMountedModal />
+            <PoDModal />
         </div>
     )
 }
 
-export default PoDComponent
+export default PoDPage
