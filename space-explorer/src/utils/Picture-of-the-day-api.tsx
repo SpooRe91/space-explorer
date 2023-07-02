@@ -4,10 +4,11 @@ import axios from "axios";
 export const fetchImageOfTheDay = async (signal: AbortSignal, controller: AbortController) => {
 
     try {
-        const res = await axios.create({ baseURL: 'https://api.nasa.gov/' })
+        const res = axios.create({ baseURL: 'https://api.nasa.gov/' })
             .get(`planetary/apod?api_key=${import.meta.env.VITE_NASA_API_KEY}`, { signal: signal });
-        if (res.status === 200) {
-            return res.data
+        const data = await res;
+        if (data.status === 200) {
+            return data.data
         }
     } catch (error: unknown) {
         if (typeof error === "string") {
