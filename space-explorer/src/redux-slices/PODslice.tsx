@@ -9,7 +9,8 @@ const initialState: TPicOfTheDay = {
     hdurl: '',
     media_type: '',
     title: '',
-    url: ''
+    url: '',
+    prevUrl: ''
 }
 
 export const podActions = createSlice({
@@ -23,10 +24,14 @@ export const podActions = createSlice({
             state.hdurl = action.payload.hdurl;
             state.title = action.payload.title;
             state.url = action.payload.url;
+        },
+        setPrevPodUrl: (state: TPicOfTheDay,
+            action: IAction<string, TPicOfTheDay>) => {
+            state.prevUrl = action.payload.url;
         }
     }
 });
 
-export const { setPodData } = podActions.actions;
+export const { setPodData, setPrevPodUrl } = podActions.actions;
 export const podState = (state: RootState) => state.podSlice;
 export default podActions.reducer;

@@ -29,5 +29,6 @@ export type TPicOfTheDay = {
     hdurl: string,
     media_type: string,
     title: string,
-    url: string
+    url: string,
+    prevUrl: string
 }
