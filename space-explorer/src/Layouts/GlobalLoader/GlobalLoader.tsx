@@ -7,7 +7,8 @@ const GlobalLoader = () => {
             <BarLoader
                 width={"100%"}
                 height={5}
-                color='#1e4d97' />
+                color='#c5d3fe'
+            />
         </div>
     )
 }
