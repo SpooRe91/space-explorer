@@ -1,24 +1,10 @@
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Typography from '@mui/material/Typography';
-
 import styles from "./PoDModal.module.scss";
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../App/hooks';
 import { podState } from '../../redux-slices/PODslice';
 import { globalState, setIsLoading, setToShowPoD } from '../../redux-slices/globalSlice';
+import { Link } from 'react-router-dom';
 
-const style = {
-    // eslint-disable-next-line @typescript-eslint/prefer-as-const
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '50%',
-    height: '750px',
-    boxShadow: 24,
-    p: 4,
-};
 
 export default function PoDModal() {
 
@@ -28,7 +14,8 @@ export default function PoDModal() {
     const podData = useAppSelector(podState);
     const dispatch = useAppDispatch();
 
-    const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const handleModalClick = (e: React.MouseEvent<HTMLDivElement>
+        | React.MouseEvent<HTMLSpanElement>) => {
         if (e.target === e.currentTarget) {
             e.stopPropagation();
             e.preventDefault();
@@ -43,42 +30,51 @@ export default function PoDModal() {
     }
 
     return (
-        <div className={styles['modal-main-container']}>
-            <Modal
-
-                open={globalData.showPoD}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
+        <div className={styles['modal-main-container']}
+        >
+            <div className={styles['pod-container']}
             >
-                <>
-                    <Box sx={style}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            Text in a modal
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                        </Typography>
-                    </Box>
-                    <img src={podData.hdurl}
-                        onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-                            handleModalClick(e)
-                        }}
+                {
+                    !imageLoaded
+                        ?
+                        <p className={styles["image-loading-text"]}>
+                            Loading...
+                        </p>
+                        :
+                        <section className={styles['text-container']}
+                            onClick={(e: React.MouseEvent<HTMLDivElement>) => handleModalClick(e)}>
+                            <div className={styles['transition-el']}>
+                                <p className={styles["modal-pod-title"]}>
+                                    {podData.title}
+                                </p>
+                                <p className={styles["modal-pod-explanation"]}>
+                                    {podData.explanation}
+                                </p>
+                            </div>
+                        </section>
+                }
+                <section className={styles['img-container']}
+                    onClick={(e: React.MouseEvent<HTMLDivElement>) => handleModalClick(e)}>
+                    <img
+                        className={styles['pod-image']}
+                        src={podData.url}
                         onLoad={() => handleImageLoaded()}
                         title={podData.title}
                         loading={'lazy'}
-                        alt={"This is supposed to be the picture of the day, \n but NASA's can't provide it now."}
+                        alt={!imageLoaded ? "" : globalData.error ||
+                            "There was supposed to be a NASA pic, but sometimes things don't go as planned"}
                     />
-                    {
-                        !imageLoaded
-                            ?
-                            <p className={styles["image-loading-text"]}>
-                                Loading...
-                            </p>
-                            : null
-                    }
-                </>
-            </Modal>
-        </div>
+                    <Link
+                        to="#"
+                        className={styles["span-link"]}>
+                        <span className={styles["span-close-x"]}
+                            onClick={(e: React.MouseEvent<HTMLSpanElement>) => handleModalClick(e)}>
+                            X
+                        </span>
+                    </Link>
+                </section>
+            </div>
+        </div >
     );
 }
 
