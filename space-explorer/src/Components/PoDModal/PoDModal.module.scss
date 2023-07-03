@@ -7,6 +7,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1500;
+    position: fixed;
 
     .image-loading-text {
         color: #ffffff;
@@ -100,42 +101,42 @@
 
             .pod-image {
                 position: absolute;
-                width: 75%;
                 height: 100%;
                 inset: 0;
                 margin: auto;
                 border-radius: 10px;
             }
         }
+    }
 
-        .span-link,
-        .span-close-x {
-            text-decoration: none;
-            position: absolute;
-            top: -2rem;
-            right: 5rem;
-            font-size: 2rem;
-            width: 100px;
-            text-align: center;
-            color: var(--about-link-collor);
-            background-color: var(--component-bgr-transparent-color);
-            border-radius: 10px;
-            box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button-hover);
-            &:hover {
-                cursor: url("/pointer.png"), auto;
-                color: var(--about-link-collor-hover);
-                box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button);
-            }
-            &:active {
-                color: #000000;
-                background-color: var(--text-color-shadow);
-            }
+    .span-link,
+    .span-close-x {
+        text-decoration: none;
+        position: absolute;
+        top: 1.5rem;
+        right: 2rem;
+        font-size: 2rem;
+        font-size: 2rem;
+        width: 100px;
+        text-align: center;
+        color: var(--about-link-collor);
+        background-color: var(--component-bgr-transparent-color);
+        border-radius: 10px;
+        box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button-hover);
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+            color: var(--about-link-collor-hover);
+            box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button);
         }
-        .span-link {
+        &:active {
+            color: #000000;
+            background-color: var(--text-color-shadow);
+        }
+    }
+    .span-link {
+        box-shadow: none;
+        &:hover {
             box-shadow: none;
-            &:hover {
-                box-shadow: none;
-            }
         }
     }
 }

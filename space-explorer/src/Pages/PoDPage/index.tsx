@@ -11,10 +11,19 @@ const PoDPage = () => {
     const podData = useAppSelector(podState);
     const podResult = useGetPod();
 
+    const currDate = new Date(Date.now());
+    const offset = currDate.getTimezoneOffset();
+    const currTime = new Date(currDate.getTime() - (offset * 60 * 1000))
+        .toISOString()
+        .split('T')[0]
+
     useEffect(() => {
-        (async function () {
-            await podResult(podData.prevUrl);
-        })()
+        //if the time of the initial request is different than the current time today => make a new request, else don't 
+        if ((podData.date || '0') !== currTime) {
+            (async function () {
+                await podResult();
+            })()
+        }
     }, [])
 
     return (

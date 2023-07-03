@@ -64,17 +64,18 @@ export default function PoDModal() {
                         alt={!imageLoaded ? "" : globalData.error ||
                             "There was supposed to be a NASA pic, but sometimes things don't go as planned"}
                     />
-                    <Link
-                        to="#"
-                        className={styles["span-link"]}>
-                        <span className={styles["span-close-x"]}
-                            onClick={(e: React.MouseEvent<HTMLSpanElement>) => handleModalClick(e)}>
-                            X
-                        </span>
-                    </Link>
+
                 </section>
             </div>
-        </div >
+            <Link
+                to="#"
+                className={styles["span-link"]}>
+                <span className={styles["span-close-x"]}
+                    onClick={(e: React.MouseEvent<HTMLSpanElement>) => handleModalClick(e)}>
+                    X
+                </span>
+            </Link>
+        </div>
     );
 }
 
