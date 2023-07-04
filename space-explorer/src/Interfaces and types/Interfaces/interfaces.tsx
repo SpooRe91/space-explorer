@@ -12,7 +12,9 @@ export interface IGlobal {
 }
 
 export interface IImageData {
-    allData: [object: TImageData],
+    allData: TImageData[],
+    imagePage: number,
+    queryString: string
 }
 
 export interface IAction<T, P> {
