@@ -45,6 +45,7 @@ export const globalActions = createSlice({
             state.activeNavElement.isActive = action.payload.isActive;
             state.activeNavElement.activeEl = action.payload.activeEl;
         },
+
         setToShowPoD: (state: IGlobal, action: IAction<string, boolean>) => {
             state.showPoD = action.payload;
         }
