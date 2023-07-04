@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import { globalState, setError, setIsLoading } from "../../redux-slices/globalSlice";
 import * as imageSlice from "../../redux-slices/imagesSlice";
 import { ImageListItem } from "@mui/material";
-import { fetchImages } from "../../utils/Api";
+import { fetchImages } from "../../utils/Fetch-search-images.api";
 
 import styles from './index.module.scss';
 import * as component from "../../all-imported-components";
