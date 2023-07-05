@@ -7,7 +7,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  width: 100%;
 
   font-family: "Titillium Web", "PT Sans", "Ubuntu", sans-serif;
   line-height: 1.5;
@@ -22,9 +21,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  overflow-y: overlay;
-  overflow-x: hidden;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-width: 320px;
 
   --card-box-shadow-color: #1e4d97;
   --card-box-shadow-color-hover: #4990be;
@@ -41,6 +41,8 @@
 }
 
 .main {
+  display: flex;
+  flex-direction: column;
   .loader-comp {
     position: fixed;
     top: 0px;
