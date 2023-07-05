@@ -3,19 +3,16 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import RocketIcon from '@mui/icons-material/Rocket';
 import { useRef } from "react";
 import { NavLink } from "react-router-dom";
-import useIntersectionHook from "../../customHooks/useIntersectionHook";
+
 
 const HomePage = () => {
 
     const divRef = useRef<HTMLDivElement>(null);
-    const isActive = useIntersectionHook(divRef, '#home');
 
     return (
         <section id="home" className={styles["home-hero-section"]}>
             <div ref={divRef}
-                className={styles[isActive
-                    ? "home-hero-container"
-                    : "home-hero-container-not-active"]}
+                className={styles["home-hero-container"]}
             >
                 <span className={styles["background"]}></span>
                 <div className={styles["home-hero-heading-container"]}>
@@ -34,7 +31,7 @@ const HomePage = () => {
                         <p className={styles["home-hero-small-text"]}>
                             Discover the experience
                         </p>
-                        <p>
+                        <p className={styles["home-hero-small-text"]}>
                             Go to gallery
                         </p>
                         <NavLink aria-label="Articles" to="/#gallery"
