@@ -9,7 +9,6 @@ import { fetchImages } from "../../utils/Fetch-search-images.api";
 import styles from './index.module.scss';
 import * as component from "../../all-imported-components";
 import { TImageData } from "../../Interfaces and types/Types/types";
-import useIntersectionHook from "../../customHooks/useIntersectionHook";
 
 
 const ImagePage = () => {
@@ -23,7 +22,6 @@ const ImagePage = () => {
 
     const divRef = useRef<HTMLDivElement>(null);
 
-    const isActive = useIntersectionHook(divRef, '#gallery');
     const [searchValue, setSearchValue] = useState<string>('');
     const [disableButton, setToDisableButton] = useState<boolean>(false);
 
@@ -106,9 +104,7 @@ const ImagePage = () => {
     }
 
     return (
-        <section id="gallery" className={styles[isActive
-            ? "image-container"
-            : "image-container-not-active"]}>
+        <section id="gallery" className={styles["image-container"]}>
             <div ref={divRef} className={styles["image-container-heading-container"]}>
                 <h1>Gallery</h1>
             </div>
@@ -146,10 +142,7 @@ const ImagePage = () => {
                     :
                     imageData?.allData[0]?.href
                         ?
-                        <div className={styles[isActive
-                            ? "image-list"
-                            : "image-list-not-active"
-                        ]}>
+                        <div className={styles["image-list"]}>
                             {imageData.allData.map((item: TImageData) => (
                                 <ImageListItem key={item.data[0].nasa_id} >
                                     <component.ImageComponent {...item} />
