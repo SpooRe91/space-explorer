@@ -9,6 +9,7 @@ import { fetchImages } from "../../utils/Fetch-search-images.api";
 import styles from './index.module.scss';
 import * as component from "../../all-imported-components";
 import { TImageData } from "../../Interfaces and types/Types/types";
+import useIntersectionHook from "../../customHooks/useIntersectionHook";
 
 
 const ImagePage = () => {
@@ -21,9 +22,12 @@ const ImagePage = () => {
     const { signal }: { signal: AbortSignal } = controller;
 
     const divRef = useRef<HTMLDivElement>(null);
+    useIntersectionHook(divRef, '#gallery');
 
     const [searchValue, setSearchValue] = useState<string>('');
     const [disableButton, setToDisableButton] = useState<boolean>(false);
+
+
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();

@@ -3,11 +3,15 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import RocketIcon from '@mui/icons-material/Rocket';
 import { useRef } from "react";
 import { NavLink } from "react-router-dom";
+import useIntersectionHook from "../../customHooks/useIntersectionHook";
 
 
 const HomePage = () => {
 
     const divRef = useRef<HTMLDivElement>(null);
+
+    // THIS CONTROLS WHETHER THE CURRENT REF ELEMENT IS ACTIVE, SO IT CAN APPLY STYLES TO IT
+    useIntersectionHook(divRef, '#home');
 
     return (
         <section id="home" className={styles["home-hero-section"]}>
