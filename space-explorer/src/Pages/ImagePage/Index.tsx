@@ -5,6 +5,7 @@ import { globalState, setError, setIsLoading } from "../../redux-slices/globalSl
 import * as imageSlice from "../../redux-slices/imagesSlice";
 import { ImageListItem } from "@mui/material";
 import { fetchImages } from "../../utils/Fetch-search-images.api";
+import ImageSearchIcon from '@mui/icons-material/ImageSearch';
 
 import styles from './index.module.scss';
 import * as component from "../../all-imported-components";
@@ -111,23 +112,27 @@ const ImagePage = () => {
         <section id="gallery" className={styles["image-container"]}>
             <div ref={divRef} className={styles["image-container-heading-container"]}>
                 <h1>Gallery</h1>
+                <form
+                    className={styles['search-form']}
+                    onSubmit={(e) => handleSubmit(e)}>
+                    <label
+                        className={styles["form-label"]}
+                        htmlFor="search-images">
+                        Search images:
+                    </label>
+                    <span>
+                        <ImageSearchIcon />
+                        <input
+                            className={styles["form-input"]}
+                            onChange={(e) => handleInput(e)}
+                            type="text"
+                            name="search-images"
+                            value={searchValue}
+                            placeholder="enter your search here" />
+                        <input type="submit" value="search" className={styles["form-submit-button"]} />
+                    </span>
+                </form>
             </div>
-            <form
-                className={styles['search-form']}
-                onSubmit={(e) => handleSubmit(e)}>
-                <label
-                    className={styles["form-label"]}
-                    htmlFor="search-images">
-                    Search images:
-                </label>
-                <input
-                    className={styles["form-input"]}
-                    onChange={(e) => handleInput(e)}
-                    type="text"
-                    name="search-images"
-                    value={searchValue} />
-                <input type="submit" value="search" className={styles["form-submit-button"]} />
-            </form>
             {
                 // IF MODAL IS TO BE SHOWN
                 globalData.toExpandImage
@@ -148,12 +153,15 @@ const ImagePage = () => {
                         ?
                         <div className={styles["image-list"]}>
                             {imageData.allData.map((item: TImageData) => (
-                                <ImageListItem key={item.data[0].nasa_id} >
+                                <ImageListItem
+                                    className={styles["image-list-item"]}
+                                    key={item.data[0].nasa_id} >
                                     <component.ImageComponent {...item} />
                                 </ImageListItem>
                             ))}
 
                             <button
+                                className={styles["fetch-more-images"]}
                                 disabled={disableButton}
                                 onClick={() => handlePageChange()}>
                                 {
