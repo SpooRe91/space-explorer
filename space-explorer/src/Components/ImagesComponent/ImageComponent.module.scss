@@ -1,14 +1,11 @@
 .card-component {
     background-color: rgba(0, 0, 0, 0.6509803922);
-    backdrop-filter: blur(5px);
-    color: rgba(0, 0, 0, 0.87);
     border-radius: 10px;
     box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
     overflow: hidden;
     width: 375px;
     max-width: 375px;
     max-height: 400px;
-    overflow: hidden;
     transition: all 200ms ease-in-out;
 
     a:hover {
@@ -40,17 +37,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-
-        button {
-            background-color: rgb(48 48 48);
-            border: none;
-            padding: 0.4rem 0.8rem;
-            color: var(--card-text-collor-button);
-            width: fit-content;
-            border-radius: 10px;
-            box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button);
-            transition: all 100ms ease-in-out;
-        }
     }
 }
 .card-component:hover {
@@ -61,13 +47,28 @@
     .card-component {
         height: clamp(128px, 100vh, 160px);
         width: 100%;
+        position: relative;
 
         img {
             height: 100%;
             width: 100%;
         }
         .card-content {
-            display: none;
+            position: absolute;
+            bottom: 0;
+            background-color: black;
+            width: 100%;
+            padding: 0.5rem;
+
+            .card-content-title,
+            .card-content-description {
+                color: #59b1ea;
+                white-space: nowrap;
+                overflow: hidden;
+                padding: unset;
+                text-overflow: ellipsis;
+                text-shadow: 0px 1px 0px #ffffff91;
+            }
         }
     }
 }
