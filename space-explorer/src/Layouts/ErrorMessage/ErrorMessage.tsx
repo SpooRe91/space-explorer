@@ -1,6 +1,7 @@
 import Alert from '@mui/material/Alert';
 import { useAppDispatch, useAppSelector } from '../../App/hooks';
 import { globalState, setError } from '../../redux-slices/globalSlice';
+import styles from "./ErrorMessage.module.scss";
 
 const ErrorMessage = ({ error }: { error: string }) => {
 
@@ -8,7 +9,7 @@ const ErrorMessage = ({ error }: { error: string }) => {
     const dispatch = useAppDispatch();
     globalData.error
     return (
-        <div>
+        <div className={styles['error-modal']}>
             <Alert style={{ fontSize: "1.5rem" }}
                 severity="error">
                 {/* IF THERE IS AN ERORR PASSED - DISPLAY THAT, OTHERWISE DISPLAY THE GLOBAL ERROR */}
@@ -19,7 +20,7 @@ const ErrorMessage = ({ error }: { error: string }) => {
                             ? error
                             : globalData.error}
             </Alert>
-            <button onClick={() => dispatch(setError(''))}>X</button>
+            <button onClick={() => dispatch(setError(''))}>OK</button>
         </div>
     )
 }
