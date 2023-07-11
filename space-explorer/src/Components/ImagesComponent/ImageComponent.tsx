@@ -27,7 +27,7 @@ const ImageComponent = (item: TImageData) => {
             }
             className={styles["card-component"]} >
             {
-                < img
+                <img
                     loading="lazy"
                     src={item?.links[0]?.href}
                     alt="No image, sorry! Imagine something cool!"

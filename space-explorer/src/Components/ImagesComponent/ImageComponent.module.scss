@@ -57,3 +57,17 @@
     cursor: url("/pointer.png"), auto;
     box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color-hover);
 }
+@media screen and (max-width: 766px) {
+    .card-component {
+        height: clamp(128px, 100vh, 160px);
+        width: 100%;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+        .card-content {
+            display: none;
+        }
+    }
+}
