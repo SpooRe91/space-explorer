@@ -1,15 +1,16 @@
-
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../App/hooks";
-import { globalState, setError, setIsLoading } from "../../redux-slices/globalSlice";
+
 import * as imageSlice from "../../redux-slices/imagesSlice";
-import { ImageListItem } from "@mui/material";
+import { globalState, setError, setIsLoading } from "../../redux-slices/globalSlice";
+import { useAppDispatch, useAppSelector } from "../../App/hooks";
+
 import { fetchImages } from "../../utils/Fetch-search-images.api";
-import ImageSearchIcon from '@mui/icons-material/ImageSearch';
+import { TImageData } from "../../Interfaces and types/Types/types";
 
 import styles from './index.module.scss';
+import { ImageListItem } from "@mui/material";
 import * as component from "../../all-imported-components";
-import { TImageData } from "../../Interfaces and types/Types/types";
+import ImageSearchIcon from '@mui/icons-material/ImageSearch';
 import useIntersectionHook from "../../customHooks/useIntersectionHook";
 
 
