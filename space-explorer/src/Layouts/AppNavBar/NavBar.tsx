@@ -20,6 +20,7 @@ const NavBar = () => {
         if (hash) {
             setTimeout(() => {
                 const element = document.querySelector(hash);
+                window.location.hash = "";
                 if (element) {
                     element?.scrollIntoView();
                 }
@@ -29,7 +30,6 @@ const NavBar = () => {
             clearTimeout(0);
         }
     }, [pathname, hash, key]);
-
     return (
         <div className={styles["main-nav-container"]}>
             <div className={styles["nav-logo-container"]}>
