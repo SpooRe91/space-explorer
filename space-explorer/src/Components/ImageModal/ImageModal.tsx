@@ -28,7 +28,7 @@ const ImageModal = () => {
 
 
     return (
-        <div
+        <dialog
             className={styles[globalData.toExpandImage
                 ? "modal-image-container-expanded"
                 : "modal-image-container"]}
@@ -80,7 +80,7 @@ const ImageModal = () => {
                         </>
                 }
             </section>
-        </div >
+        </dialog>
 
     )
 }

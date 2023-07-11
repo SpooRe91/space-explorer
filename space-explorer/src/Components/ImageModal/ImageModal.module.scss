@@ -3,14 +3,11 @@
     display: flex;
     inset: 0;
     margin: auto;
-    // the above is the same as:
-    // *********************
-    // left: 50%;
-    // top: 50%;
-    // transform: translate(-50%, -50%);
-    //**********************
     z-index: 1;
     box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
+    width: 100%;
+    height: clamp(320px, 100vh, 1024px);
+    border: none;
 
     &:before {
         content: "";
