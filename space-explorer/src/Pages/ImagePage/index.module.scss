@@ -1,5 +1,5 @@
 @mixin image-list {
-    height: 100vh;
+    height: 100%;
     width: clamp(320px, 80%, 1650px);
     display: flex;
     gap: 1rem;
