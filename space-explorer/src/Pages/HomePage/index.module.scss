@@ -4,6 +4,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-clip: border-box;
+    background-position: center;
+    -webkit-background-clip: border-box;
     position: relative;
     display: flex;
     flex-wrap: wrap;

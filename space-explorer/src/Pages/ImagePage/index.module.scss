@@ -14,6 +14,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-clip: border-box;
+    background-position: center;
+    -webkit-background-clip: border-box;
     box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
     align-items: center;
     flex-wrap: wrap;
