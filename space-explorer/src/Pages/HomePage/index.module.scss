@@ -94,9 +94,9 @@
 
 .home-hero-section {
     width: 100%;
-    padding: 10rem 0;
+    padding: 12rem 0;
     position: relative;
-    height: clamp(950px, 100vh, 1440px);
+    height: clamp(980px, 100vh, 1440px);
 
     .home-hero-container {
         @include home-hero-container();

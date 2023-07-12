@@ -37,7 +37,7 @@
     gap: 1rem;
     position: sticky;
     top: 0;
-    margin-top: 2rem;
+    margin: 2rem 0;
     z-index: 500;
     justify-content: center;
 
@@ -87,7 +87,7 @@
                     border-radius: 10px;
                     padding: 5px 7px;
                     transition: all 150ms ease-in-out;
-                    @include nav-buttons-hover();
+                    // @include nav-buttons-hover();
 
                     &:hover {
                         @include nav-buttons-hover();
@@ -277,14 +277,12 @@
 
 @media screen and (max-width: 766px) {
     .main-nav-container {
-        position: fixed;
         display: block;
         flex-wrap: unset;
         align-items: unset;
-        gap: 1rem;
-        margin-top: 0rem;
+        gap: unset;
         justify-content: unset;
-        width: 100%;
+        position: relative;
 
         .nav-logo-container {
             display: none;
