@@ -134,9 +134,12 @@ const ImagePage = () => {
                     </span>
                 </form>
                 {
-                    imageData?.allData?.length !== 0
+                    imageData?.allData[0]?.href
                         ?
-                        <p style={{ margin: '1rem 0' }}> Showing {imageData.allData.length} {imageData.allData.length <= 1 ? "image" : "images"}</p>
+                        <p style={{ margin: '1rem 0' }}>
+                            Showing {imageData.allData.length}
+                            {imageData.allData.length <= 1 ? "image" : "images"}
+                        </p>
                         : null
                 }
             </div>
@@ -173,17 +176,22 @@ const ImagePage = () => {
 
                 // IF THERE ARE NO IMAGES, CHECK IF IT'S STILL LOADING OR IF THERE IS AN ERROR
             }
-            <button
-                className={styles["fetch-more-images"]}
-                disabled={disableButton}
-                style={{ color: disableButton ? 'red' : "" }}
-                onClick={() => handlePageChange()}>
-                {
-                    disableButton
-                        ? 'NO more images to load'
-                        : 'Fetch more images'
-                }
-            </button>
+            {
+                imageData?.allData[0]?.href
+                    ?
+                    <button
+                        className={styles["fetch-more-images"]}
+                        disabled={disableButton}
+                        style={{ color: disableButton ? 'red' : "" }}
+                        onClick={() => handlePageChange()}>
+                        {
+                            disableButton
+                                ? 'NO more images to load'
+                                : 'Load more images'
+                        }
+                    </button>
+                    : null
+            }
         </section >
     )
 }

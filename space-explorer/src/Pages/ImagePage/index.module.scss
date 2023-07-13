@@ -220,10 +220,11 @@
             width: 80%;
             height: clamp(400px, 450px, 770px);
             box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
-            flex-direction: column;
+            flex-direction: unset;
+            padding: unset;
             flex-wrap: wrap;
             justify-content: flex-start;
-            scroll-snap-type: x mandatory;
+            scroll-snap-type: y mandatory;
 
             .image-list-item {
                 height: auto;
