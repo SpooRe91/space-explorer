@@ -29,11 +29,13 @@ export const AboutPage = () => {
                     and reach me on
                     <Link to={"https://www.linkedin.com/in/mbogdanov9110/"}> LinkedIn </Link>
                 </p>
+            </div>
+            <div className={styles["img-container"]}>
                 <img
                     src={icon}
                     alt="logo"
                     className={styles[isActive ? "slide-in-img" : "slide-out-img"]} />
-            </div>
+            </div >
         </section>
 
     );
