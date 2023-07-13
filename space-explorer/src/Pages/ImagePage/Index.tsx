@@ -133,6 +133,12 @@ const ImagePage = () => {
                         <input type="submit" value="search" className={styles["form-submit-button"]} />
                     </span>
                 </form>
+                {
+                    imageData?.allData?.length !== 0
+                        ?
+                        <p style={{ margin: '1rem 0' }}> Showing {imageData.allData.length} {imageData.allData.length <= 1 ? "image" : "images"}</p>
+                        : null
+                }
             </div>
             {
                 // IF MODAL IS TO BE SHOWN
@@ -161,20 +167,23 @@ const ImagePage = () => {
                                 </ImageListItem>
                             ))}
 
-                            <button
-                                className={styles["fetch-more-images"]}
-                                disabled={disableButton}
-                                onClick={() => handlePageChange()}>
-                                {
-                                    disableButton
-                                        ? 'NO more images to load'
-                                        : 'Fetch more images'
-                                }
-                            </button>
+
                         </div>
                         : null
+
                 // IF THERE ARE NO IMAGES, CHECK IF IT'S STILL LOADING OR IF THERE IS AN ERROR
             }
+            <button
+                className={styles["fetch-more-images"]}
+                disabled={disableButton}
+                style={{ color: disableButton ? 'red' : "" }}
+                onClick={() => handlePageChange()}>
+                {
+                    disableButton
+                        ? 'NO more images to load'
+                        : 'Fetch more images'
+                }
+            </button>
         </section >
     )
 }
