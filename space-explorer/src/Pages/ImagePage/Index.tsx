@@ -138,7 +138,7 @@ const ImagePage = () => {
                         ?
                         <p style={{ margin: '1rem 0' }}>
                             Showing {imageData.allData.length}
-                            {imageData.allData.length <= 1 ? "image" : "images"}
+                            {imageData.allData.length <= 1 ? " image" : " images"}
                         </p>
                         : null
                 }

@@ -158,7 +158,6 @@
     @include image-container();
     .image-list {
         @include image-list();
-        box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
     }
     .fetch-more-images {
         @include button();
@@ -219,12 +218,12 @@
         .image-list {
             width: 80%;
             height: clamp(400px, 450px, 770px);
-            box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
             flex-direction: unset;
-            padding: unset;
+            padding: 0.4rem;
             flex-wrap: wrap;
             justify-content: flex-start;
             scroll-snap-type: y mandatory;
+            box-shadow: 0px 1px 0px var(--component-bgr-transparent-color);
 
             .image-list-item {
                 height: auto;

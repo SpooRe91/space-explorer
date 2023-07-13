@@ -108,6 +108,11 @@
         left: 0;
         top: 0;
         .modal-image-and-title-container {
+            .modal-image-title {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+
             .span-link,
             .span-close-x {
                 top: 0.2rem;
