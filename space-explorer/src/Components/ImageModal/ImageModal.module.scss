@@ -30,7 +30,7 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        gap: 2rem;
+        gap: 1rem;
         transition: 200ms transofrm ease-in-out;
 
         .image-loading-text {
@@ -64,7 +64,6 @@
             letter-spacing: 0.02mm;
             white-space: pre-wrap;
             word-break: break-word;
-            width: 50%;
             max-width: 80%;
             text-align: center;
         }
@@ -111,7 +110,7 @@
         .modal-image-and-title-container {
             .span-link,
             .span-close-x {
-                top: 2rem;
+                top: 0.2rem;
                 right: 1rem;
                 font-size: 2rem;
                 color: #1b3da7;
