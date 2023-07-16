@@ -73,8 +73,6 @@ const ImageModal = () => {
                 dispatch(setToExpandImage({ bool: false, href: "", title: "" }));
                 dispatch(setIsLoading(false));
             }
-
-            return;
         }
 
         if (movement === "previous") {
@@ -92,8 +90,6 @@ const ImageModal = () => {
                 dispatch(setToExpandImage({ bool: false, href: "", title: "" }));
                 dispatch(setIsLoading(false));
             }
-
-            return;
         }
     }
 
@@ -102,7 +98,7 @@ const ImageModal = () => {
             className={styles[globalData.toExpandImage
                 ? "modal-image-container-expanded"
                 : "modal-image-container"]}
-            onBlur={() => dispatch(setIsLoading(false))}
+            onFocus={() => dispatch(setIsLoading(false))}
         >
             <section
                 className={styles["modal-image-and-title-container"]}
