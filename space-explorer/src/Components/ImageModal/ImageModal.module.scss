@@ -1,3 +1,40 @@
+@mixin button {
+    width: clamp(90px, 100px, 175px);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: white;
+    padding: 5px 5px;
+    font-weight: 600;
+    box-shadow:
+        0px 0px 0px 1px #1e4d94,
+        0px 0px 7px 3px #1e4d94;
+    transition: all 150ms ease-in-out;
+
+    &:hover {
+        cursor: url(/pointer.png), auto;
+        color: #4990be;
+        box-shadow:
+            0px 0px 7px 1px #1e4d94,
+            0px 0px 12px 3px #a7a6a6;
+        text-shadow: 0px 0px 20px #000000;
+        backdrop-filter: blur(5px);
+    }
+    &:active {
+        background-color: rgba(121, 121, 121, 0.35);
+    }
+
+    &:disabled {
+        color: black;
+        &:active {
+            background-color: black;
+        }
+    }
+}
+
 .modal-image-container-expanded {
     position: absolute;
     display: flex;
@@ -68,6 +105,30 @@
             text-align: center;
         }
 
+        .modal-navigation-container {
+            display: flex;
+            width: clamp(220px, 100%, 450px);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            flex-direction: column;
+            align-items: center;
+
+            p {
+                font-size: 1.4rem;
+                color: var(--about-link-collor-hover);
+            }
+
+            .modal-buttons-container {
+                display: flex;
+                gap: 0.8rem;
+                flex-wrap: wrap;
+
+                button {
+                    @include button();
+                }
+            }
+        }
+
         .span-link,
         .span-close-x {
             text-decoration: none;
@@ -112,7 +173,23 @@
                 font-size: 1rem;
                 max-width: 100%;
             }
-
+            .modal-navigation-container {
+                .modal-buttons-container {
+                    button {
+                        font-size: 1rem;
+                    }
+                    &:hover {
+                        color: unset;
+                        box-shadow: unset;
+                        text-shadow: unset;
+                        backdrop-filter: blur(5px);
+                    }
+                    &:active {
+                        background-color: unset;
+                        box-shadow: unset;
+                    }
+                }
+            }
             .span-link,
             .span-close-x {
                 top: 0.2rem;
