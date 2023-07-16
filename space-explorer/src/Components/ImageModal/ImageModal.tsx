@@ -34,12 +34,12 @@ const ImageModal = () => {
     }
 
 
-    const handleNextImage = (): void => {
+    const handleNextImage = () => {
         dispatch(setIsLoading(true));
         imageChanger('next');
     }
 
-    const handlePreviousImage = (): void => {
+    const handlePreviousImage = () => {
         dispatch(setIsLoading(true));
         imageChanger('previous');
     }
