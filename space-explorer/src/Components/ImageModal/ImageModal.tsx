@@ -44,7 +44,7 @@ const ImageModal = () => {
         imageChanger('previous');
     }
 
-    function imageChanger(movement: string): void {
+    function imageChanger(movement: string) {
         if (movement === null) { return }
 
         if (!imageData.allData.find(el => el.links[0]?.href === globalData.modalImageHref)) {
@@ -168,7 +168,7 @@ const ImageModal = () => {
                         </>
                 }
             </section>
-        </dialog >
+        </dialog>
     )
 }
 export default ImageModal
