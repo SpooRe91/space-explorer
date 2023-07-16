@@ -17,8 +17,8 @@ const ImageModal = () => {
     const globalData = useAppSelector(globalState);
     const imageData = useAppSelector(imageState);
 
-    const current: TImageData | null =
-        imageData.allData.find(el => el.links[0]?.href === globalData.modalImageHref) || null;
+    const current: TImageData | undefined =
+        imageData.allData.find(el => el.links[0]?.href === globalData.modalImageHref) || undefined;
 
     const handleModalClick = (e: React.MouseEvent<HTMLSpanElement>) => {
         if (e.target === e.currentTarget) {
@@ -35,64 +35,64 @@ const ImageModal = () => {
     }
 
 
-    // const handleNextImage = () => {
-    //     dispatch(setIsLoading(true));
-    //     imageChanger('next');
-    // }
+    const handleNextImage = () => {
+        dispatch(setIsLoading(true));
+        imageChanger('next');
+    }
 
-    // const handlePreviousImage = () => {
-    //     dispatch(setIsLoading(true));
-    //     imageChanger('previous');
-    // }
+    const handlePreviousImage = () => {
+        dispatch(setIsLoading(true));
+        imageChanger('previous');
+    }
 
-    // function imageChanger(movement: string) {
-    //     if (movement === null) { return }
+    function imageChanger(movement: string) {
+        if (movement === null) { return }
 
-    //     if (!imageData.allData.find(el => el.links[0]?.href === globalData.modalImageHref)) {
-    //         dispatch(setIsLoading(false));
-    //         return;
-    //     }
+        if (!imageData.allData.find(el => el.links[0]?.href === globalData.modalImageHref)) {
+            dispatch(setIsLoading(false));
+            return;
+        }
 
-    //     if (imageData.allData === undefined || imageData.allData === null) return;
+        if (imageData.allData === undefined || imageData.allData === null) return;
 
-    //     const current: TImageData | undefined =
-    //         imageData.allData.find(el => el.links[0]?.href === globalData.modalImageHref);
+        const current: TImageData | undefined =
+            imageData.allData.find(el => el.links[0]?.href === globalData.modalImageHref);
 
-    //     if (current === null || current === undefined) return;
+        if (current === null || current === undefined) return;
 
-    //     if (movement === "next") {
+        if (movement === "next") {
 
-    //         const nextImgIndex: number | undefined = imageData.allData.indexOf(current) + 1;
+            const nextImgIndex: number | undefined = imageData.allData.indexOf(current) + 1;
 
-    //         if (nextImgIndex < imageData.allData.length) {
-    //             dispatch(setToExpandImage({
-    //                 bool: true,
-    //                 href: imageData.allData[nextImgIndex].links[0]?.href as keyof IGlobal,
-    //                 title: current.data[0].title
-    //             }));
-    //         } else {
-    //             dispatch(setToExpandImage({ bool: false, href: "", title: "" }));
-    //             dispatch(setIsLoading(false));
-    //         }
-    //     }
+            if (nextImgIndex < imageData.allData.length) {
+                dispatch(setToExpandImage({
+                    bool: true,
+                    href: imageData.allData[nextImgIndex].links[0]?.href as keyof IGlobal,
+                    title: current.data[0].title
+                }));
+            } else {
+                dispatch(setToExpandImage({ bool: false, href: "", title: "" }));
+                dispatch(setIsLoading(false));
+            }
+        }
 
-    //     if (movement === "previous") {
+        if (movement === "previous") {
 
-    //         const previousIndex: number | undefined = imageData.allData.indexOf(current) - 1;
+            const previousIndex: number | undefined = imageData.allData.indexOf(current) - 1;
 
-    //         if (imageData.allData[previousIndex] !== null &&
-    //             imageData.allData[previousIndex] !== undefined) {
-    //             dispatch(setToExpandImage({
-    //                 bool: true,
-    //                 href: imageData.allData[previousIndex].links[0]?.href as keyof IGlobal,
-    //                 title: current.data[0].title
-    //             }));
-    //         } else {
-    //             dispatch(setToExpandImage({ bool: false, href: "", title: "" }));
-    //             dispatch(setIsLoading(false));
-    //         }
-    //     }
-    // }
+            if (imageData.allData[previousIndex] !== null &&
+                imageData.allData[previousIndex] !== undefined) {
+                dispatch(setToExpandImage({
+                    bool: true,
+                    href: imageData.allData[previousIndex].links[0]?.href as keyof IGlobal,
+                    title: current.data[0].title
+                }));
+            } else {
+                dispatch(setToExpandImage({ bool: false, href: "", title: "" }));
+                dispatch(setIsLoading(false));
+            }
+        }
+    }
 
     return (
         <dialog
@@ -142,23 +142,27 @@ const ImageModal = () => {
                                     current ?
                                         imageData?.allData?.indexOf(current) + 1 : "N/A"} of {imageData?.allData?.length}</p>
                                 <div className={styles["modal-buttons-container"]}>
-                                    {/* <button
-                                        disabled={current ? (imageData?.allData?.indexOf(current) + 1) === 1 : true ||
-                                            globalData.loading}
+                                    <button
+                                        disabled={globalData.loading ||
+                                            current
+                                            ? (imageData?.allData?.indexOf(current as TImageData) + 1) === 1
+                                            : true
+                                        }
                                         onClick={() => handlePreviousImage()}>Previous
                                     </button>
                                     <button disabled={globalData.loading ||
                                         current
-                                        ?
-                                        (imageData?.allData?.indexOf(current) + 1)
-                                        === imageData?.allData?.length
-                                        :
-                                        true
+                                        ? (imageData?.allData?.indexOf(current as TImageData) + 1) === imageData?.allData?.length
+                                        : true
                                     }
                                         onClick={() => handleNextImage()}>
-                                        {(imageData?.allData?.indexOf(current) + 1) === imageData?.allData?.length}
+                                        {
+                                            current
+                                                ? (imageData?.allData?.indexOf(current as TImageData) + 1) === imageData?.allData?.length
+                                                : null
+                                        }
                                         Next
-                                    </button> */}
+                                    </button>
                                 </div>
                             </div>
                             <Link
