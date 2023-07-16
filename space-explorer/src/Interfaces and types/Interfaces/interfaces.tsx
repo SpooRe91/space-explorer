@@ -5,7 +5,7 @@ export interface IGlobal {
     error: string;
     showSideNav: boolean;
     toExpandImage: boolean;
-    modalImageHref: string;
+    modalImageHref: string | null;
     modalImageTitle: string;
     activeNavElement: { isActive: boolean, activeEl: string };
     showPoD: boolean;

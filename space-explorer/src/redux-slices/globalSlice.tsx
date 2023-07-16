@@ -35,7 +35,7 @@ export const globalActions = createSlice({
 
         setToExpandImage: (state: IGlobal,
             action: IAction<string,
-                { bool: boolean, href: string, title: string }>) => {
+                { bool: boolean, href: string | null, title: string }>) => {
             state.toExpandImage = action.payload.bool;
             state.modalImageHref = action.payload.href;
             state.modalImageTitle = action.payload.title;
