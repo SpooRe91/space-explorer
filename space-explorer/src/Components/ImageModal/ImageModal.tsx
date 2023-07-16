@@ -16,9 +16,11 @@ const ImageModal = () => {
     const dispatch = useAppDispatch();
     const globalData = useAppSelector(globalState);
     const imageData = useAppSelector(imageState);
-    const current: TImageData | undefined =
-        imageData.allData.find(el => el.links[0]?.href === globalData.modalImageHref);
+
+    const current: TImageData | null =
+        imageData.allData.find(el => el.links[0]?.href === globalData.modalImageHref) || null;
     if (current === null || current === undefined) return;
+
     const handleModalClick = (e: React.MouseEvent<HTMLSpanElement>) => {
         if (e.target === e.currentTarget) {
             e.stopPropagation();
@@ -137,18 +139,19 @@ const ImageModal = () => {
                                     : null
                             }
                             <div className={styles["modal-navigation-container"]}>
-                                <p>{imageData.allData.indexOf(current) + 1} of {imageData.allData.length}</p>
+                                <p>{imageData?.allData?.indexOf(current) + 1} of {imageData?.allData?.length}</p>
                                 <div className={styles["modal-buttons-container"]}>
                                     <button
-                                        disabled={(imageData.allData.indexOf(current) + 1) === 1 ||
+                                        disabled={current ? (imageData?.allData?.indexOf(current) + 1) === 1 : true ||
                                             globalData.loading}
                                         onClick={() => handlePreviousImage()}>Previous
                                     </button>
                                     <button
                                         disabled={globalData.loading ||
-                                            (imageData.allData.indexOf(current) + 1) === imageData.allData.length}
+                                            current ?
+                                            (imageData?.allData?.indexOf(current) + 1) === imageData?.allData?.length : true}
                                         onClick={() => handleNextImage()}>
-                                        {(imageData.allData.indexOf(current) + 1) === imageData.allData.length}
+                                        {(imageData?.allData?.indexOf(current) + 1) === imageData?.allData?.length}
                                         Next
                                     </button>
                                 </div>
