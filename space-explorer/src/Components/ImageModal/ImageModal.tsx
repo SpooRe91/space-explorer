@@ -68,7 +68,7 @@ const ImageModal = () => {
                 dispatch(setToExpandImage({
                     bool: true,
                     href: imageData.allData[nextImgIndex].links[0]?.href as keyof IGlobal,
-                    title: current.data[0].title
+                    title: imageData.allData[nextImgIndex].data[0].title
                 }));
             } else {
                 dispatch(setToExpandImage({ bool: false, href: "", title: "" }));
@@ -85,7 +85,7 @@ const ImageModal = () => {
                 dispatch(setToExpandImage({
                     bool: true,
                     href: imageData.allData[previousIndex].links[0]?.href as keyof IGlobal,
-                    title: current.data[0].title
+                    title: imageData.allData[previousIndex].data[0].title
                 }));
             } else {
                 dispatch(setToExpandImage({ bool: false, href: "", title: "" }));
