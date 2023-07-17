@@ -28,7 +28,7 @@ const ImagePage = () => {
 
     const [searchValue, setSearchValue] = useState<string>('');
     const [disableButton, setToDisableButton] = useState<boolean>(false);
-    const forbiddenStrings = ['javascript', 'script', 'code', '/', ':', '<', '>'];
+    const forbiddenStrings = ['javascript', 'script', 'code', '/', ':', '<', '>', '\\'];
 
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -138,7 +138,7 @@ const ImagePage = () => {
                             name="search-images"
                             value={searchValue}
                             placeholder="enter your search here"
-                            pattern="^*|[A-z\d\s]*"
+                            pattern="[A-Za-z\d\s]*"
                             minLength={0}
                             maxLength={50}
                             required
