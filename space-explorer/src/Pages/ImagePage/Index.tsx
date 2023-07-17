@@ -28,14 +28,23 @@ const ImagePage = () => {
 
     const [searchValue, setSearchValue] = useState<string>('');
     const [disableButton, setToDisableButton] = useState<boolean>(false);
-
+    const forbiddenStrings = ['javascript', 'script', 'code', '/', ':', '<', '>'];
 
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        if (forbiddenStrings.includes(searchValue)) {
+            dispatch(setError('This is not a valid search option!'));
+            dispatch(imageSlice.setClearImageData(true));
+            setSearchValue('');
+            return;
+        }
+
         setToDisableButton(false);
         dispatch(imageSlice.setClearImageData(true));
         dispatch(imageSlice.setImageQueryString(searchValue));
+
         if (searchValue === '') {
             dispatch(setIsLoading(false));
             dispatch(setError('Please enter your search first!'));
@@ -67,11 +76,10 @@ const ImagePage = () => {
             return;
         }
 
-
     };
 
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(e.currentTarget.value);
+        setSearchValue(e.currentTarget.value.toLocaleLowerCase());
         dispatch(setError(''));
         dispatch(imageSlice.setImagePage(1));
     }
@@ -129,7 +137,12 @@ const ImagePage = () => {
                             type="text"
                             name="search-images"
                             value={searchValue}
-                            placeholder="enter your search here" />
+                            placeholder="enter your search here"
+                            pattern="^*|[A-z\d\s]*"
+                            minLength={0}
+                            maxLength={50}
+                            required
+                        />
                         <input type="submit" value="search" className={styles["form-submit-button"]} />
                     </span>
                 </form>
