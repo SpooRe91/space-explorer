@@ -31,7 +31,6 @@
 .about-container {
     display: flex;
     width: 100%;
-    height: 450px;
     position: relative;
     justify-content: center;
     margin-top: 5rem;
@@ -75,7 +74,7 @@
     }
     .img-container {
         position: absolute;
-        height: 100%;
+        height: 500px;
         top: 0;
         left: 0;
         z-index: -1;
@@ -194,7 +193,6 @@
         position: unset;
         justify-content: unset;
         width: 100%;
-        height: 450px;
         padding: unset;
         margin-top: unset;
         position: relative;
