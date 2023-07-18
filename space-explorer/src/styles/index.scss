@@ -56,7 +56,9 @@
 }
 @media screen and (max-width: 766px) {
   body {
-    min-height: 540px;
+    height: 100%;
+    position: fixed;
+    overflow-y: scroll;
   }
   body[orient="portrait"] {
     min-height: 540px;
