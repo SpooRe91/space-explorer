@@ -243,7 +243,7 @@
                 object-fit: cover;
                 animation: slide-in-img 1s forwards;
                 -webkit-animation: slide-in-img 1s forwards;
-                filter: brightness(0.6);
+                filter: none;
             }
             .slide-out-img {
                 position: absolute;
@@ -254,7 +254,7 @@
                 object-fit: cover;
                 animation: slide-out-img 1s forwards;
                 -webkit-animation: slide-out-img 1s forwards;
-                filter: brightness(0.6);
+                filter: none;
             }
         }
     }
