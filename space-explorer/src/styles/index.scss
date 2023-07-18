@@ -55,18 +55,13 @@
   }
 }
 @media screen and (max-width: 766px) {
+  html,
   body {
-    height: 100%;
+    min-height: 100dvh;
     position: fixed;
     overflow-y: scroll;
   }
-  body[orient="portrait"] {
-    min-height: 540px;
-  }
-  body[orient="landscape"] {
-    min-height: 400px;
-  }
   .main {
-    height: 100dvh;
+    min-height: 100dvh;
   }
 }
