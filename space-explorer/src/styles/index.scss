@@ -55,6 +55,9 @@
   }
 }
 @media screen and (max-width: 766px) {
+  :root {
+    height: 100dvh;
+  }
   .main {
     height: 100dvh;
   }
