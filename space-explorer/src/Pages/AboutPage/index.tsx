@@ -12,7 +12,8 @@ export const AboutPage = () => {
 
     return (
         // IF THE CURRENT REF ELEMENT IS ACTIVE, IT WILL APPLY A SPECIFIC SYLE TO IT
-        <section id="about" ref={divRef} className={styles["about-container"]}>
+        <section id="about" className={styles["about-container"]}>
+            <span ref={divRef} className={styles["span-trigger"]}></span>
             <div
                 className={styles[isActive ? "slide-in" : "slide-out"]}
             >
@@ -34,7 +35,8 @@ export const AboutPage = () => {
                 <img
                     src={icon}
                     alt="logo"
-                    className={styles[isActive ? "slide-in-img" : "slide-out-img"]} />
+                    className={styles[isActive ? "slide-in-img" : "slide-out-img"]}
+                />
             </div >
         </section>
 
