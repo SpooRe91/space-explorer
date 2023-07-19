@@ -2,8 +2,8 @@ import styles from "./index.module.scss";
 
 import PoDModal from "../../Components/PoDModal/PoDModal";
 import useGetPod from "../../customHooks/useGetPod";
-import { useAppDispatch, useAppSelector } from "../../App/hooks";
-import { podState, setPodData } from "../../redux-slices/PODslice";
+import { useAppSelector } from "../../App/hooks";
+import { podState } from "../../redux-slices/PODslice";
 import { useEffect } from "react";
 
 const PoDPage = () => {
@@ -11,7 +11,6 @@ const PoDPage = () => {
     const podData = useAppSelector(podState);
 
     const podResult = useGetPod();
-    const dispatch = useAppDispatch();
 
     const currDate = new Date(Date.now());
     const offset = currDate.getTimezoneOffset();
@@ -25,16 +24,6 @@ const PoDPage = () => {
             (async function () {
                 await podResult();
             })()
-        } else {
-            dispatch(setPodData({
-                date: '',
-                explanation: '',
-                hdurl: '',
-                media_type: '',
-                prevUrl: '',
-                title: '',
-                url: ''
-            }));
         }
     }, [])
 
