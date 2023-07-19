@@ -16,6 +16,14 @@ const useGetPod = () => {
 
         const data = await fetchImageOfTheDay(signal, controller);
 
+        const timeout = setTimeout(() => {
+
+            if (!data) {
+                dispatch(setError('Unable to reach the server at the moment, please try again later!'));
+                return;
+            }
+        }, 10000);
+
         dispatch(setIsLoading(false));
         dispatch(setPrevPodUrl(podData));
         dispatch(setPodData(data));
@@ -26,8 +34,8 @@ const useGetPod = () => {
             controller.abort();
             return data;
         }
+        clearTimeout(timeout);
         return;
-
     }, []);
 
     return podFetcher;

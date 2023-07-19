@@ -182,8 +182,6 @@ const ImagePage = () => {
                                     <component.ImageComponent {...item} />
                                 </ImageListItem>
                             ))}
-
-
                         </div>
                         : null
 
