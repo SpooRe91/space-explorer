@@ -12,6 +12,8 @@ function App() {
   const dispatch = useAppDispatch();
   const { hash } = useLocation();
 
+  console.log(import.meta.env.MODE);
+
   useEffect(() => {
     dispatch(setIsLoading(false));
   }, []);
@@ -30,6 +32,12 @@ function App() {
             <div className="loader-comp">
               <component.GlobalLoader />
             </div>
+            : null
+        }
+        {
+          globalData.error.error && globalData.error.page === 'app'
+            ?
+            <component.ErrorMessage error={globalData.error.error} />
             : null
         }
         <component.HomePage />

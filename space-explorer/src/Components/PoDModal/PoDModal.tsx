@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../App/hooks';
 import { podState } from '../../redux-slices/PODslice';
 import { globalState, setIsLoading, setToShowPoD } from '../../redux-slices/globalSlice';
 import { Link } from 'react-router-dom';
+import { ErrorMessage } from "../../all-imported-components";
 
 
 export default function PoDModal() {
@@ -32,41 +33,46 @@ export default function PoDModal() {
     return (
         <div className={styles['modal-main-container']}
         >
-            <div className={styles['pod-container']}
-            >
-                {
-                    !imageLoaded
-                        ?
-                        <p className={styles["image-loading-text"]}>
-                            Loading...
-                        </p>
-                        :
-                        <section className={styles['text-container']}
-                            onClick={(e: React.MouseEvent<HTMLDivElement>) => handleModalClick(e)}>
-                            <div className={styles['transition-el']}>
-                                <p className={styles["modal-pod-title"]}>
-                                    {podData.title}
+            {
+                <div className={styles['pod-container']}
+                >
+                    {
+                        globalData.error.error && globalData.error.page === 'pod'
+                            ? <ErrorMessage error={globalData.error.error} />
+                            :
+                            !imageLoaded
+                                ?
+                                <p className={styles["image-loading-text"]}>
+                                    Loading...
                                 </p>
-                                <p className={styles["modal-pod-explanation"]}>
-                                    {podData.explanation}
-                                </p>
-                            </div>
-                        </section>
-                }
-                <section className={styles['img-container']}
-                    onClick={(e: React.MouseEvent<HTMLDivElement>) => handleModalClick(e)}>
-                    <img
-                        className={styles['pod-image']}
-                        src={podData.url}
-                        onLoad={() => handleImageLoaded()}
-                        title={podData.title}
-                        loading={'lazy'}
-                        alt={!imageLoaded ? "" : globalData.error ||
-                            "There was supposed to be a NASA pic, but sometimes things don't go as planned"}
-                    />
+                                :
+                                <section className={styles['text-container']}
+                                    onClick={(e: React.MouseEvent<HTMLDivElement>) => handleModalClick(e)}>
+                                    <div className={styles['transition-el']}>
+                                        <p className={styles["modal-pod-title"]}>
+                                            {podData.title}
+                                        </p>
+                                        <p className={styles["modal-pod-explanation"]}>
+                                            {podData.explanation}
+                                        </p>
+                                    </div>
+                                </section>
+                    }
+                    <section className={styles['img-container']}
+                        onClick={(e: React.MouseEvent<HTMLDivElement>) => handleModalClick(e)}>
+                        <img
+                            className={styles['pod-image']}
+                            src={podData.url}
+                            onLoad={() => handleImageLoaded()}
+                            title={podData.title}
+                            loading={'lazy'}
+                            alt={!imageLoaded ? "" : globalData.error.error ||
+                                "There was supposed to be a NASA pic, but sometimes things don't go as planned"}
+                        />
 
-                </section>
-            </div>
+                    </section>
+                </div>
+            }
             <Link
                 to="#"
                 className={styles["span-link"]}>
@@ -75,7 +81,7 @@ export default function PoDModal() {
                     X
                 </span>
             </Link>
-        </div>
+        </div >
     );
 }
 

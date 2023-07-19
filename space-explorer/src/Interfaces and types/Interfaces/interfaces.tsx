@@ -1,8 +1,8 @@
-import { TImageData } from "../Types/types";
+import { TGLobalError, TImageData } from "../Types/types";
 
 export interface IGlobal {
     loading: boolean;
-    error: string;
+    error: TGLobalError,
     showSideNav: boolean;
     toExpandImage: boolean;
     modalImageHref: string | null;

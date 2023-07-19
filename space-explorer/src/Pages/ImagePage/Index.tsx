@@ -35,7 +35,7 @@ const ImagePage = () => {
         e.preventDefault();
 
         if (forbiddenStrings.includes(searchValue)) {
-            dispatch(setError('This is not a valid search option!'));
+            dispatch(setError({ error: 'This is not a valid search option!', page: 'image' }));
             dispatch(imageSlice.setClearImageData(true));
             setSearchValue('');
             return;
@@ -47,7 +47,7 @@ const ImagePage = () => {
 
         if (searchValue === '') {
             dispatch(setIsLoading(false));
-            dispatch(setError('Please enter your search first!'));
+            dispatch(setError({ error: 'Please enter your search first!', page: 'image' }));
             dispatch(imageSlice.setImagePage(1));
             return;
         }
@@ -66,7 +66,7 @@ const ImagePage = () => {
         if (!data.length && typeof data !== "string") {
             dispatch(setIsLoading(false));
             dispatch(imageSlice.setImagePage(1));
-            dispatch(setIsLoading(false)), dispatch(setError("Sorry, no results found!"));
+            dispatch(setIsLoading(false)), dispatch(setError({ error: "Sorry, no results found!", page: 'image' }));
             return;
 
         } else {
@@ -80,7 +80,7 @@ const ImagePage = () => {
 
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.currentTarget.value.toLocaleLowerCase());
-        dispatch(setError(''));
+        dispatch(setError({ error: '' }));
         dispatch(imageSlice.setImagePage(1));
     }
 
@@ -105,7 +105,7 @@ const ImagePage = () => {
                 return;
             }
             dispatch(imageSlice.setImagePage(1));
-            dispatch(setIsLoading(false)), dispatch(setError("Sorry, no results found!"));
+            dispatch(setIsLoading(false)), dispatch(setError({ error: "Sorry, no results found!", page: 'image' }));
             return;
 
         } else {
@@ -166,10 +166,10 @@ const ImagePage = () => {
             {
                 // IF THERE ARE IMAGES IN THE GLOBAL DATA, SHOW THE LIST OF IMAGES
 
-                globalData.error
+                globalData.error.error && globalData.error.page === 'image'
                     ?
                     <div className={styles['loader-error']}>
-                        <component.ErrorMessage error={globalData.error} />
+                        <component.ErrorMessage error={globalData.error.error} />
                     </div>
                     :
                     imageData?.allData[0]?.href

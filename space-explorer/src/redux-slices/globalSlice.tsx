@@ -1,10 +1,14 @@
 import type { RootState } from "../App/store";
 import { createSlice } from "@reduxjs/toolkit";
 import { IAction, IGlobal } from "../Interfaces and types/Interfaces/interfaces";
+import { TGLobalError } from "../Interfaces and types/Types/types";
 
 const initialState: IGlobal = {
     loading: false,
-    error: '',
+    error: {
+        page: '',
+        error: ''
+    },
     showSideNav: false,
     toExpandImage: false,
     modalImageHref: '',
@@ -16,7 +20,6 @@ const initialState: IGlobal = {
     showPoD: false
 }
 
-
 export const globalActions = createSlice({
     name: 'globalSlice',
     initialState,
@@ -25,8 +28,9 @@ export const globalActions = createSlice({
             state.loading = action.payload;
         },
 
-        setError: (state: IGlobal, action: IAction<string, string>) => {
-            state.error = action.payload;
+        setError: (state: IGlobal, action: IAction<string, TGLobalError>) => {
+            state.error.error = action.payload.error;
+            state.error.page = action.payload.page ? action.payload.page : '';
         },
 
         setShowSideNav: (state: IGlobal, action: IAction<string, boolean>) => {

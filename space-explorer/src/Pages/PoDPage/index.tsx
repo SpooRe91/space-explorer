@@ -9,6 +9,7 @@ import { useEffect } from "react";
 const PoDPage = () => {
 
     const podData = useAppSelector(podState);
+
     const podResult = useGetPod();
     const dispatch = useAppDispatch();
 
@@ -39,7 +40,7 @@ const PoDPage = () => {
 
     return (
         <div className={styles["pod-main-container"]}>
-            <PoDModal />
+            < PoDModal />
         </div>
     )
 }

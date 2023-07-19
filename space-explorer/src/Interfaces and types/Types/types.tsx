@@ -32,3 +32,8 @@ export type TPicOfTheDay = {
     url: string,
     prevUrl: string
 }
+
+export type TGLobalError = {
+    error: string,
+    page?: string
+}
