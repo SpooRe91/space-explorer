@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { podState, setPodData, setPrevPodUrl } from "../redux-slices/PODslice";
-import { setIsLoading, setError, setToShowPoD } from "../redux-slices/globalSlice";
+import { setIsLoading, setError } from "../redux-slices/globalSlice";
 import { fetchImageOfTheDay } from "../utils/Picture-of-the-day-api";
 import { useAppDispatch, useAppSelector } from "../App/hooks";
 
