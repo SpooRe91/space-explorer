@@ -54,10 +54,6 @@
             text-shadow:
                 3px 2px 1px var(--component-bgr-transparent-color),
                 0px 0px 20px var(--hero-text-shadow-additional);
-
-            &:hover {
-                cursor: url("/pointer.png"), auto;
-            }
         }
 
         .home-hero-small-text-link svg {

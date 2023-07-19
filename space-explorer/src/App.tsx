@@ -12,8 +12,6 @@ function App() {
   const dispatch = useAppDispatch();
   const { hash } = useLocation();
 
-  console.log(import.meta.env.MODE);
-
   useEffect(() => {
     dispatch(setIsLoading(false));
   }, []);
