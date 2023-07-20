@@ -29,7 +29,7 @@ const PoDPage = () => {
 
     return (
         <div className={styles["pod-main-container"]}>
-            < PoDModal />
+            <PoDModal />
         </div>
     )
 }
