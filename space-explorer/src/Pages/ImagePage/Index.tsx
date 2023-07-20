@@ -137,7 +137,7 @@ const ImagePage = () => {
                             type="text"
                             name="search-images"
                             value={searchValue}
-                            placeholder="enter your search here"
+                            placeholder="e.g. jupiter"
                             pattern="[A-Za-z\d\s]*"
                             minLength={0}
                             maxLength={50}
