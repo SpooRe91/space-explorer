@@ -56,6 +56,10 @@
                 0px 0px 20px var(--hero-text-shadow-additional);
         }
 
+        .home-hero-small-text-link:hover{
+        cursor: url("/pointer.png"), auto;
+        }
+
         .home-hero-small-text-link svg {
             font-size: 3.8rem;
             border-radius: 10px;
