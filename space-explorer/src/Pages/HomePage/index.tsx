@@ -38,7 +38,7 @@ const HomePage = () => {
                         <p className={styles["home-hero-small-text"]}>
                             Go to gallery
                         </p>
-                        <NavLink aria-label="Articles" to="/#gallery"
+                        <NavLink aria-label="Gallery" to="/#gallery"
                             className={styles["home-hero-small-text-link"]}>
                             <ArrowDownwardIcon />
                         </NavLink>
