@@ -141,7 +141,7 @@
             background-color: var(--component-bgr-transparent-color);
             border-radius: 10px;
             box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button-hover);
-
+            z-index:501;
             &:hover {
                 cursor: url("/pointer.png"), auto;
                 color: var(--about-link-collor-hover);
