@@ -4,7 +4,7 @@ import * as imageSlice from "../../redux-slices/imagesSlice";
 import { globalState, setError, setIsLoading } from "../../redux-slices/globalSlice";
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
 
-import { fetchImages } from "../../utils/Fetch-search-images.api";
+import { fetchImages } from "../../services/Fetch-search-images.api";
 import { TImageData } from "../../Interfaces and types/Types/types";
 
 import styles from './index.module.scss';
