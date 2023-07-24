@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 
 import * as imageSlice from "../../redux-slices/imagesSlice";
-import { globalState, setError, setIsLoading } from "../../redux-slices/globalSlice";
+import { globalState, setError } from "../../redux-slices/globalSlice";
 
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import { TImageData } from "../../Interfaces and types/Types/types";
