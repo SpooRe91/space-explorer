@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import { globalState, setIsLoading, setToExpandImage } from "../../redux-slices/globalSlice";
 
+import imageChanger from "../../utils/imageChanger";
 import styles from "./ImageModal.module.scss";
+
 import { useState } from "react";
 import { imageState } from "../../redux-slices/imagesSlice";
-import { IGlobal } from "../../Interfaces and types/Interfaces/interfaces";
 import { TImageData } from "../../Interfaces and types/Types/types";
 
 const ImageModal = () => {
@@ -17,7 +18,7 @@ const ImageModal = () => {
     const globalData = useAppSelector(globalState);
     const imageData = useAppSelector(imageState);
 
-    const current: TImageData | undefined =
+    const currentImage: TImageData | undefined =
         imageData.allData.find(el => el.links[0]?.href === globalData.modalImageHref) || undefined;
 
     const handleModalClick = (e: React.MouseEvent<HTMLSpanElement>) => {
@@ -35,63 +36,18 @@ const ImageModal = () => {
     }
 
 
+    //!IMPORTANT imageChanger func:
+    //HELPER FUNCTION TO MAKE CHECKS OF CERTAIN CONDITIONS 
+    //BEFORE EXECUTIN A REQUEST WITH THE GIVEN INPUT
+
     const handleNextImage = () => {
         dispatch(setIsLoading(true));
-        imageChanger('next');
+        imageChanger({ movement: 'next', imageData, globalData, dispatch });
     }
 
     const handlePreviousImage = () => {
         dispatch(setIsLoading(true));
-        imageChanger('previous');
-    }
-
-    function imageChanger(movement: string) {
-        if (movement === null) { return }
-
-        if (!imageData.allData.find(el => el.links[0]?.href === globalData.modalImageHref)) {
-            dispatch(setIsLoading(false));
-            return;
-        }
-
-        if (imageData.allData === undefined || imageData.allData === null) return;
-
-        const current: TImageData | undefined =
-            imageData.allData.find(el => el.links[0]?.href === globalData.modalImageHref);
-
-        if (current === null || current === undefined) return;
-
-        if (movement === "next") {
-
-            const nextImgIndex: number | undefined = imageData.allData.indexOf(current) + 1;
-
-            if (nextImgIndex < imageData.allData.length) {
-                dispatch(setToExpandImage({
-                    bool: true,
-                    href: imageData.allData[nextImgIndex].links[0]?.href as keyof IGlobal,
-                    title: imageData.allData[nextImgIndex].data[0].title
-                }));
-            } else {
-                dispatch(setToExpandImage({ bool: false, href: "", title: "" }));
-                dispatch(setIsLoading(false));
-            }
-        }
-
-        if (movement === "previous") {
-
-            const previousIndex: number | undefined = imageData.allData.indexOf(current) - 1;
-
-            if (imageData.allData[previousIndex] !== null &&
-                imageData.allData[previousIndex] !== undefined) {
-                dispatch(setToExpandImage({
-                    bool: true,
-                    href: imageData.allData[previousIndex].links[0]?.href as keyof IGlobal,
-                    title: imageData.allData[previousIndex].data[0].title
-                }));
-            } else {
-                dispatch(setToExpandImage({ bool: false, href: "", title: "" }));
-                dispatch(setIsLoading(false));
-            }
-        }
+        imageChanger({ movement: 'previous', imageData, globalData, dispatch });
     }
 
     return (
@@ -139,26 +95,26 @@ const ImageModal = () => {
                             }
                             <div className={styles["modal-navigation-container"]}>
                                 <p>{
-                                    current ?
-                                        imageData?.allData?.indexOf(current) + 1 : "N/A"} of {imageData?.allData?.length}</p>
+                                    currentImage ?
+                                        imageData?.allData?.indexOf(currentImage) + 1 : "N/A"} of {imageData?.allData?.length}</p>
                                 <div className={styles["modal-buttons-container"]}>
                                     <button
                                         disabled={globalData.loading ||
-                                            current
-                                            ? (imageData?.allData?.indexOf(current as TImageData) + 1) === 1
+                                            currentImage
+                                            ? (imageData?.allData?.indexOf(currentImage as TImageData) + 1) === 1
                                             : true
                                         }
                                         onClick={() => handlePreviousImage()}>Previous
                                     </button>
                                     <button disabled={globalData.loading ||
-                                        current
-                                        ? (imageData?.allData?.indexOf(current as TImageData) + 1) === imageData?.allData?.length
+                                        currentImage
+                                        ? (imageData?.allData?.indexOf(currentImage as TImageData) + 1) === imageData?.allData?.length
                                         : true
                                     }
                                         onClick={() => handleNextImage()}>
                                         {
-                                            current
-                                                ? (imageData?.allData?.indexOf(current as TImageData) + 1) === imageData?.allData?.length
+                                            currentImage
+                                                ? (imageData?.allData?.indexOf(currentImage as TImageData) + 1) === imageData?.allData?.length
                                                 : null
                                         }
                                         Next
