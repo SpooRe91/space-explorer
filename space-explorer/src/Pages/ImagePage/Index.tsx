@@ -2,19 +2,24 @@ import { ChangeEvent, FormEvent, useRef, useState } from "react";
 
 import * as imageSlice from "../../redux-slices/imagesSlice";
 import { globalState, setError, setIsLoading } from "../../redux-slices/globalSlice";
-import { useAppDispatch, useAppSelector } from "../../App/hooks";
 
-import { fetchImages } from "../../services/Fetch-search-images.api";
+import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import { TImageData } from "../../Interfaces and types/Types/types";
+
+import * as component from "../../all-imported-components";
+import formChecker from "../../utils/formChecker";
+import useIntersectionHook from "../../customHooks/useIntersectionHook";
 
 import styles from './index.module.scss';
 import { ImageListItem } from "@mui/material";
-import * as component from "../../all-imported-components";
 import ImageSearchIcon from '@mui/icons-material/ImageSearch';
-import useIntersectionHook from "../../customHooks/useIntersectionHook";
+import pageChanger from "../../utils/pageChanger";
 
 
 const ImagePage = () => {
+
+    const divRef = useRef<HTMLDivElement>(null);
+    useIntersectionHook(divRef, '#gallery');
 
     const imageData = useAppSelector(imageSlice.imageState);
     const globalData = useAppSelector(globalState);
@@ -23,59 +28,13 @@ const ImagePage = () => {
     const controller: AbortController = (new AbortController());
     const { signal }: { signal: AbortSignal } = controller;
 
-    const divRef = useRef<HTMLDivElement>(null);
-    useIntersectionHook(divRef, '#gallery');
-
     const [searchValue, setSearchValue] = useState<string>('');
     const [disableButton, setToDisableButton] = useState<boolean>(false);
-    const forbiddenStrings = ['javascript', 'script', 'code', '/', ':', '<', '>', '\\'];
-
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        if (forbiddenStrings.includes(searchValue)) {
-            dispatch(setError({ error: 'This is not a valid search option!', page: 'image' }));
-            dispatch(imageSlice.setClearImageData(true));
-            setSearchValue('');
-            return;
-        }
-
-        setToDisableButton(false);
-        dispatch(imageSlice.setClearImageData(true));
-        dispatch(imageSlice.setImageQueryString(searchValue));
-
-        if (searchValue === '') {
-            dispatch(setIsLoading(false));
-            dispatch(setError({ error: 'Please enter your search first!', page: 'image' }));
-            dispatch(imageSlice.setImagePage(1));
-            return;
-        }
-
-        dispatch(setIsLoading(true));
-        const data = await fetchImages(signal, controller, imageData.imagePage, searchValue);
-        setSearchValue('');
-
-        if (data.length && typeof data !== "string") {
-            dispatch(setIsLoading(false));
-            dispatch(imageSlice.setImageData(data));
-            dispatch(imageSlice.setImagePage(imageData.imagePage + 1));
-            return;
-        }
-
-        if (!data.length && typeof data !== "string") {
-            dispatch(setIsLoading(false));
-            dispatch(imageSlice.setImagePage(1));
-            dispatch(setIsLoading(false)), dispatch(setError({ error: "Sorry, no results found!", page: 'image' }));
-            return;
-
-        } else {
-            dispatch(setIsLoading(false));
-            dispatch(imageSlice.setImagePage(1));
-            dispatch(setIsLoading(false)), dispatch(setError(data));
-            return;
-        }
-
+        //1. !IMPORTANT helper function to check numerous input conditions 
+        formChecker({ searchValue, imageData, setSearchValue, setToDisableButton, dispatch, controller, signal });//!READ POINT 1.
     };
 
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -85,36 +44,10 @@ const ImagePage = () => {
     }
 
     const handlePageChange = async () => {
-
-        dispatch(setIsLoading(true));
-        dispatch(imageSlice.setImagePage(imageData.imagePage + 1));
-
-        const data = await fetchImages(signal, controller, imageData.imagePage, imageData.queryString);
-
-        if (data.length && typeof data !== "string") {
-            dispatch(setIsLoading(false));
-            dispatch(imageSlice.setAdditionalImageData(data));
-            dispatch(imageSlice.setImagePage(imageData.imagePage + 1));
-            return;
-        }
-
-        if (!data.length && typeof data !== "string") {
-            if (imageData.imagePage) {
-                setToDisableButton(true);
-                dispatch(setIsLoading(false));
-                return;
-            }
-            dispatch(imageSlice.setImagePage(1));
-            dispatch(setIsLoading(false)), dispatch(setError({ error: "Sorry, no results found!", page: 'image' }));
-            return;
-
-        } else {
-            dispatch(setIsLoading(false));
-            dispatch(imageSlice.setImagePage(1));
-            dispatch(setIsLoading(false)), dispatch(setError(data));
-            return;
-        }
-
+        //2. !IMPORTANT helper function to check numerous conditions
+        // before and after changing a page for next request of images
+        // or if there are any more to request
+        pageChanger({ imageData, signal, controller, setToDisableButton, dispatch });//!READ POINT 2.
     }
 
     return (
