@@ -9,17 +9,21 @@ import PoDPage from "./Pages/PoDPage";
 import AboutPage from "./Pages/AboutPage";
 import HomePage from "./Pages/HomePage";
 import ImagePage from "./Pages/ImagePage/Index";
+import ArticlesPage from "./Pages/ArticlesPage";
+import ArticleCard from "./Components/ArticleCard/ArticleCard";
 
 export {
     NavBar,
     HomePage,
     ImagePage,
     AboutPage,
+    ArticlesPage,
     GlobalLoader,
     SideBar,
     ImageComponent,
     ImageModal,
     ErrorMessage,
     PoDPage,
-    PoDModal
+    PoDModal,
+    ArticleCard
 };

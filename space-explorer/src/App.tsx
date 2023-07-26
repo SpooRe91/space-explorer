@@ -40,6 +40,7 @@ function App() {
         }
         <component.HomePage />
         <component.ImagePage />
+        <component.ArticlesPage />
         <component.AboutPage />
         {
           globalData.showPoD
