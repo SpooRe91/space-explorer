@@ -4,11 +4,8 @@ import axios from "axios";
 export const fetchImageOfTheDay = async (signal: AbortSignal, controller: AbortController) => {
 
     try {
-        const res = axios.create({ baseURL: 'https://api.nasa.gov/' })
-            .get(`planetary/apod?api_key=${import.meta.env.PROD
-                ? import.meta.env.VITE_PROD_NASA_API_KEY
-                : import.meta.env.VITE_DEV_NASA_API_KEY
-                }`, { signal: signal });
+        const res = axios.create({ baseURL: 'https://mb-cook-server.vercel.app/nasa' })
+            .get('/pod', { signal: signal });
         const data = await res;
         if (data.status === 200) {
             return data.data
