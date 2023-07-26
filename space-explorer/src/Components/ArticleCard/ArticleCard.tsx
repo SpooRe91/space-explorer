@@ -1,7 +1,7 @@
 import { Card, CardMedia, CardContent, Typography, CardActions, Button } from "@mui/material"
 import styles from './ArticleCard.module.scss';
 
-const ArticleCard = (data: string) => {
+const ArticleCard = (/*data: string*/) => {
 
     return (
         <div className={styles["article-card-wrapper"]}>
