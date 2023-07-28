@@ -33,11 +33,12 @@ ol[role="list"] {
 /* Set core body defaults */
 html {
   color-scheme: dark;
+  height: 100%;
 }
 
 body {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   border: 10px solid green;
 }
 
