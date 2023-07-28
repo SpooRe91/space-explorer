@@ -32,12 +32,6 @@ const useGetPod = () => {
         dispatch(setPrevPodUrl(podData));
         dispatch(setPodData(data));
 
-        // if (typeof data === 'string') {
-        //     (dispatch(setIsLoading(false)),
-        //         dispatch(setError('Unable to reach the server at the moment, please try again later!')))
-        //     controller.abort();
-        //     return data;
-        // }
         return;
     }, []);
 
