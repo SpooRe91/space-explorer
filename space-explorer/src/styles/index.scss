@@ -32,6 +32,9 @@
   --emphasized-text-about: rgba(175, 177, 255, 1);
   touch-action: auto;
   background-image: url("../assets/space-explorer-hero-earth-from-moon-bgr.webp");
+  background-position: center;
+  background-attachment: fixed;
+  background-size: auto;
 }
 
 .main {
