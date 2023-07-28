@@ -5,7 +5,7 @@ import { globalState, setIsLoading, setShowSideNav, setToShowPoD } from "../../r
 
 import styles from "./NavBar.module.scss";
 import icon from "../../assets/icons/android-chrome-192x192.png";
-import { SideBar } from "../../all-imported-components";
+// import { SideBar } from "../../all-imported-components";
 import { useEffect } from "react";
 
 const NavBar = () => {
@@ -109,12 +109,12 @@ const NavBar = () => {
                         className={styles["nav-toggler-item"]}><BiDotsHorizontalRounded />
                     </button>
                 </div>
-                <div
+                {/* <div
                     className={styles[globalData.showSideNav
                         ? "nav-sidebar-container-visible"
                         : "nav-sidebar-container-hidden"]}>
                     <SideBar />
-                </div>
+                </div> */}
             </nav>
         </div >
     )
