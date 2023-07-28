@@ -28,10 +28,15 @@
   --hero-text-shadow-additional: rgba(187, 187, 187, 0.76);
   --component-bgr-transparent-color: rgba(0, 0, 0, 0.76);
   --emphasized-text-about: rgba(175, 177, 255, 1);
+  background-image: url("../assets/space-explorer-hero-earth-from-moon-bgr.webp");
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .main {
-  min-height: inherit;
+  min-height: 100%;
   .loader-comp {
     position: fixed;
     top: 0px;
@@ -39,10 +44,5 @@
     width: 100%;
     z-index: 9999;
     height: 5px;
-  }
-}
-@media screen and (max-width: 766px) {
-  .main {
-    min-height: inherit;
   }
 }
