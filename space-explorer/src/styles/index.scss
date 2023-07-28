@@ -15,7 +15,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
   overflow: auto;
   min-width: 320px;
 
@@ -32,7 +31,7 @@
   --component-bgr-transparent-color: rgba(0, 0, 0, 0.76);
   --emphasized-text-about: rgba(175, 177, 255, 1);
   touch-action: auto;
-  // background-image: url("../assets/space-explorer-hero-earth-from-moon-bgr.webp");
+  background-image: url("../assets/space-explorer-hero-earth-from-moon-bgr.webp");
 }
 
 .main {
