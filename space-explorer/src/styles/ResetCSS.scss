@@ -33,11 +33,16 @@ ol[role="list"] {
 /* Set core body defaults */
 html {
   color-scheme: dark;
+  overflow: hidden;
+  width: 100%;
 }
 
 body {
+  height: 100%;
   width: 100%;
-  min-height: 100svh;
+  position: fixed;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   border: 10px solid green;
   background-image: url("../assets/space-explorer-hero-earth-from-moon-bgr.webp");
   background-position: center;
