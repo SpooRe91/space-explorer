@@ -34,9 +34,9 @@ ol[role="list"] {
 /* Set core body defaults */
 
 html {
+  height: 100%;
   color-scheme: dark;
   border: 5px solid red;
-  height: -webkit-fill-available;
   &:focus-within {
     scroll-behavior: smooth;
   }
@@ -44,8 +44,7 @@ html {
 
 body {
   width: 100%;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
+  min-height: 100%;
   text-rendering: optimizeSpeed;
   border: 10px solid green;
   background-image: url("../assets/space-explorer-hero-earth-from-moon-bgr.webp");
@@ -67,4 +66,16 @@ img,
 picture {
   max-width: 100%;
   display: block;
+}
+
+@media screen and (max-width: 766px) {
+  html {
+    min-height: 100svh;
+  }
+  body {
+    min-height: 100svh;
+  }
+  :root {
+    min-height: 100svh;
+  }
 }
