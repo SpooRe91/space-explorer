@@ -31,6 +31,10 @@ ol[role="list"] {
 /* Set core root defaults */
 
 /* Set core body defaults */
+html {
+  color-scheme: dark;
+}
+
 body {
   width: 100%;
   min-height: 100vh;
@@ -63,7 +67,7 @@ select {
     min-height: 100dvh;
   }
 }
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them 
 // @media (prefers-reduced-motion: reduce) {
 //   html:focus-within {
 //     scroll-behavior: auto;
@@ -84,3 +88,4 @@ select {
 //     }
 //   }
 // }
+*/
