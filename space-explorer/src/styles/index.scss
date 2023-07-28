@@ -29,10 +29,11 @@
   --hero-text-shadow-additional: rgba(187, 187, 187, 0.76);
   --component-bgr-transparent-color: rgba(0, 0, 0, 0.76);
   --emphasized-text-about: rgba(175, 177, 255, 1);
-  --doc-height: 100%;
 }
 
 .main {
+  min-height: 100%;
+  min-height: -webkit-fill-available;
   .loader-comp {
     position: fixed;
     top: 0px;
