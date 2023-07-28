@@ -193,7 +193,7 @@
 
 @media screen and (max-width: 766px) {
     .image-container {
-        height: clamp(1440px, 100vh, 1620px);
+        height: clamp(1250px, 1440px, 1620px);
         margin-bottom: 5rem;
         .image-container-heading-container {
             background-color: var(--component-bgr-transparent-color);

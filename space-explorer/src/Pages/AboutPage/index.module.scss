@@ -40,7 +40,7 @@
         height: 1px;
         width: 100%;
         position: absolute;
-        top: 0;
+        top: 50%;
     }
 
     .slide-out {
@@ -215,7 +215,7 @@
 
 @mixin responsive-text {
     h2 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     p {
         font-size: 1rem;
@@ -239,6 +239,7 @@
         padding: unset;
         margin-top: unset;
         position: relative;
+        height: 530px;
 
         .slide-out {
             backdrop-filter: blur(5px);
