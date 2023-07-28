@@ -14,8 +14,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  overflow: auto;
   min-width: 320px;
-  touch-action: auto;
   --card-box-shadow-color: #1e4d97;
   --card-box-shadow-color-hover: #4990be;
   --card-box-shadow-collor-button: #454f6c;
@@ -28,6 +28,7 @@
   --hero-text-shadow-additional: rgba(187, 187, 187, 0.76);
   --component-bgr-transparent-color: rgba(0, 0, 0, 0.76);
   --emphasized-text-about: rgba(175, 177, 255, 1);
+  --doc-height: 100%;
 }
 
 .main {
