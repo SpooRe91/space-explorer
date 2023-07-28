@@ -37,8 +37,13 @@ html {
 
 body {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100svh;
   border: 10px solid green;
+  background-image: url("../assets/space-explorer-hero-earth-from-moon-bgr.webp");
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* A elements that don't have a class get default styles */
@@ -59,12 +64,4 @@ button,
 textarea,
 select {
   font: inherit;
-}
-
-@media screen and (max-width: 766px) {
-  html,
-  :root,
-  body {
-    min-height: 100svh;
-  }
 }
