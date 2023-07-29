@@ -33,7 +33,7 @@ export const globalActions = createSlice({
             state.error.page = action.payload.page ? action.payload.page : '';
         },
 
-        setShowSideNav: (state: IGlobal, action: IAction<string, boolean>) => {
+        setShowNav: (state: IGlobal, action: IAction<string, boolean>) => {
             state.showSideNav = action.payload;
         },
 
@@ -58,7 +58,7 @@ export const globalActions = createSlice({
 
 export const { setIsLoading,
     setError,
-    setShowSideNav,
+    setShowNav,
     setToExpandImage,
     setActiveNavElement,
     setToShowPoD } = globalActions.actions;

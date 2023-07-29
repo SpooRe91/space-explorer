@@ -24,7 +24,7 @@
         backdrop-filter: blur(5px);
     }
     &:active {
-        background-color: rgba(121, 121, 121, 0.35);
+        background: var(--btn-active-bgr);
     }
 
     &:disabled {
@@ -45,7 +45,7 @@
     width: 100%;
     height: 100%;
     border: none;
-    z-index:100;
+    z-index: 100;
     &:before {
         content: "";
         width: 100%;
@@ -81,17 +81,22 @@
             animation-timing-function: ease-in-out;
             text-align: center;
         }
-
-        .image-loaded {
-            object-fit: contain;
+        .image-link {
             width: min(100%, 1200px);
-            height: 633px;
-            max-width: 1200px;
-            max-height: 633px;
-            border: 1px solid var(--card-box-shadow-collor-button);
-            border-radius: 10px;
-            animation: expand 200ms forwards ease-in;
-            -webkit-animation: expand 200ms forwards ease-in;
+            height: 100%;
+            max-height: 500px;
+
+            .image-loaded {
+                object-fit: contain;
+                width: min(100%, 1200px);
+                height: 633px;
+                max-width: 1200px;
+                max-height: 633px;
+                border: 1px solid var(--card-box-shadow-collor-button);
+                border-radius: 10px;
+                animation: expand 200ms forwards ease-in;
+                -webkit-animation: expand 200ms forwards ease-in;
+            }
         }
 
         .modal-image-title {
@@ -109,9 +114,14 @@
             width: clamp(220px, 100%, 450px);
             flex-wrap: wrap;
             gap: 0.5rem;
+            padding: 1.3rem;
             flex-direction: column;
             align-items: center;
-
+            border: 1px solid var(--card-box-shadow-collor-button-hover);
+            border-radius: 10px;
+            box-shadow:
+                -20px 20px 80px 0px #00043b,
+                20px 20px 80px #000449;
             p {
                 font-size: 1.4rem;
                 color: var(--about-link-collor-hover);
@@ -119,33 +129,38 @@
 
             .modal-buttons-container {
                 display: flex;
-                gap: 0.8rem;
+                gap: 1.2rem;
+                position: relative;
+                justify-content: space-evenly;
                 flex-wrap: wrap;
+                align-items: center;
 
                 button {
                     @include button();
                 }
-            }
-        }
-
-        .span-link,
-        .span-close-x {
-            text-decoration: none;
-            position: absolute;
-            top: 13.2rem;
-            right: 16.2rem;
-            font-size: 3rem;
-            width: 50px;
-            text-align: center;
-            color: var(--about-link-collor);
-            background-color: var(--component-bgr-transparent-color);
-            border-radius: 10px;
-            box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button-hover);
-            z-index:501;
-            &:hover {
-                cursor: url("/pointer.png"), auto;
-                color: var(--about-link-collor-hover);
-                box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button);
+                .span-link,
+                .span-close-x {
+                    text-decoration: none;
+                    padding: 0.2rem;
+                    font-size: 1.5rem;
+                    width: 50px;
+                    text-align: center;
+                    color: #fff;
+                    background-color: var(--component-bgr-transparent-color);
+                    border-radius: 10px;
+                    box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button-hover);
+                    z-index: 501;
+                    cursor: url("/pointer.png"), auto;
+                    &:hover {
+                        color: #8d0101;
+                        cursor: url("/pointer.png"), auto;
+                        box-shadow: 1px 1px 6px 1px var(--card-box-shadow-collor-button);
+                    }
+                    &:active {
+                        color: #fff;
+                        background: var(--btn-active-bgr);
+                    }
+                }
             }
         }
     }
@@ -187,18 +202,16 @@
                         background-color: unset;
                         box-shadow: unset;
                     }
-                }
-            }
-            .span-link,
-            .span-close-x {
-                top: 0.2rem;
-                right: 1rem;
-                font-size: 2rem;
-                color: #1b3da7;
-                background-color: rgb(0 0 0 / 0%);
-                transition: backrgound-color 50ms ease-in-out;
-                &:active {
-                    background-color: var(--component-bgr-transparent-color);
+                    .span-link,
+                    .span-close-x {
+                        font-size: 1.5rem;
+                        color: #1b3da7;
+                        background-color: rgba(0, 0, 0, 0);
+                        transition: backrgound-color 50ms ease-in-out;
+                        &:active {
+                            background-color: var(--component-bgr-transparent-color);
+                        }
+                    }
                 }
             }
         }
