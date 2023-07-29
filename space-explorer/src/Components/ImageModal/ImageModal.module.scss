@@ -189,6 +189,12 @@
             }
             .modal-navigation-container {
                 .modal-buttons-container {
+                    display: flex;
+                    gap: 1.2rem;
+                    position: relative;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
                     button {
                         font-size: 1rem;
                     }

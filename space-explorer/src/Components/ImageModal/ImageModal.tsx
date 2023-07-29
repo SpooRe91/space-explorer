@@ -13,12 +13,31 @@ import styles from "./ImageModal.module.scss";
 import { useState } from "react";
 import { imageState } from "../../redux-slices/imagesSlice";
 import { TImageData } from "../../Interfaces and types/Types/types";
+import pageChanger from "../../utils/pageChanger";
 
 const ImageModal = () => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+  const [disableButton, setToDisableButton] = useState<boolean>(false);
+
   const dispatch = useAppDispatch();
   const globalData = useAppSelector(globalState);
   const imageData = useAppSelector(imageState);
+
+  const controller: AbortController = new AbortController();
+  const { signal }: { signal: AbortSignal } = controller;
+
+  const handlePageChange = async () => {
+    //2. !IMPORTANT helper function to check numerous conditions
+    // before and after changing a page for next request of images
+    // or if there are any more to request
+    pageChanger({
+      imageData,
+      signal,
+      controller,
+      setToDisableButton,
+      dispatch,
+    }); //!READ POINT 2.
+  };
 
   const currentImage: TImageData | undefined =
     imageData.allData.find(
@@ -135,6 +154,16 @@ const ImageModal = () => {
                     : null}
                   Next
                 </button>
+                {imageData?.allData[0]?.href ? (
+                  <button
+                    className={styles["fetch-more-images"]}
+                    disabled={disableButton}
+                    style={{ color: disableButton ? "red" : "" }}
+                    onClick={() => handlePageChange()}
+                  >
+                    {disableButton ? "No more images" : "More images"}
+                  </button>
+                ) : null}
                 <Link to="#" className={styles["span-link"]}>
                   <span
                     className={"span-close-x"}
