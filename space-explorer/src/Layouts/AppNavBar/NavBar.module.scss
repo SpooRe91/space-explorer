@@ -22,7 +22,6 @@
         0px 0px 7px 1px #1e4d94,
         0px 0px 12px 3px #a7a6a6;
     text-shadow: 0px 0px 20px #000000;
-    backdrop-filter: blur(5px);
 }
 
 @mixin nav-button-active {
@@ -162,6 +161,7 @@
                 width: 38px;
                 z-index: 0;
                 line-height: 1;
+                height: 30px;
             }
             &:hover {
                 cursor: url("/pointer.png"), auto;
@@ -220,18 +220,6 @@
     z-index: -1;
 }
 
-@keyframes growDown {
-    0% {
-        transform: scaleY(0);
-    }
-    80% {
-        transform: scaleY(1.1);
-    }
-    100% {
-        transform: scaleY(1);
-    }
-}
-
 .nav-sidebar-container-hidden {
     display: none;
 }
@@ -239,6 +227,7 @@
     box-shadow: 0px 0px 15px 6.6px #1e4d97;
 }
 
+/*TABLET-LAPTOP*/
 @media screen and (min-width: 767px) and (max-width: 1532px) {
     .main-nav-container {
         .nav-logo-container {
@@ -246,7 +235,7 @@
         }
     }
 }
-
+/*Mobile*/
 @media screen and (max-width: 766px) {
     .main-nav-container {
         display: block;
@@ -298,10 +287,10 @@
                         color: #0bacc9;
                         text-decoration: none;
                         border: none;
-                        border-radius: 10px;
-                        padding: 2.5px 3.5px;
+                        border-radius: unset;
+                        padding: unset;
                         transition: all 150ms ease-in-out;
-                        @include nav-buttons-hover();
+                        cursor: url("/pointer.png"), auto;
                     }
 
                     .pending {
@@ -310,8 +299,8 @@
                         color: #ffffff;
                         text-decoration: none;
                         border: none;
-                        border-radius: 10px;
-                        padding: 5px 7px;
+                        border-radius: unset;
+                        padding: unset;
                         transition: all 150ms ease-in-out;
                         &:hover {
                             @include nav-buttons-hover();

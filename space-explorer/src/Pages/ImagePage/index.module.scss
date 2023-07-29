@@ -164,7 +164,6 @@
     }
     .fetch-more-images {
         @include button();
-        z-index: 100;
     }
     .loader-error {
         width: clamp(320px, 100%, 750px);
@@ -202,7 +201,7 @@
 
 @media screen and (max-width: 766px) {
     .image-container {
-        height: clamp(1250px, 1440px, 1620px);
+        height: clamp(900px, 1200px, 1620px);
         margin-bottom: 5rem;
         .image-container-heading-container {
             background-color: var(--component-bgr-transparent-color);
@@ -274,8 +273,6 @@
         .fetch-more-images {
             @include button();
             width: 230px;
-            z-index: 100;
-            position: absolute;
             bottom: 17rem;
         }
     }
