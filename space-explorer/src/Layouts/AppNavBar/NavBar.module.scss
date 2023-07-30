@@ -29,18 +29,11 @@
     background-color: rgba($color: #797979, $alpha: 0.35);
 }
 
-.main-nav-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-    position: fixed;
-    top: 0;
-    margin: 0 auto;
-    width: 100%;
-    z-index: 500;
-    justify-content: center;
-
+@mixin main-nav {
+    .secondary-nav-container-res {
+        display: none;
+    }
+    .secondary-nav-container-res,
     .secondary-nav-container {
         width: 100%;
         height: 80px;
@@ -55,6 +48,7 @@
         border-radius: 10px;
         box-shadow: 0px 0px 15px 4px #1e4d94;
         transition: all 150ms ease-in-out;
+        transform: translateY(0%);
 
         .nav-links {
             width: 815px;
@@ -174,6 +168,23 @@
             }
         }
     }
+    .secondary-nav-container {
+        transform: translateY(0%) !important;
+    }
+}
+
+.main-nav-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    position: fixed;
+    top: 0;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 500;
+    justify-content: center;
+    @include main-nav();
 }
 
 .nav-logo-container {
@@ -220,9 +231,6 @@
     z-index: -1;
 }
 
-.nav-sidebar-container-hidden {
-    display: none;
-}
 .secondary-nav-container:hover {
     box-shadow: 0px 0px 15px 6.6px #1e4d97;
 }
@@ -230,6 +238,10 @@
 /*TABLET-LAPTOP*/
 @media screen and (min-width: 767px) and (max-width: 1532px) {
     .main-nav-container {
+        @include main-nav();
+        .secondary-nav-container {
+            transform: translateY(0%) !important;
+        }
         .nav-logo-container {
             display: none;
         }
@@ -237,6 +249,132 @@
 }
 /*Mobile*/
 @media screen and (max-width: 766px) {
+    @mixin res-nav {
+        height: inherit;
+        max-width: unset;
+        max-height: 180px;
+        display: flex;
+        gap: 0.8rem;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 0.8rem;
+        border-radius: unset;
+        box-shadow: 0px 0px 15px 4px #1e4d94;
+        transition: all 150ms ease-in-out;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        box-shadow: 0px 0px 15px 4px #1e4d94;
+        position: fixed;
+        top: 0;
+
+        .nav-links {
+            height: unset;
+            width: unset;
+            gap: 1rem;
+            flex-wrap: wrap;
+            flex-direction: column;
+
+            .nav-link-item {
+                width: unset;
+
+                a {
+                    font-size: 1rem;
+                    font-weight: 700;
+                }
+
+                .active {
+                    font-size: 1rem;
+                    font-weight: 700;
+                    color: #0bacc9;
+                    text-decoration: none;
+                    border: none;
+                    border-radius: unset;
+                    padding: unset;
+                    transition: all 150ms ease-in-out;
+                    cursor: url("/pointer.png"), auto;
+                }
+
+                .pending {
+                    font-size: 1rem;
+                    font-weight: 700;
+                    color: #ffffff;
+                    text-decoration: none;
+                    border: none;
+                    border-radius: unset;
+                    padding: unset;
+                    transition: all 150ms ease-in-out;
+                    &:hover {
+                        @include nav-buttons-hover();
+                    }
+                    &:active {
+                        @include nav-button-active();
+                    }
+                }
+            }
+        }
+
+        .nav-navbar-collapse {
+            width: unset;
+            height: unset;
+            justify-content: unset;
+            gap: 2rem;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-self: flex-start;
+            align-items: center;
+
+            .nav-item-nasa {
+                width: 165px;
+                text-align: center;
+                background-color: transparent;
+                border: none;
+                border-radius: 10px;
+                font-size: 1rem;
+                text-decoration: none;
+                color: white;
+                padding: 5px 5px;
+                font-weight: 600;
+                box-shadow:
+                    0px 0px 7px 1px #1e4d94,
+                    0px 0px 12px 3px #1e4d94;
+                transition: all 150ms ease-in-out;
+
+                &:hover {
+                    @include nav-buttons-hover();
+                }
+                &:active {
+                    @include nav-button-active();
+                }
+            }
+
+            .nav-item-pod {
+                @include nav-buttons;
+                &:hover {
+                    @include nav-buttons-hover();
+                }
+                &:active {
+                    @include nav-button-active();
+                }
+            }
+        }
+        .nav-toggler-contaier {
+            display: flex;
+            align-self: flex-start;
+            position: fixed;
+            top: 130px;
+            left: 0;
+            backdrop-filter: blur(5px);
+            background: #132f5b;
+            width: 100%;
+            justify-content: center;
+            :active {
+                background: #305fac;
+                svg {
+                    color: #4990be;
+                }
+            }
+        }
+    }
     .main-nav-container {
         display: block;
         flex-wrap: unset;
@@ -249,130 +387,10 @@
             display: none;
         }
         .secondary-nav-container {
-            height: inherit;
-            max-width: unset;
-            max-height: 180px;
-            display: flex;
-            gap: 0.8rem;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 0.8rem;
-            border-radius: unset;
-            box-shadow: 0px 0px 15px 4px #1e4d94;
-            transition: all 150ms ease-in-out;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-            align-items: center;
-            box-shadow: 0px 0px 15px 4px #1e4d94;
-            position: fixed;
-            top: 0;
-
-            .nav-links {
-                height: unset;
-                width: unset;
-                gap: 1rem;
-                flex-wrap: wrap;
-                flex-direction: column;
-
-                .nav-link-item {
-                    width: unset;
-
-                    a {
-                        font-size: 1rem;
-                        font-weight: 700;
-                    }
-
-                    .active {
-                        font-size: 1rem;
-                        font-weight: 700;
-                        color: #0bacc9;
-                        text-decoration: none;
-                        border: none;
-                        border-radius: unset;
-                        padding: unset;
-                        transition: all 150ms ease-in-out;
-                        cursor: url("/pointer.png"), auto;
-                    }
-
-                    .pending {
-                        font-size: 1rem;
-                        font-weight: 700;
-                        color: #ffffff;
-                        text-decoration: none;
-                        border: none;
-                        border-radius: unset;
-                        padding: unset;
-                        transition: all 150ms ease-in-out;
-                        &:hover {
-                            @include nav-buttons-hover();
-                        }
-                        &:active {
-                            @include nav-button-active();
-                        }
-                    }
-                }
-            }
-
-            .nav-navbar-collapse {
-                width: unset;
-                height: unset;
-                justify-content: unset;
-                gap: 2rem;
-                flex-wrap: wrap;
-                flex-direction: column;
-                align-self: flex-start;
-                align-items: center;
-
-                .nav-item-nasa {
-                    width: 165px;
-                    text-align: center;
-                    background-color: transparent;
-                    border: none;
-                    border-radius: 10px;
-                    font-size: 1rem;
-                    text-decoration: none;
-                    color: white;
-                    padding: 5px 5px;
-                    font-weight: 600;
-                    box-shadow:
-                        0px 0px 7px 1px #1e4d94,
-                        0px 0px 12px 3px #1e4d94;
-                    transition: all 150ms ease-in-out;
-
-                    &:hover {
-                        @include nav-buttons-hover();
-                    }
-                    &:active {
-                        @include nav-button-active();
-                    }
-                }
-
-                .nav-item-pod {
-                    @include nav-buttons;
-                    &:hover {
-                        @include nav-buttons-hover();
-                    }
-                    &:active {
-                        @include nav-button-active();
-                    }
-                }
-            }
-            .nav-toggler-contaier {
-                display: flex;
-                align-self: flex-start;
-                position: fixed;
-                top: 130px;
-                left: 0;
-                backdrop-filter: blur(5px);
-                background: #132f5b;
-                width: 100%;
-                justify-content: center;
-                :active {
-                    background: #305fac;
-                    svg {
-                        color: #4990be;
-                    }
-                }
-            }
+            display: none;
+        }
+        .secondary-nav-container-res {
+            @include res-nav();
         }
     }
 }

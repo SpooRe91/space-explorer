@@ -9,7 +9,7 @@ const initialState: IGlobal = {
         page: '',
         error: ''
     },
-    showSideNav: false,
+    showSideNav: true,
     toExpandImage: false,
     modalImageHref: '',
     modalImageTitle: '',

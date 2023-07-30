@@ -21,7 +21,7 @@ const NavBar = () => {
     if (pathname !== "") {
       hash.replace(hash, "");
     }
-
+    screen.width > 766 ? dispatch(setShowNav(true)) : "";
     if (hash) {
       setTimeout(() => {
         const element = document.querySelector(hash);
@@ -34,7 +34,17 @@ const NavBar = () => {
     return () => {
       clearTimeout(0);
     };
-  }, [pathname, hash, key]);
+  }, [pathname, hash, key, dispatch]);
+
+  const checkIfMobile = (): void => {
+    if (
+      screen.width <= 766 &&
+      (globalData.showSideNav || !globalData.showSideNav)
+    ) {
+      dispatch(setShowNav(!globalData.showSideNav));
+    }
+  };
+
   return (
     <div className={styles["main-nav-container"]}>
       <div className={styles["nav-logo-container"]}>
@@ -48,7 +58,13 @@ const NavBar = () => {
         </NavLink>
       </div>
       <nav
-        className={styles["secondary-nav-container"]}
+        className={
+          styles[
+            screen.width > 766
+              ? "secondary-nav-container"
+              : "secondary-nav-container-res"
+          ]
+        }
         style={
           globalData.showSideNav
             ? { transform: "translateY(0%)" }
@@ -131,7 +147,7 @@ const NavBar = () => {
         </div>
         <div
           className={styles["nav-toggler-contaier"]}
-          onClick={() => dispatch(setShowNav(!globalData.showSideNav))}
+          onClick={() => checkIfMobile()}
         >
           <BiDotsHorizontalRounded />
         </div>
