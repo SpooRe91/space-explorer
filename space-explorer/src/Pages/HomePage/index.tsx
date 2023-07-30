@@ -13,11 +13,11 @@ const HomePage = () => {
 
   return (
     <section id="home" className={styles["home-hero-section"]}>
-      <div ref={divRef} className={styles["home-hero-container"]}>
+      <div className={styles["home-hero-container"]}>
         <div className={styles["home-hero-heading-container"]}>
-          <h1 className={styles["home-hero-header1"]}>
+          <h1 ref={divRef} className={styles["home-hero-header1"]}>
             Space Explorer
-            <span className={styles["home-hero-icon1"]}>
+            <span ref={divRef} className={styles["home-hero-icon1"]}>
               <RocketIcon />
             </span>
           </h1>
