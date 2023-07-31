@@ -32,6 +32,12 @@
     </div>
   </div>
   <script type="module" src="/src/main.tsx"></script>
+  <script>
+    (function () {
+      const el = document.getElementById('root');
+      el.style.minHeight = window.innerHeight + 'px';
+    })();
+  </script>
 </body>
 
 </html>
