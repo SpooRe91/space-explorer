@@ -31,21 +31,12 @@ ol[role="list"] {
 
 /* Set core body defaults */
 
-html {
-  height: 120%;
-  height: -webkit-fill-available;
-}
-
 /* Set core root defaults */
 body {
-  min-height: 120vh; /* fall-back */
-  min-height: -moz-available;
-  min-height: -webkit-fill-available;
-  min-height: fill-available;
+  min-height: 100%; /* fall-back */
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   min-width: -webkit-fill-available;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* A elements that don't have a class get default styles */
