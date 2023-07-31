@@ -304,12 +304,6 @@
                     border-radius: unset;
                     padding: unset;
                     transition: all 150ms ease-in-out;
-                    &:hover {
-                        @include nav-buttons-hover();
-                    }
-                    &:active {
-                        @include nav-button-active();
-                    }
                 }
             }
         }
@@ -390,6 +384,52 @@
         .secondary-nav-container {
             transform: translate(0%);
             @include res-nav();
+            .nav-links {
+                height: unset;
+                width: unset;
+                gap: 1rem;
+                flex-wrap: wrap;
+                flex-direction: column;
+
+                .nav-link-item {
+                    width: unset;
+
+                    a {
+                        font-size: 1rem;
+                        font-weight: 700;
+                    }
+
+                    .active {
+                        font-size: 1rem;
+                        font-weight: 700;
+                        color: #0bacc9;
+                        text-decoration: none;
+                        border: none;
+                        border-radius: unset;
+                        padding: unset;
+                        transition: all 150ms ease-in-out;
+                        &:hover {
+                            box-shadow: unset;
+                            text-shadow: unset;
+                        }
+                    }
+
+                    .pending {
+                        font-size: 1rem;
+                        font-weight: 700;
+                        color: #ffffff;
+                        text-decoration: none;
+                        border: none;
+                        border-radius: unset;
+                        padding: unset;
+                        transition: all 150ms ease-in-out;
+                        &:hover {
+                            box-shadow: unset;
+                            text-shadow: unset;
+                        }
+                    }
+                }
+            }
         }
     }
 }
