@@ -36,6 +36,8 @@ html {
   &:focus-within {
     scroll-behavior: smooth;
   }
+  height: 100%;
+  height: -webkit-fill-available;
 }
 
 /* Set core root defaults */
@@ -44,6 +46,8 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   -webkit-overflow-scrolling: touch;
+  min-height: 100vh;
+  min-width: -webkit-fill-available;
 }
 
 /* A elements that don't have a class get default styles */
@@ -69,10 +73,5 @@ picture {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-@media screen and (max-width: 766px) {
-  html {
-    height: 120%;
   }
 }
