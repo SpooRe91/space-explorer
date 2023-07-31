@@ -61,9 +61,11 @@ picture {
 
 @media screen and (max-width: 766px) {
   html {
-    height: 110svh;
-    height: 110lvh;
-    height: 110dvh;
-    height: 110vh;
+    height: 100vh;
+    body {
+      position: fixed;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+    }
   }
 }
