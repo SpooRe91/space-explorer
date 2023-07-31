@@ -41,7 +41,6 @@ html {
 /* Set core root defaults */
 body {
   width: 100%;
-  height: 100%;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   -webkit-overflow-scrolling: touch;
@@ -60,12 +59,4 @@ picture {
 }
 
 @media screen and (max-width: 766px) {
-  html {
-    height: 100vh;
-    body {
-      position: fixed;
-      overflow-y: scroll;
-      scroll-behavior: smooth;
-    }
-  }
 }
