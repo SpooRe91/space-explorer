@@ -30,10 +30,6 @@
 }
 
 @mixin main-nav {
-    .secondary-nav-container-res {
-        display: none;
-    }
-    .secondary-nav-container-res,
     .secondary-nav-container {
         width: 100%;
         height: 80px;
@@ -168,9 +164,6 @@
             }
         }
     }
-    .secondary-nav-container {
-        transform: translateY(0%) !important;
-    }
 }
 
 .main-nav-container {
@@ -234,7 +227,15 @@
 .secondary-nav-container:hover {
     box-shadow: 0px 0px 15px 6.6px #1e4d97;
 }
-
+/*DESKTOP NAV SHOULD BE ALWAYS VISIBLE*/
+@media screen and (min-width: 1533px) {
+    .main-nav-container {
+        @include main-nav();
+        .secondary-nav-container {
+            transform: translateY(0%) !important;
+        }
+    }
+}
 /*TABLET-LAPTOP*/
 @media screen and (min-width: 767px) and (max-width: 1532px) {
     .main-nav-container {
@@ -387,9 +388,7 @@
             display: none;
         }
         .secondary-nav-container {
-            display: none;
-        }
-        .secondary-nav-container-res {
+            transform: translate(0%);
             @include res-nav();
         }
     }

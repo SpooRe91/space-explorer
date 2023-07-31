@@ -37,10 +37,7 @@ const NavBar = () => {
   }, [pathname, hash, key, dispatch]);
 
   const checkIfMobile = (): void => {
-    if (
-      screen.width <= 766 &&
-      (globalData.showSideNav || !globalData.showSideNav)
-    ) {
+    if (screen.width <= 766) {
       dispatch(setShowNav(!globalData.showSideNav));
     }
   };
@@ -58,13 +55,7 @@ const NavBar = () => {
         </NavLink>
       </div>
       <nav
-        className={
-          styles[
-            screen.width > 766
-              ? "secondary-nav-container"
-              : "secondary-nav-container-res"
-          ]
-        }
+        className={styles["secondary-nav-container"]}
         style={
           globalData.showSideNav
             ? { transform: "translateY(0%)" }
