@@ -53,6 +53,12 @@ const ImageModal = () => {
     }
   };
 
+  const handleImageCloase = (): void => {
+    dispatch(
+      setToExpandImage({ bool: !globalData.toExpandImage, href: "", title: "" })
+    );
+  };
+
   const handleImageLoaded = (): void => {
     setImageLoaded(true);
     dispatch(setIsLoading(false));
@@ -118,7 +124,7 @@ const ImageModal = () => {
                 {currentImage
                   ? imageData?.allData?.indexOf(currentImage) + 1
                   : "N/A"}{" "}
-                of {imageData?.allData?.length}
+                / {imageData?.allData?.length}
               </p>
               <div className={styles["modal-buttons-container"]}>
                 <button
@@ -164,13 +170,12 @@ const ImageModal = () => {
                     {disableButton ? "No more images" : "More images"}
                   </button>
                 ) : null}
-                <Link to="#" className={styles["span-link"]}>
-                  <span
-                    className={"span-close-x"}
-                    onClick={(e) => handleModalClick(e)}
-                  >
-                    X
-                  </span>
+                <Link
+                  onClick={() => handleImageCloase()}
+                  to="#"
+                  className={styles["span-link"]}
+                >
+                  <span className={"span-close-image"}>X</span>
                 </Link>
               </div>
             </div>

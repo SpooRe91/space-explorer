@@ -5,6 +5,8 @@
     flex-wrap: wrap;
     gap: 1.5rem;
     align-items: center;
+    position: relative;
+    z-index: 999;
 
     button {
         width: 85px;
