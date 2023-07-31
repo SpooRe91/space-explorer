@@ -16,12 +16,6 @@
   -webkit-text-size-adjust: 100%;
   min-width: 320px;
 
-  background-image: url("../assets/space-explorer-deep-space-main-bgr.webp");
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-
   scroll-behavior: smooth;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -50,6 +44,12 @@
   top: 0;
   left: 0;
   width: 100%;
+
+  background-image: url("../assets/space-explorer-deep-space-main-bgr.webp");
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   .videoTag {
     width: 100%;
