@@ -242,7 +242,6 @@
         height: 530px;
 
         .slide-out {
-            backdrop-filter: blur(5px);
             padding: 0 1rem;
             margin-top: unset;
             flex-wrap: wrap;
@@ -253,7 +252,6 @@
         }
 
         .slide-in {
-            backdrop-filter: blur(5px);
             padding: 0 1rem;
             margin-top: unset;
             flex-wrap: wrap;
