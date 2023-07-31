@@ -26,8 +26,11 @@ const NavBar = () => {
       setTimeout(() => {
         const element = document.querySelector(hash);
         window.location.hash = "";
-        if (element) {
+        if (element && element.id !== "home") {
           element?.scrollIntoView();
+        }
+        if (element?.id === "home") {
+          element?.scrollTo({ top: 160, left: 0 });
         }
       }, 0);
     }
