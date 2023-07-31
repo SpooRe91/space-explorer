@@ -5,6 +5,7 @@ import * as component from "./all-imported-components";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 import "./styles/index.scss";
+import sapceVideo from "./assets/space-explorer-earth-view-vid.webm";
 
 function App() {
   const globalData = useAppSelector(globalState);
@@ -22,6 +23,9 @@ function App() {
         hash ? document.querySelector(hash)?.scrollIntoView() : null
       }
     >
+      <video className="videoTag" autoPlay loop muted>
+        <source src={sapceVideo} type="video/webm" />
+      </video>
       <component.NavBar />
       <>
         {globalData.loading ? (
