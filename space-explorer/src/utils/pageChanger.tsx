@@ -6,18 +6,17 @@ import { setIsLoading, setError } from "../redux-slices/globalSlice";
 import { fetchImages } from "../services/Fetch-search-images.api";
 import { setImagePage, setAdditionalImageData } from "../redux-slices/imagesSlice";
 
-const pageChanger = async ({ imageData, signal, controller, setToDisableButton, dispatch }: {
+const pageChanger = async ({ imageData, signal, controller, setToDisableLoadButton, dispatch }: {
     imageData: IImageData,
     signal: AbortSignal,
     controller: AbortController,
-    setToDisableButton: React.Dispatch<React.SetStateAction<boolean>>,
+    setToDisableLoadButton: React.Dispatch<React.SetStateAction<boolean>>,
     dispatch: ThunkDispatch<{
         globalSlice: IGlobal;
         imageSlice: IImageData;
         podSlice: TPicOfTheDay;
     }, undefined, AnyAction>
 }) => {
-
     dispatch(setIsLoading(true));
     dispatch(setImagePage(imageData.imagePage + 1));
 
@@ -32,7 +31,7 @@ const pageChanger = async ({ imageData, signal, controller, setToDisableButton, 
 
     if (!data.length && typeof data !== "string") {
         if (imageData.imagePage) {
-            setToDisableButton(true);
+            setToDisableLoadButton(true);
             dispatch(setIsLoading(false));
             return;
         }

@@ -26,7 +26,7 @@ const ImagePage = () => {
   const controller: AbortController = new AbortController();
   const { signal }: { signal: AbortSignal } = controller;
 
-  const [disableButton, setToDisableButton] = useState<boolean>(false);
+  const [disableLoadButton, setToDisableLoadButton] = useState<boolean>(false);
 
   const handlePageChange = async () => {
     //2. !IMPORTANT helper function to check numerous conditions
@@ -36,7 +36,7 @@ const ImagePage = () => {
       imageData,
       signal,
       controller,
-      setToDisableButton,
+      setToDisableLoadButton,
       dispatch,
     }); //!READ POINT 2.
   };
@@ -45,11 +45,11 @@ const ImagePage = () => {
     <section id="gallery" className={styles["image-container"]}>
       <div ref={divRef} className={styles["image-container-heading-container"]}>
         <h1>Gallery</h1>
-        {<component.ImageSearchForm />}
+        {<component.ImageSearchForm {...{ setToDisableLoadButton }} />}
 
         {imageData?.allData[0]?.href ? (
           <p style={{ margin: "1rem 0" }}>
-            Showing {imageData.allData.length}
+            Showing {imageData?.allData?.length}
             {imageData.allData.length <= 1 ? " image" : " images"}
           </p>
         ) : null}
@@ -81,11 +81,11 @@ const ImagePage = () => {
       {imageData?.allData[0]?.href ? (
         <button
           className={styles["fetch-more-images"]}
-          disabled={disableButton}
-          style={{ color: disableButton ? "red" : "" }}
+          disabled={disableLoadButton}
+          style={{ color: disableLoadButton ? "red" : "" }}
           onClick={() => handlePageChange()}
         >
-          {disableButton ? "NO more images to load" : "Load more images"}
+          {disableLoadButton ? "NO more images to load" : "Load more images"}
         </button>
       ) : null}
     </section>

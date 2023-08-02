@@ -9,7 +9,7 @@ import { useAppSelector, useAppDispatch } from '../../App/hooks';
 import formChecker from '../../utils/formChecker';
 import imageGetter from '../../utils/imageGetter';
 
-const ImageSearchForm = () => {
+const ImageSearchForm = ({ setToDisableLoadButton }: { setToDisableLoadButton: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const [searchValue, setSearchValue] = useState<string>("");
     const [disableButton, setToDisableButton] = useState<boolean>(false);
 
@@ -30,6 +30,7 @@ const ImageSearchForm = () => {
         }); //!READ POINT 1.
         //FUNCTION THAT FETCHES IMAGE BASED ON SEARCH QUERY
         imageGetter({ signal, controller, imageData, searchValue, setSearchValue, dispatch });
+        setToDisableLoadButton(false);
     };
 
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
