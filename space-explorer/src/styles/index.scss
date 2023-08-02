@@ -15,7 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   min-width: 320px;
-
+  height: 100%;
   scroll-behavior: smooth;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -36,20 +36,8 @@
 }
 
 .main {
-  min-height: 100vh; /* fall-back */
-  min-height: -moz-available;
-  min-height: -webkit-fill-available;
-  min-height: fill-available;
-  position: absolute;
-  top: 0;
-  left: 0;
+  height: 100%;
   width: 100%;
-
-  background-image: url("../assets/space-explorer-deep-space-main-bgr.webp");
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
 
   .videoTag {
     width: 100%;
@@ -66,5 +54,12 @@
     width: 100%;
     z-index: 9999;
     height: 5px;
+  }
+}
+@media screen and (max-width: 766px) {
+  .main {
+    .videoTag {
+      height: 200px;
+    }
   }
 }

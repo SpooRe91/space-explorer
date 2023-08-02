@@ -2,7 +2,7 @@
 export type TImageData = {
     href: string,
     data: [TDataObject],
-    links: [TImageItem | null]
+    links: [TImageItem]
 }
 
 export type TImageItem = {

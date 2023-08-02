@@ -4,7 +4,6 @@ import RocketIcon from "@mui/icons-material/Rocket";
 import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import useIntersectionHook from "../../customHooks/useIntersectionHook";
-
 const HomePage = () => {
   const divRef = useRef<HTMLDivElement>(null);
 
