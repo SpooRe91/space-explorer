@@ -17,7 +17,7 @@ import pageChanger from "../../utils/pageChanger";
 
 const ImageModal = () => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
-  const [disableButton, setToDisableButton] = useState<boolean>(false);
+  const [disableLoadButton, setToDisableLoadButton] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
   const globalData = useAppSelector(globalState);
@@ -34,7 +34,7 @@ const ImageModal = () => {
       imageData,
       signal,
       controller,
-      setToDisableButton,
+      setToDisableLoadButton,
       dispatch,
     }); //!READ POINT 2.
   };
@@ -82,9 +82,9 @@ const ImageModal = () => {
     <dialog
       className={
         styles[
-          globalData.toExpandImage
-            ? "modal-image-container-expanded"
-            : "modal-image-container"
+        globalData.toExpandImage
+          ? "modal-image-container-expanded"
+          : "modal-image-container"
         ]
       }
       onFocus={() => dispatch(setIsLoading(false))}
@@ -131,10 +131,10 @@ const ImageModal = () => {
                   disabled={
                     globalData.loading || currentImage
                       ? imageData?.allData?.indexOf(
-                          currentImage as TImageData
-                        ) +
-                          1 ===
-                        1
+                        currentImage as TImageData
+                      ) +
+                      1 ===
+                      1
                       : true
                   }
                   onClick={() => handlePreviousImage()}
@@ -145,29 +145,29 @@ const ImageModal = () => {
                   disabled={
                     globalData.loading || currentImage
                       ? imageData?.allData?.indexOf(
-                          currentImage as TImageData
-                        ) +
-                          1 ===
-                        imageData?.allData?.length
+                        currentImage as TImageData
+                      ) +
+                      1 ===
+                      imageData?.allData?.length
                       : true
                   }
                   onClick={() => handleNextImage()}
                 >
                   {currentImage
                     ? imageData?.allData?.indexOf(currentImage as TImageData) +
-                        1 ===
-                      imageData?.allData?.length
+                    1 ===
+                    imageData?.allData?.length
                     : null}
                   Next
                 </button>
                 {imageData?.allData[0]?.href ? (
                   <button
                     className={styles["fetch-more-images"]}
-                    disabled={disableButton}
-                    style={{ color: disableButton ? "red" : "" }}
+                    disabled={disableLoadButton}
+                    style={{ color: disableLoadButton ? "red" : "" }}
                     onClick={() => handlePageChange()}
                   >
-                    {disableButton ? "No more images" : "More images"}
+                    {disableLoadButton ? "No more images" : "More images"}
                   </button>
                 ) : null}
                 <Link
