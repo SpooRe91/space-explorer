@@ -9,7 +9,8 @@ import { useAppSelector, useAppDispatch } from '../../App/hooks';
 import formChecker from '../../utils/formChecker';
 import imageGetter from '../../utils/imageGetter';
 
-const ImageSearchForm = ({ setToDisableLoadButton }: { setToDisableLoadButton: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const ImageSearchForm = ({ setToDisableLoadButton }:
+    { setToDisableLoadButton: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const [searchValue, setSearchValue] = useState<string>("");
     const [disableButton, setToDisableButton] = useState<boolean>(false);
 
@@ -44,7 +45,8 @@ const ImageSearchForm = ({ setToDisableLoadButton }: { setToDisableLoadButton: R
             className={styles["search-form"]}
             onSubmit={(e) => handleSubmit(e)}
         >
-            <label className={styles["form-label"]} htmlFor="search-images">
+            <label className={styles["form-label"]}
+                htmlFor="search-images">
                 Search images:
             </label>
             <span>
