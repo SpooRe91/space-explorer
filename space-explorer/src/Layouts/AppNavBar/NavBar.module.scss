@@ -175,7 +175,7 @@
     top: 0;
     margin: 0 auto;
     width: 100%;
-    z-index: 500;
+    z-index: 600;
     justify-content: center;
     @include main-nav();
 }
@@ -251,9 +251,9 @@
 /*Mobile*/
 @media screen and (max-width: 766px) {
     @mixin res-nav {
-        height: inherit;
+        height: 170px;
         max-width: unset;
-        max-height: 180px;
+        max-height: 170px;
         display: flex;
         gap: 0.8rem;
         background-color: rgba(0, 0, 0, 0.8);
@@ -356,7 +356,7 @@
             display: flex;
             align-self: flex-start;
             position: fixed;
-            top: 130px;
+            top: 170px;
             left: 0;
             background: #132f5b;
             width: 100%;
