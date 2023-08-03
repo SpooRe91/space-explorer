@@ -45,16 +45,17 @@ const ImageSearchForm = ({ setToDisableLoadButton }:
             className={styles["search-form"]}
             onSubmit={(e) => handleSubmit(e)}
         >
-            <label className={styles["form-label"]}
-                htmlFor="search-images">
-                Search images:
-            </label>
-            <span>
-                <ImageSearchIcon />
+            <div className={styles['main-element']}>
+                <label className={styles["form-label"]}
+                    htmlFor="search-images">
+                    <ImageSearchIcon />
+                    Search images:
+                </label>
                 <input
                     className={styles["form-input"]}
                     onChange={(e) => handleInput(e)}
                     type="text"
+                    id='search-images'
                     name="search-images"
                     value={searchValue}
                     placeholder="e.g. jupiter"
@@ -63,13 +64,13 @@ const ImageSearchForm = ({ setToDisableLoadButton }:
                     maxLength={50}
                     required
                 />
-                <input
-                    type="submit"
-                    value="search"
-                    disabled={disableButton}
-                    className={styles["form-submit-button"]}
-                />
-            </span>
+            </div>
+            <input
+                type="submit"
+                value="search"
+                disabled={disableButton}
+                className={styles["form-submit-button"]}
+            />
         </form>
     )
 }
