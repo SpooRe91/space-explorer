@@ -165,19 +165,27 @@
         }
     }
 }
-
-.main-nav-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
+.hiding-nav {
+    width: 100%;
     position: fixed;
     top: 0;
-    margin: 0 auto;
-    width: 100%;
+    height: 80px;
     z-index: 600;
-    justify-content: center;
-    @include main-nav();
+    transition: all 200ms ease-in-out;
+
+    .main-nav-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+        position: fixed;
+        top: 0;
+        margin: 0 auto;
+        width: 100%;
+        z-index: 600;
+        justify-content: center;
+        @include main-nav();
+    }
 }
 
 .nav-logo-container {
@@ -361,7 +369,8 @@
             background: #132f5b;
             width: 100%;
             justify-content: center;
-            :active {
+            box-shadow: 0px 1px 0px 0px var(--card-box-shadow-collor-button);
+            &:active {
                 background: #305fac;
                 svg {
                     color: #4990be;
@@ -369,62 +378,65 @@
             }
         }
     }
-    .main-nav-container {
-        display: block;
-        flex-wrap: unset;
-        align-items: unset;
-        gap: unset;
-        justify-content: unset;
-        position: relative;
+    .hiding-nav {
+        transform: none !important;
+        .main-nav-container {
+            display: block;
+            flex-wrap: unset;
+            align-items: unset;
+            gap: unset;
+            justify-content: unset;
+            position: relative;
 
-        .nav-logo-container {
-            display: none;
-        }
-        .secondary-nav-container {
-            transform: translate(0%);
-            @include res-nav();
-            .nav-links {
-                height: unset;
-                width: unset;
-                gap: 1rem;
-                flex-wrap: wrap;
-                flex-direction: column;
-
-                .nav-link-item {
+            .nav-logo-container {
+                display: none;
+            }
+            .secondary-nav-container {
+                transform: translate(0%);
+                @include res-nav();
+                .nav-links {
+                    height: unset;
                     width: unset;
+                    gap: 1rem;
+                    flex-wrap: wrap;
+                    flex-direction: column;
 
-                    a {
-                        font-size: 1rem;
-                        font-weight: 700;
-                    }
+                    .nav-link-item {
+                        width: unset;
 
-                    .active {
-                        font-size: 1rem;
-                        font-weight: 700;
-                        color: #0bacc9;
-                        text-decoration: none;
-                        border: none;
-                        border-radius: unset;
-                        padding: unset;
-                        transition: all 150ms ease-in-out;
-                        &:hover {
-                            box-shadow: unset;
-                            text-shadow: unset;
+                        a {
+                            font-size: 1rem;
+                            font-weight: 700;
                         }
-                    }
 
-                    .pending {
-                        font-size: 1rem;
-                        font-weight: 700;
-                        color: #ffffff;
-                        text-decoration: none;
-                        border: none;
-                        border-radius: unset;
-                        padding: unset;
-                        transition: all 150ms ease-in-out;
-                        &:hover {
-                            box-shadow: unset;
-                            text-shadow: unset;
+                        .active {
+                            font-size: 1rem;
+                            font-weight: 700;
+                            color: #0bacc9;
+                            text-decoration: none;
+                            border: none;
+                            border-radius: unset;
+                            padding: unset;
+                            transition: all 150ms ease-in-out;
+                            &:hover {
+                                box-shadow: unset;
+                                text-shadow: unset;
+                            }
+                        }
+
+                        .pending {
+                            font-size: 1rem;
+                            font-weight: 700;
+                            color: #ffffff;
+                            text-decoration: none;
+                            border: none;
+                            border-radius: unset;
+                            padding: unset;
+                            transition: all 150ms ease-in-out;
+                            &:hover {
+                                box-shadow: unset;
+                                text-shadow: unset;
+                            }
                         }
                     }
                 }
