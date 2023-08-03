@@ -18,17 +18,25 @@ export const AboutPage = () => {
                 className={styles[isActive ? "slide-in" : "slide-out"]}
             >
                 <h2 className={styles["already-reg"]}>About <span>"Space-explorer"</span></h2>
-                <p className={styles["already-reg"]}>This is a personal project made with:
+                <p className={styles["already-reg"]}>This project is made with:
                 </p>
                 <span className={styles["emph-text"]}>
-                    React, Redux, TypeScript, SCSS, ReactRouter, AXIOS, MaterialUi.
+                    React, Redux, TypeScript, SCSS, AXIOS, MaterialUi.
                 </span>
                 <p className={styles["already-reg"]}>
-                    A fan page of space exploration, different articles and images from the NASA APIs.
+                    A fan page of space exploration, different articles and images from the NASA and othe astronomy APIs.
                     If you enjoy the website, you can follow me on
-                    <Link to={'https://github.com/SpooRe91'}> GitHub </Link>
+                    <Link
+                        to={'https://github.com/SpooRe91'}
+                        target="_blank"
+                        rel="noopener"
+                    > GitHub </Link>
                     and reach me on
-                    <Link to={"https://www.linkedin.com/in/mbogdanov9110/"}> LinkedIn </Link>
+                    <Link
+                        to={"https://www.linkedin.com/in/mbogdanov9110/"}
+                        target="_blank"
+                        rel="noopener"
+                    > LinkedIn </Link>
                 </p>
             </div>
             <div className={styles["img-container"]}>
