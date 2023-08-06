@@ -135,6 +135,7 @@
         height: clamp(900px, 1200px, 1620px);
         margin-bottom: 5rem;
         .image-container-heading-container {
+            width: clamp(320px, 40%, 750px);
             background-color: var(--component-bgr-transparent-color);
             padding: 1.5rem;
             h1 {
