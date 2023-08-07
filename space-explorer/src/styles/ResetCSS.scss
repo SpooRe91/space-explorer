@@ -43,7 +43,6 @@ body {
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-  background-repeat: no-repeat;
 }
 
 /* A elements that don't have a class get default styles */
@@ -72,7 +71,6 @@ select {
     background-image: url("../assets/space-explorer-desktop-wallpaper-vertical-background-vertical-vertical-space.jpg");
     background-position: center;
     background-attachment: unset;
-    background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
   }
