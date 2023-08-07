@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 export const imagesApi = axios.create({ baseURL: 'https://images-api.nasa.gov/' });
 
@@ -9,11 +9,15 @@ export const fetchImages = async (signal: AbortSignal, controller: AbortControll
             return await res.data.collection.items;
         }
     } catch (error: unknown) {
+        if (controller.signal.aborted) { return }
         if (typeof error === "string") {
             return error.toUpperCase()
-        } else if (error instanceof Error) {
-            if (controller.signal.aborted) { return }
-            return error.message
+        }
+        if (error instanceof AxiosError) {
+            return `We ran into a ${error.message}, please try again later!`
+        }
+        if (error instanceof Error) {
+            return error.message;
         }
     }
 };

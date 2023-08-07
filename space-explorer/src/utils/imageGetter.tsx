@@ -24,14 +24,14 @@ const imageGetter = async ({ signal, controller, imageData, searchValue, setSear
     const data = await fetchImages(signal, controller, imageData.imagePage, searchValue);
     setSearchValue('');
 
-    if (data.length && typeof data !== "string") {
+    if (data?.length && typeof data !== "string") {
         dispatch(setIsLoading(false));
         dispatch(imageSlice.actions.setImageData(data));
         dispatch(imageSlice.actions.setImagePage(imageData.imagePage + 1));
         return;
     }
 
-    if (!data.length && typeof data !== "string") {
+    if (!data?.length && typeof data !== "string") {
         dispatch(setIsLoading(false));
         dispatch(imageSlice.actions.setImagePage(1));
         dispatch(setIsLoading(false)), dispatch(setError({ error: "Sorry, no results found!", page: 'image' }));
@@ -40,7 +40,7 @@ const imageGetter = async ({ signal, controller, imageData, searchValue, setSear
     } else {
         dispatch(setIsLoading(false));
         dispatch(imageSlice.actions.setImagePage(1));
-        dispatch(setIsLoading(false)), dispatch(setError(data));
+        dispatch(setIsLoading(false)), dispatch(setError({ error: data, page: "image" }));
         return;
     }
 }

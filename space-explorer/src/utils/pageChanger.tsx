@@ -36,13 +36,13 @@ const pageChanger = async ({ imageData, signal, controller, setToDisableLoadButt
             return;
         }
         dispatch(setImagePage(1));
-        dispatch(setIsLoading(false)), dispatch(setError({ error: "Sorry, no results found!", page: 'image' }));
+        dispatch(setIsLoading(false)), dispatch(setError({ error: "Sorry, no results found!", page: 'modal' }));
         return;
 
     } else {
         dispatch(setIsLoading(false));
         dispatch(setImagePage(1));
-        dispatch(setIsLoading(false)), dispatch(setError(data));
+        dispatch(setIsLoading(false)), dispatch(setError({ error: data, page: "modal" }));
         return;
     }
 }

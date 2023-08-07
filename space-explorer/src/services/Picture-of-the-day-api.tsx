@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 
 export const fetchImageOfTheDay = async (signal: AbortSignal, controller: AbortController) => {
@@ -11,11 +11,15 @@ export const fetchImageOfTheDay = async (signal: AbortSignal, controller: AbortC
             return data.data
         }
     } catch (error: unknown) {
+        if (controller.signal.aborted) { return }
         if (typeof error === "string") {
             return error.toUpperCase()
-        } else if (error instanceof Error) {
-            if (controller.signal.aborted) { return }
-            return error.message
+        }
+        if (error instanceof AxiosError) {
+            return `We ran into a ${error.message}, please try again later!`
+        }
+        if (error instanceof Error) {
+            return error.message;
         }
     }
 };
