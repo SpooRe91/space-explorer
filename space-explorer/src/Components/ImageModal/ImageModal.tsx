@@ -14,6 +14,7 @@ import { useState } from "react";
 import { imageState } from "../../redux-slices/imagesSlice";
 import { TImageData } from "../../Interfaces and types/Types/types";
 import pageChanger from "../../utils/pageChanger";
+import { ErrorMessage } from "../../all-imported-components";
 
 const ImageModal = () => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
@@ -93,94 +94,98 @@ const ImageModal = () => {
         className={styles["modal-image-and-title-container"]}
         onClick={(e: React.MouseEvent<HTMLSpanElement>) => handleModalClick(e)}
       >
-        {!globalData.modalImageHref ? null : (
-          <>
-            <Link
-              className={styles[imageLoaded ? "image-link" : ""]}
-              to={globalData.modalImageHref}
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                onLoad={() => handleImageLoaded()}
-                className={styles[imageLoaded ? "image-loaded" : ""]}
-                src={globalData.modalImageHref}
-                alt={
-                  "Sorry, there was supposed to be an image here, but something went wrong!"
-                }
-                title={globalData.modalImageTitle}
-              />
-            </Link>
-            {!imageLoaded ? (
-              <p className={styles["image-loading-text"]}>Loading...</p>
-            ) : null}
-            {imageLoaded ? (
-              <p className={styles["modal-image-title"]}>
-                {globalData.modalImageTitle}
-              </p>
-            ) : null}
-            <div className={styles["modal-navigation-container"]}>
-              <p>
-                {currentImage
-                  ? imageData?.allData?.indexOf(currentImage) + 1
-                  : "N/A"}{" "}
-                / {imageData?.allData?.length}
-              </p>
-              <div className={styles["modal-buttons-container"]}>
-                <button
-                  disabled={
-                    globalData.loading || currentImage
-                      ? imageData?.allData?.indexOf(
-                        currentImage as TImageData
-                      ) +
-                      1 ===
-                      1
-                      : true
-                  }
-                  onClick={() => handlePreviousImage()}
-                >
-                  Previous
-                </button>
-                <button
-                  disabled={
-                    globalData.loading || currentImage
-                      ? imageData?.allData?.indexOf(
-                        currentImage as TImageData
-                      ) +
-                      1 ===
-                      imageData?.allData?.length
-                      : true
-                  }
-                  onClick={() => handleNextImage()}
-                >
-                  {currentImage
-                    ? imageData?.allData?.indexOf(currentImage as TImageData) +
-                    1 ===
-                    imageData?.allData?.length
-                    : null}
-                  Next
-                </button>
-                {imageData?.allData[0]?.href ? (
-                  <button
-                    className={styles["fetch-more-images"]}
-                    disabled={disableLoadButton}
-                    style={{ color: disableLoadButton ? "red" : "" }}
-                    onClick={() => handlePageChange()}
-                  >
-                    {disableLoadButton ? "No more images" : "More images"}
-                  </button>
-                ) : null}
+        {
+          globalData.error.error && globalData.error.page === "image" || globalData.error.page === "modal" ? (
+            <ErrorMessage error={globalData.error.error} />
+          ) :
+            !globalData.modalImageHref ? null : (
+              <>
                 <Link
-                  onClick={() => handleImageCloase()}
-                  to="#"
-                  className={styles["span-link"]}
+                  className={styles[imageLoaded ? "image-link" : ""]}
+                  to={globalData.modalImageHref}
+                  target="_blank"
+                  rel="noopener"
                 >
-                  <span className={"span-close-image"}>X</span>
+                  <img
+                    onLoad={() => handleImageLoaded()}
+                    className={styles[imageLoaded ? "image-loaded" : ""]}
+                    src={globalData.modalImageHref}
+                    alt={
+                      "Sorry, there was supposed to be an image here, but something went wrong!"
+                    }
+                    title={globalData.modalImageTitle}
+                  />
                 </Link>
-              </div>
-            </div>
-          </>
-        )}
+                {!imageLoaded ? (
+                  <p className={styles["image-loading-text"]}>Loading...</p>
+                ) : null}
+                {imageLoaded ? (
+                  <p className={styles["modal-image-title"]}>
+                    {globalData.modalImageTitle}
+                  </p>
+                ) : null}
+                <div className={styles["modal-navigation-container"]}>
+                  <p>
+                    {currentImage
+                      ? imageData?.allData?.indexOf(currentImage) + 1
+                      : "N/A"}{" "}
+                    / {imageData?.allData?.length}
+                  </p>
+                  <div className={styles["modal-buttons-container"]}>
+                    <button
+                      disabled={
+                        globalData.loading || currentImage
+                          ? imageData?.allData?.indexOf(
+                            currentImage as TImageData
+                          ) +
+                          1 ===
+                          1
+                          : true
+                      }
+                      onClick={() => handlePreviousImage()}
+                    >
+                      Previous
+                    </button>
+                    <button
+                      disabled={
+                        globalData.loading || currentImage
+                          ? imageData?.allData?.indexOf(
+                            currentImage as TImageData
+                          ) +
+                          1 ===
+                          imageData?.allData?.length
+                          : true
+                      }
+                      onClick={() => handleNextImage()}
+                    >
+                      {currentImage
+                        ? imageData?.allData?.indexOf(currentImage as TImageData) +
+                        1 ===
+                        imageData?.allData?.length
+                        : null}
+                      Next
+                    </button>
+                    {imageData?.allData[0]?.href ? (
+                      <button
+                        className={styles["fetch-more-images"]}
+                        disabled={disableLoadButton}
+                        style={{ color: disableLoadButton ? "red" : "" }}
+                        onClick={() => handlePageChange()}
+                      >
+                        {disableLoadButton ? "No more images" : "More images"}
+                      </button>
+                    ) : null}
+                    <Link
+                      onClick={() => handleImageCloase()}
+                      to="#"
+                      className={styles["span-link"]}
+                    >
+                      <span className={"span-close-image"}>X</span>
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
       </section>
     </dialog>
   );

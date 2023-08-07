@@ -58,7 +58,7 @@ const ImagePage = () => {
         globalData.toExpandImage ? <component.ImageModal /> : null}
 
       {
-        globalData.error.error && globalData.error.page === "image"
+        globalData.error.error && globalData.error.page === "image" || globalData.error.page === "modal"
           ? <div className={styles["loader-error"]}>
             <component.ErrorMessage error={globalData.error.error} />
           </div>
