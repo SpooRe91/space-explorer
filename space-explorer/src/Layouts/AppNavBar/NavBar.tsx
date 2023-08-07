@@ -111,7 +111,7 @@ const NavBar = () => {
                 Gallery
               </NavLink>
             </li>
-            <li className={styles["nav-link-item"]}>
+            {/* <li className={styles["nav-link-item"]}>
               <NavLink aria-label="Articles" to={"/#articles"}
                 onClick={() => dispatch(setToShowPoD(false))}
                 className={() =>
@@ -121,7 +121,7 @@ const NavBar = () => {
                 }>
                 Articles
               </NavLink>
-            </li>
+            </li> */}
             <li className={styles["nav-link-item"]}>
               <NavLink
                 aria-label="About"
