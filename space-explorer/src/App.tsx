@@ -39,7 +39,7 @@ function App() {
         <component.HomePage />
         <component.ImagePage />
         <component.ArticlesPage />
-        <component.AboutPage />
+        {/* <component.AboutPage /> */}
         {globalData.showPoD ? <component.PoDPage /> : null}
       </>
     </div>
