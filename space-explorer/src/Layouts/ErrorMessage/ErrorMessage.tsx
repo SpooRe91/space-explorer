@@ -7,7 +7,7 @@ import {
 } from "../../redux-slices/globalSlice";
 import styles from "./ErrorMessage.module.scss";
 
-const ErrorMessage = ({ error }: { error: string }) => {
+const ErrorMessage = ({ error }: { error?: string }) => {
   const globalData = useAppSelector(globalState);
   const dispatch = useAppDispatch();
   globalData.error;
@@ -16,12 +16,11 @@ const ErrorMessage = ({ error }: { error: string }) => {
       <Alert style={{ fontSize: "1.5rem" }} severity="error">
         {/*IF THERE IS AN ERORR PASSED - DISPLAY THAT, OTHERWISE DISPLAY THE GLOBAL ERROR */}
         <>
-          Error:
           {globalData.error.error === "Network Error"
             ? "Sorry, there is a network issue, please try again later!"
             : error
-            ? error
-            : globalData.error}
+              ? error
+              : globalData.error}
         </>
       </Alert>
       <button
