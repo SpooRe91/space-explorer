@@ -58,6 +58,7 @@
   .main {
     position: fixed;
     overflow-y: scroll;
+    scroll-behavior: smooth;
     .videoTag {
       height: 200px;
     }
