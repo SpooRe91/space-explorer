@@ -79,7 +79,7 @@
 
 .home-hero-section {
     width: 100%;
-    height: 100vh;
+    height: clamp(560px, 100vh, 750px);
     top: 10rem;
     margin-bottom: 35rem;
     position: relative;
