@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch } from "../App/hooks";
 import { setActiveNavElement } from "../redux-slices/globalSlice";
 
-const useIntersectionHook = (tragetRef: React.RefObject<HTMLElement>,
+const useIntersectionHook = (targetRef: React.RefObject<HTMLElement>,
     pageName: string) => {
 
     const [isActive, setIsActive] = useState<boolean>(false);
@@ -16,7 +16,7 @@ const useIntersectionHook = (tragetRef: React.RefObject<HTMLElement>,
             const [entry] = entries;
             setIsActive(entry.isIntersecting);
             // IF INTERSECTS - DISPATCHING THE ACTIVE ELEMENT'S NAME AND BOOLEAN TO INDICATE IT;
-            if (entry.isIntersecting && tragetRef.current) {
+            if (entry.isIntersecting && targetRef.current) {
                 dispatch(setActiveNavElement({
                     isActive: true,
                     activeEl: pageName
@@ -32,15 +32,14 @@ const useIntersectionHook = (tragetRef: React.RefObject<HTMLElement>,
             { threshold: 1 }
         );
         // HERE WE SAY THAT IF WE HAVE A REF TO A SPECIFIC EL - WE SHOULD OBSERVE IT;
-        if (tragetRef.current) {
-            observer.observe(tragetRef.current);
+        if (targetRef.current) {
+            observer.observe(targetRef.current);
         }
         // AND IF THE CURRENT ELEMENT IS ACTIVE - THEN WE SHOULD STOP OBSERVING IT;
-        if (isActive && tragetRef.current) {
-            observer.unobserve(tragetRef.current);
+        if (isActive && targetRef.current) {
+            observer.unobserve(targetRef.current);
         }
-
-    }, []);
+    }, [targetRef]);
 
     return isActive;
 }
