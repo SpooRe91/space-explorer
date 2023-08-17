@@ -39,6 +39,12 @@ const useIntersectionHook = (targetRef: React.RefObject<HTMLElement>,
         if (isActive && targetRef.current) {
             observer.unobserve(targetRef.current);
         }
+        const target = targetRef.current;
+        return (() => {
+            target ?
+                observer.unobserve(target)
+                : null
+        })
     }, [targetRef]);
 
     return isActive;

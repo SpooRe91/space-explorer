@@ -16,7 +16,7 @@ const HomePage = () => {
         <div className={styles["home-hero-heading-container"]}>
           <h1 ref={divRef} className={styles["home-hero-header1"]}>
             Space Explorer
-            <span ref={divRef} className={styles["home-hero-icon1"]}>
+            <span className={styles["home-hero-icon1"]}>
               <RocketIcon />
             </span>
           </h1>
