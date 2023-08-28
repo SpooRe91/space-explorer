@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import styles from "./ImageSearchForm.module.scss";
+import styles from "./SearchForm.module.scss";
 import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 
 import { setError } from '../../redux-slices/globalSlice';
@@ -7,10 +7,13 @@ import { imageState, setImagePage } from '../../redux-slices/imagesSlice';
 import { useAppSelector, useAppDispatch } from '../../App/hooks';
 
 import formChecker from '../../utils/formChecker';
-import imageGetter from '../../utils/imageGetter';
+import itemsGetter from '../../utils/itemsGetter';
 
-const ImageSearchForm = ({ setToDisableLoadButton }:
-    { setToDisableLoadButton: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const SearchForm = ({ setToDisableLoadButton, pageView }:
+    {
+        setToDisableLoadButton: React.Dispatch<React.SetStateAction<boolean>>,
+        pageView: 'images' | 'articles'
+    }) => {
     const [searchValue, setSearchValue] = useState<string>("");
     const [disableButton, setToDisableButton] = useState<boolean>(false);
 
@@ -30,7 +33,7 @@ const ImageSearchForm = ({ setToDisableLoadButton }:
             dispatch,
         }); //!READ POINT 1.
         //FUNCTION THAT FETCHES IMAGE BASED ON SEARCH QUERY
-        imageGetter({ signal, controller, imageData, searchValue, setSearchValue, dispatch });
+        itemsGetter({ signal, controller, imageData, searchValue, setSearchValue, dispatch, pageView });
         setToDisableLoadButton(false);
     };
 
@@ -47,18 +50,18 @@ const ImageSearchForm = ({ setToDisableLoadButton }:
         >
             <div className={styles['main-element']}>
                 <label className={styles["form-label"]}
-                    htmlFor="search-images">
+                    htmlFor={pageView === "images" ? "search-images" : "search-articles"}>
                     <ImageSearchIcon />
-                    Search images:
+                    Search {pageView === "images" ? "images" : "articles"}
                 </label>
                 <input
                     className={styles["form-input"]}
                     onChange={(e) => handleInput(e)}
                     type="text"
-                    id='search-images'
-                    name="search-images"
+                    id={pageView === "images" ? "search-images" : "search-articles"}
+                    name={pageView === "images" ? "search-images" : "search-articles"}
                     value={searchValue}
-                    placeholder="e.g. jupiter"
+                    placeholder="e.g. sun spots"
                     pattern="[A-Za-z\d\s]*"
                     minLength={0}
                     maxLength={50}
@@ -75,4 +78,4 @@ const ImageSearchForm = ({ setToDisableLoadButton }:
     )
 }
 
-export default ImageSearchForm
+export default SearchForm

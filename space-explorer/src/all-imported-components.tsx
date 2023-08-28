@@ -10,7 +10,7 @@ import HomePage from "./Pages/HomePage";
 import ImagePage from "./Pages/ImagePage/Index";
 import ArticlesPage from "./Pages/ArticlesPage";
 import ArticleCard from "./Components/ArticleCard/ArticleCard";
-import ImageSearchForm from "./Components/ImageSearchForm/ImageSearchForm";
+import SearchForm from "./Components/ImageSearchForm/SearchForm";
 
 export {
   NavBar,
@@ -18,7 +18,7 @@ export {
   ImagePage,
   AboutPage,
   ArticlesPage,
-  ImageSearchForm,
+  SearchForm,
   GlobalLoader,
   ImageComponent,
   ImageModal,
