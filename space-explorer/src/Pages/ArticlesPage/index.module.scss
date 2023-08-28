@@ -36,6 +36,15 @@
         0px 0px 15px 6.6px var(--card-box-shadow-color),
         0px 0px 15px 6.6px var(--card-box-shadow-color);
 
+    .trigger {
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        background-color: transparent;
+    }
+
     .active-header-container {
         width: 50%;
         height: fit-content;
@@ -66,6 +75,7 @@
 
     .articles-secondary-container {
         display: flex;
+        justify-content: center;
         width: 44%;
         max-height: 750px;
         padding: 1rem 0.8rem 6rem 0.8rem;
