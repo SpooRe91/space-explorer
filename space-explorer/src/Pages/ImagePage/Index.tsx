@@ -45,7 +45,7 @@ const ImagePage = () => {
     <section id="gallery" className={styles["image-container"]}>
       <div ref={divRef} className={styles["image-container-heading-container"]}>
         <h1>Gallery</h1>
-        {<component.ImageSearchForm {...{ setToDisableLoadButton }} />}
+        {<component.SearchForm {...{ setToDisableLoadButton, pageView: 'images' }} />}
 
         {imageData?.allData[0]?.href ? (
           <p style={{ margin: "1rem 0" }}>
