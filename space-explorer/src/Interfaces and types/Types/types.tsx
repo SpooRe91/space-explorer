@@ -5,6 +5,27 @@ export type TImageData = {
     links: [TImageItem]
 }
 
+export type TArticleData = {
+    count?: number | null,
+    next?: string,
+    previous?: null,
+    results: TArticleItem[] | null;
+}
+
+export type TArticleItem = {
+    events: [];
+    featured: boolean;
+    id: number | null;
+    image_url: string;
+    launches: [];
+    news_site: string;
+    published_at: string;
+    summary: string;
+    title: string;
+    updated_at: string;
+    url: string;
+}
+
 export type TImageItem = {
     href: string,
     rel: string,
