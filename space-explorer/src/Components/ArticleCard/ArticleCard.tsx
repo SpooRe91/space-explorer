@@ -5,26 +5,20 @@ import {
 } from "@mui/material";
 import ShareIcon from '@mui/icons-material/Share';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import styles from "./ArticleCard.module.scss";
-import { TImageData } from "../../Interfaces and types/Types/types";
+import { TArticleItem } from "../../Interfaces and types/Types/types";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const ArticleCard = (item: { item: TImageData }) => {
+const ArticleCard = (item: TArticleItem) => {
 
-  const [expand, setToExpand] = useState<boolean>(false);
-  const [copy, setToCopy] = useState<boolean>(false);
+  const [textCopied, setToCopy] = useState<boolean>(false);
 
   const handleShare = async () => {
-    if (!item.item.links[0]) { return }
-    await navigator.clipboard.writeText(item.item.links[0].href);
+    if (!item.id) { return }
+    await navigator.clipboard.writeText(item.news_site);
     //TEXT SHOULD BE THE HREF OF THE CURRENT ARTICLE
   };
-
-  const handleExpand = () => {
-    setToExpand(state => !state);
-  }
 
   const handleToCopyText = () => {
     setToCopy(() => true);
@@ -35,84 +29,71 @@ const ArticleCard = (item: { item: TImageData }) => {
   }
 
   return (
-    <div className={styles["article-card-wrapper"]}
-      style={
-        expand
-          ? { transform: 'translateX(0%)' }
-          : { transform: 'translateX(67%)' }
-      }
+    <div
+      className={styles["article-card-wrapper"]}
     >
       <ImageListItem className={styles["article-card-li"]}>
         <div className={styles["article-img-title-container"]}>
           <Link
-            to={item.item.links[0].href}
+            to={item.news_site}
             target="_blank"
             rel="noopener"
           >
             <img
               className={styles["article-card-image"]}
-              src={item.item.links[0]?.href}
-              srcSet={item.item.links[0]?.href}
-              alt={item.item.data[0].title}
+              src={item.image_url}
+              srcSet={item.image_url}
+              alt={item.title}
               loading="lazy"
             />
           </Link>
           <h3 className={"article-card-title"}>
-            {item.item.data[0].title}
+            {item.title}
           </h3>
           {
-            item.item.data[0].secondary_creator
+            item.updated_at
               ?
               <Typography>
                 <span>
-                  Created by:
-                </span> {item.item.data[0].secondary_creator}
+                  Published:
+                </span> {item?.published_at.split('T')[0]}
               </Typography>
               : null
           }
           <div className={styles["article-card-button-container"]}>
-            <button
-              className={styles['card-button']}
-              onClick={() => handleExpand()}
-              style={
-                expand
-                  ? {
-                    backgroundColor: '#4990be96',
-                    transform: 'rotate(0deg)'
-                  }
-                  : {
-                    backgroundColor: '',
-                    transform: 'rotate(180deg)'
-                  }
-              }>
-              <ArrowForwardIcon />
-            </button>
-            <button
-              className={styles['card-button']}
-              onClick={() => [handleShare(), handleToCopyText()]}>
-              <ShareIcon />
-              {
-                copy
-                  ? <span className={styles["share-copied"]}>Copied!</span>
-                  : null
-              }
-            </button>
+            <Link
+              to={item.url}
+              target="_blank"
+              rel="noopener"
+              className={styles['card-link']}>
+              Read More
+            </Link>
             <button
               className={styles['card-button']}
             >
               <Link
                 className={styles["facebook-share"]}
                 target="_blank"
-                to={`https://www.facebook.com/sharer/sharer.php?u=${item.item.links[0].href}`}
+                to={`https://www.facebook.com/sharer/sharer.php?u=${item.news_site}`}
               >
                 <FacebookIcon />
               </Link>
+            </button>
+            <button
+              className={styles['card-button']}
+              onClick={() => [handleShare(), handleToCopyText()]}>
+              <ShareIcon />
+              {
+                textCopied
+                  ? <span className={styles["share-copied"]}>Copied!</span>
+                  : null
+              }
             </button>
           </div>
         </div>
         <article className={styles["article-card-text-container"]}>
           <p className={styles["article-card-text"]}>
-            {item.item.data[0].description}
+            {item.summary}
           </p>
         </article>
       </ImageListItem>
