@@ -65,6 +65,7 @@ const SearchForm = ({ setToDisableLoadButton, pageView }:
                     pattern="[A-Za-z\d\s]*"
                     minLength={0}
                     maxLength={50}
+                    autoCorrect='true'
                     required
                 />
             </div>
