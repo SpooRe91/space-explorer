@@ -5,7 +5,7 @@ import { ArticleCard, ErrorMessage } from "../../all-imported-components";
 import { useAppSelector } from "../../App/hooks";
 
 import { TArticleItem } from "../../Interfaces and types/Types/types";
-import SearchForm from '../../Components/ImageSearchForm/SearchForm';
+import SearchForm from '../../Components/SearchForm/SearchForm';
 import { articleState } from "../../redux-slices/articleSlice";
 import { globalState } from "../../redux-slices/globalSlice";
 
