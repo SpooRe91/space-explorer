@@ -31,7 +31,7 @@ const itemsGetter = async ({ signal, controller, imageData, searchValue, setSear
             : await fetchArticles(signal, controller, searchValue);
     setSearchValue('');
 
-    if (data && typeof data !== "string" && !(data instanceof Error)) {
+    if (data.length && typeof data !== "string" && !(data instanceof Error)) {
 
         dispatch(setIsLoading(false));
         pageView === "images"
@@ -44,10 +44,8 @@ const itemsGetter = async ({ signal, controller, imageData, searchValue, setSear
             )
         return;
     }
-
     if (!data?.length && typeof data !== "string") {
         dispatch(setIsLoading(false));
-
         pageView === "images"
             ?
             (dispatch(imageSlice.actions.setImagePage(1)),
