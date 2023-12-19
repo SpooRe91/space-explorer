@@ -1,5 +1,6 @@
 import { TGLobalError, TImageData } from "../Types/types";
 
+
 export interface IGlobal {
     loading: boolean;
     error: TGLobalError,
@@ -11,11 +12,13 @@ export interface IGlobal {
     showPoD: boolean;
 }
 
+
 export interface IImageData {
     allData: TImageData[],
     imagePage: number,
     queryString: string
 }
+
 
 export interface IAction<T, P> {
     readonly type: T;
