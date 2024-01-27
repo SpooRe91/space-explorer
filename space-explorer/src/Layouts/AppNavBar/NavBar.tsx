@@ -10,17 +10,39 @@ import {
 
 import styles from "./NavBar.module.scss";
 import icon from "../../assets/icons/android-chrome-192x192.png";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useHideNavOnScroll from "../../customHooks/useHideNavOnScroll";
+import { deviceDetect } from 'react-device-detect';
 
 const NavBar = () => {
   const globalData = useAppSelector(globalState);
   const dispatch = useAppDispatch();
   const { pathname, hash, key } = useLocation();
   const [scrollNavUp, setToScrollNavUp] = useState<boolean>(false);
+  const [currentlyIsMobile, setCurrentlyIsMobile] = useState<boolean>(false);
+
+  const detectedDevice = useCallback(() => {
+    const { isMobile } = deviceDetect(navigator.userAgent);
+    return isMobile ?? false;
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const isMobile = detectedDevice();
+      setCurrentlyIsMobile(isMobile);
+
+      isMobile
+        ? console.log('%cMOBILE VIEW 📱', 'color: green')
+        : console.log('%cDESKTOP VIEW 💻', 'color: orange')
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   const checkIfMobile = (): void => {
-    if (screen.width <= 766) {
+    if (currentlyIsMobile) {
       dispatch(setShowNav(!globalData.showSideNav));
     }
   };
@@ -156,15 +178,20 @@ const NavBar = () => {
               Picture of the day
             </button>
           </div>
-          <div
+          < div
             className={styles["nav-toggler-contaier"]}
             onClick={() => checkIfMobile()}
+
           >
-            <BiDotsHorizontalRounded />
+            {
+              currentlyIsMobile ?
+                <BiDotsHorizontalRounded />
+                : null
+            }
           </div>
         </nav>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 };
 
