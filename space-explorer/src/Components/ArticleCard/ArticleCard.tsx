@@ -68,7 +68,7 @@ const ArticleCard = (item: TArticleItem) => {
               className={styles['card-link']}>
               Read More
             </Link>
-            <button
+            {/* <button
               className={styles['card-button']}
             >
               <Link
@@ -78,7 +78,7 @@ const ArticleCard = (item: TArticleItem) => {
               >
                 <FacebookIcon />
               </Link>
-            </button>
+            </button> */}
             <button
               className={styles['card-button']}
               onClick={() => [handleShare(), handleToCopyText()]}>

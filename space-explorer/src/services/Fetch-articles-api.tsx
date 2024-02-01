@@ -11,8 +11,8 @@ export const fetchArticles = async (signal: AbortSignal, controller: AbortContro
             .get('/articles', { signal: signal });
         const data = await res;
 
-        if (data.status >= 200 && data.status <= 300) {
-            return data.data
+        if (data.status >= 200 && data.status <= 300 && data?.data?.results.length) {
+            return data.data.results
         }
 
     } catch (error: unknown) {
