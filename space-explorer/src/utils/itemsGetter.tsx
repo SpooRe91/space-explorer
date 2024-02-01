@@ -37,7 +37,8 @@ const itemsGetter = async ({ signal, controller, imageData, searchValue, setSear
             ? (dispatch(imageSlice.actions.setImageData(data)),
                 dispatch(imageSlice.actions.setImagePage(imageData.imagePage + 1)))
             :
-            dispatch(setArticles(data));
+            (dispatch(setArticles(data)),
+                dispatch(imageSlice.actions.setImagePage(imageData.imagePage + 1)))
         return;
     }
     if (!data?.length && typeof data !== "string") {
