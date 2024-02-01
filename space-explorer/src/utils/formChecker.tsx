@@ -8,7 +8,7 @@ import { IGlobal, IImageData } from "../Interfaces and types/Interfaces/interfac
 import { TPicOfTheDay } from "../Interfaces and types/Types/types";
 
 
-const formChecker = async ({ searchValue, setSearchValue, setToDisableButton, dispatch }: {
+const formChecker = async ({ searchValue, setSearchValue, setToDisableButton, dispatch, pageView }: {
     searchValue: string,
     setSearchValue: React.Dispatch<React.SetStateAction<string>>,
     setToDisableButton: React.Dispatch<React.SetStateAction<boolean>>,
@@ -17,6 +17,7 @@ const formChecker = async ({ searchValue, setSearchValue, setToDisableButton, di
         imageSlice: IImageData;
         podSlice: TPicOfTheDay;
     }, undefined, AnyAction>,
+    pageView: string
 
 }) => {
 
@@ -28,10 +29,11 @@ const formChecker = async ({ searchValue, setSearchValue, setToDisableButton, di
         setSearchValue('');
         return;
     }
-
-    setToDisableButton(false);
-    dispatch(imageSlice.setClearImageData(true));
-    dispatch(imageSlice.setImageQueryString(searchValue));
+    if (pageView === 'images') {
+        setToDisableButton(false);
+        dispatch(imageSlice.setClearImageData(true));
+        dispatch(imageSlice.setImageQueryString(searchValue));
+    }
 
     if (searchValue === '') {
         dispatch(setIsLoading(false));

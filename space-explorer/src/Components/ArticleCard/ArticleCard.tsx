@@ -4,7 +4,7 @@ import {
   Typography,
 } from "@mui/material";
 import ShareIcon from '@mui/icons-material/Share';
-import FacebookIcon from '@mui/icons-material/Facebook';
+// import FacebookIcon from '@mui/icons-material/Facebook';
 import styles from "./ArticleCard.module.scss";
 import { TArticleItem } from "../../Interfaces and types/Types/types";
 import { useState } from "react";
@@ -68,7 +68,7 @@ const ArticleCard = (item: TArticleItem) => {
               className={styles['card-link']}>
               Read More
             </Link>
-            <button
+            {/* <button
               className={styles['card-button']}
             >
               <Link
@@ -78,7 +78,7 @@ const ArticleCard = (item: TArticleItem) => {
               >
                 <FacebookIcon />
               </Link>
-            </button>
+            </button> */}
             <button
               className={styles['card-button']}
               onClick={() => [handleShare(), handleToCopyText()]}>

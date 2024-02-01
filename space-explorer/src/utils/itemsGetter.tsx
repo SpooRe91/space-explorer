@@ -30,43 +30,41 @@ const itemsGetter = async ({ signal, controller, imageData, searchValue, setSear
             await fetchImages(signal, controller, imageData.imagePage, searchValue)
             : await fetchArticles(signal, controller, searchValue);
     setSearchValue('');
+    dispatch(setIsLoading(false));
+    if (data?.length && typeof data !== "string" && !(data instanceof Error)) {
 
-    if (data.length && typeof data !== "string" && !(data instanceof Error)) {
-
-        dispatch(setIsLoading(false));
         pageView === "images"
             ? (dispatch(imageSlice.actions.setImageData(data)),
                 dispatch(imageSlice.actions.setImagePage(imageData.imagePage + 1)))
             :
-            (
-                dispatch(setArticles(data)),
-                dispatch(imageSlice.actions.setImagePage(imageData.imagePage + 1))
-            )
+            dispatch(setArticles(data));
         return;
     }
     if (!data?.length && typeof data !== "string") {
-        dispatch(setIsLoading(false));
+
         pageView === "images"
             ?
             (dispatch(imageSlice.actions.setImagePage(1)),
-                dispatch(setIsLoading(false)),
-                dispatch(setError({ error: "Sorry, no results found!", page: pageView })))
+                dispatch(setError({ error: "Sorry, no results found!", page: pageView })),
+                dispatch(imageSlice.actions.setClearImageData(true))
+            )
             :
             (
-                dispatch(setIsLoading(false)),
-                dispatch(setError({ error: "Sorry, no results found!", page: pageView }))
+                dispatch(setError({ error: "Sorry, no results found!", page: pageView })),
+                dispatch(setArticles([]))
             )
         return;
 
     } else {
-        dispatch(setIsLoading(false));
 
         pageView === "images"
             ? (dispatch(imageSlice.actions.setImagePage(1)),
-                dispatch(setIsLoading(false)), dispatch(setError({ error: data, page: pageView }))
+                dispatch(setError({ error: data, page: pageView })),
+                dispatch(imageSlice.actions.setClearImageData(true))
             )
             : (
-                dispatch(setIsLoading(false)), dispatch(setError({ error: data, page: pageView }))
+                dispatch(setError({ error: data, page: pageView })),
+                dispatch(setArticles([]))
             )
         return;
     }

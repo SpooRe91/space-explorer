@@ -31,6 +31,7 @@ const SearchForm = ({ setToDisableLoadButton, pageView }:
             setSearchValue,
             setToDisableButton,
             dispatch,
+            pageView
         }); //!READ POINT 1.
         //FUNCTION THAT FETCHES IMAGE BASED ON SEARCH QUERY
         itemsGetter({ signal, controller, imageData, searchValue, setSearchValue, dispatch, pageView });
