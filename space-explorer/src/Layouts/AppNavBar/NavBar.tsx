@@ -14,6 +14,8 @@ import { useCallback, useEffect, useState } from "react";
 import useHideNavOnScroll from "../../customHooks/useHideNavOnScroll";
 import { deviceDetect } from 'react-device-detect';
 
+//--------------------------------------------------------
+
 const NavBar = () => {
   const globalData = useAppSelector(globalState);
   const dispatch = useAppDispatch();
