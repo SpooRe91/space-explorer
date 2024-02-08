@@ -8,6 +8,8 @@ import {
   setToShowPoD,
 } from "../../redux-slices/globalSlice";
 
+//SOME COMPLETE TESTING TEXT
+
 import styles from "./NavBar.module.scss";
 import icon from "../../assets/icons/android-chrome-192x192.png";
 import { useCallback, useEffect, useState } from "react";
