@@ -10,7 +10,7 @@ import { TArticleItem } from "../../Interfaces and types/Types/types";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const ArticleCard = (item: TArticleItem) => {
+const ArticleCard: React.FC<TArticleItem> = (item) => {
 
   const [textCopied, setToCopy] = useState<boolean>(false);
 

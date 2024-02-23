@@ -1,26 +1,27 @@
-import { ThunkDispatch } from "@reduxjs/toolkit";
-import { AnyAction } from "redux";
-import { IGlobal, IImageData } from "../Interfaces and types/Interfaces/interfaces";
-import { TPicOfTheDay } from "../Interfaces and types/Types/types";
 import { setIsLoading, setError } from "../redux-slices/globalSlice";
 import { fetchImages } from "../services/Fetch-search-images.api";
 import { setImagePage, setAdditionalImageData } from "../redux-slices/imagesSlice";
+import { PageChangerProps } from "../Interfaces and types/Types/types";
 
-const pageChanger = async ({ imageData, signal, controller, setToDisableLoadButton, dispatch }: {
-    imageData: IImageData,
-    signal: AbortSignal,
-    controller: AbortController,
-    setToDisableLoadButton: React.Dispatch<React.SetStateAction<boolean>>,
-    dispatch: ThunkDispatch<{
-        globalSlice: IGlobal;
-        imageSlice: IImageData;
-        podSlice: TPicOfTheDay;
-    }, undefined, AnyAction>
-}) => {
+/** !IMPORTANT helper function to check numerous conditions
+    before and after changing a page for next request of images
+    or if there are any more to request */
+const pageChanger = async ({
+    imageData,
+    signal,
+    controller,
+    setToDisableLoadButton,
+    dispatch
+}: PageChangerProps) => {
     dispatch(setIsLoading(true));
     dispatch(setImagePage(imageData.imagePage + 1));
 
-    const data = await fetchImages(signal, controller, imageData.imagePage, imageData.queryString);
+    const data = await fetchImages({
+        signal,
+        controller,
+        page: imageData.imagePage,
+        queryString: imageData.queryString
+    });
 
     if (data.length && typeof data !== "string") {
         dispatch(setIsLoading(false));

@@ -15,7 +15,7 @@ import pageChanger from "../../utils/pageChanger";
 import { ImageListItem } from "@mui/material";
 
 
-const ImagePage = () => {
+const ImagePage: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
   useIntersectionHook(divRef, "#gallery");
 
@@ -29,17 +29,18 @@ const ImagePage = () => {
   const [disableLoadButton, setToDisableLoadButton] = useState<boolean>(false);
 
   const handlePageChange = async () => {
-    //2. !IMPORTANT helper function to check numerous conditions
-    // before and after changing a page for next request of images
-    // or if there are any more to request
+
     pageChanger({
       imageData,
       signal,
       controller,
       setToDisableLoadButton,
       dispatch,
-    }); //!READ POINT 2.
+    });
   };
+
+  const hasImageData = imageData?.allData[0]?.href;
+  const hasError = globalData.error.error && globalData.error.page === "images" || globalData.error.page === "modal";
 
   return (
     <section id="gallery" className={styles["image-container"]}>
@@ -47,7 +48,7 @@ const ImagePage = () => {
         <h1>Gallery</h1>
         {<component.SearchForm {...{ setToDisableLoadButton, pageView: 'images' }} />}
 
-        {imageData?.allData[0]?.href ? (
+        {hasImageData ? (
           <p style={{ margin: "1rem 0" }}>
             Showing {imageData?.allData?.length}
             {imageData.allData.length <= 1 ? " image" : " images"}
@@ -58,12 +59,12 @@ const ImagePage = () => {
         globalData.toExpandImage ? <component.ImageModal /> : null}
 
       {
-        globalData.error.error && globalData.error.page === "images" || globalData.error.page === "modal"
+        hasError
           ? <div className={styles["loader-error"]}>
             <component.ErrorMessage error={globalData.error.error} />
           </div>
           // IF THERE ARE IMAGES IN THE GLOBAL DATA, SHOW THE LIST OF IMAGES
-          : imageData?.allData[0]?.href
+          : hasImageData
             ? <div className={styles["image-list"]}>
               {imageData.allData.map((item: TImageData) => (
                 <ImageListItem
@@ -78,7 +79,7 @@ const ImagePage = () => {
 
         // IF THERE ARE NO IMAGES, CHECK IF IT'S STILL LOADING OR IF THERE IS AN ERROR
       }
-      {imageData?.allData[0]?.href ? (
+      {hasImageData ? (
         <button
           className={styles["fetch-more-images"]}
           disabled={disableLoadButton}

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import styles from "./SearchForm.module.scss";
 import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 
@@ -8,12 +8,9 @@ import { useAppSelector, useAppDispatch } from '../../App/hooks';
 
 import formChecker from '../../utils/formChecker';
 import itemsGetter from '../../utils/itemsGetter';
+import { SearchFormTypes } from '../../Interfaces and types/Types/types';
 
-const SearchForm = ({ setToDisableLoadButton, pageView }:
-    {
-        setToDisableLoadButton: React.Dispatch<React.SetStateAction<boolean>>,
-        pageView: 'images' | 'articles'
-    }) => {
+const SearchForm: React.FC<SearchFormTypes> = ({ setToDisableLoadButton, pageView }) => {
     const [searchValue, setSearchValue] = useState<string>("");
     const [disableButton, setToDisableButton] = useState<boolean>(false);
 
@@ -25,15 +22,15 @@ const SearchForm = ({ setToDisableLoadButton, pageView }:
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        //1. !IMPORTANT helper function to check numerous input conditions
+
         formChecker({
             searchValue,
             setSearchValue,
             setToDisableButton,
             dispatch,
             pageView
-        }); //!READ POINT 1.
-        //FUNCTION THAT FETCHES IMAGE BASED ON SEARCH QUERY
+        });
+
         itemsGetter({ signal, controller, imageData, searchValue, setSearchValue, dispatch, pageView });
         setToDisableLoadButton(false);
     };

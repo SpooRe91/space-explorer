@@ -1,7 +1,9 @@
 import axios, { AxiosError } from "axios";
+import { AbortType } from "../Interfaces and types/Types/types";
 
+/**Does an axios fetch request to the endpoint, to fetch THE IMAGE OF THE DAY and returns the result. */
 
-export const fetchImageOfTheDay = async (signal: AbortSignal, controller: AbortController) => {
+export const fetchImageOfTheDay = async ({ signal, controller }: AbortType) => {
 
     try {
         const res = axios.create({ baseURL: 'https://mb-cook-server.vercel.app/nasa' })

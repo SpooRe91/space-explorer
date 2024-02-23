@@ -1,5 +1,5 @@
 import styles from "./PoDModal.module.scss";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import { podState } from "../../redux-slices/PODslice";
 import {
@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { ErrorMessage } from "../../all-imported-components";
 
-export default function PoDModal() {
+const PoDModal: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
   const globalData = useAppSelector(globalState);
@@ -72,7 +72,7 @@ export default function PoDModal() {
                     !imageLoaded
                       ? ""
                       : globalData.error.error ||
-                        "There was supposed to be a NASA pic, but sometimes things don't go as planned"
+                      "There was supposed to be a NASA pic, but sometimes things don't go as planned"
                   }
                 />
               </Link>
@@ -93,3 +93,4 @@ export default function PoDModal() {
     </div>
   );
 }
+export default PoDModal;

@@ -7,7 +7,7 @@ import {
 } from "../../redux-slices/globalSlice";
 import styles from "./ErrorMessage.module.scss";
 
-const ErrorMessage = ({ error }: { error?: string }) => {
+const ErrorMessage: React.FC<{ error?: string }> = ({ error }) => {
   const globalData = useAppSelector(globalState);
   const dispatch = useAppDispatch();
   globalData.error;

@@ -1,3 +1,5 @@
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import { IGlobal, IImageData } from "../Interfaces/interfaces";
 
 export type TImageData = {
     href: string,
@@ -58,3 +60,61 @@ export type TGLobalError = {
     error: string,
     page?: string
 }
+
+export type AbortType = {
+    signal: AbortSignal,
+    controller: AbortController
+}
+
+export type PageChangerProps = {
+    imageData: IImageData,
+    signal: AbortSignal,
+    controller: AbortController,
+    setToDisableLoadButton: React.Dispatch<React.SetStateAction<boolean>>,
+    dispatch: ThunkDispatch<{
+        globalSlice: IGlobal;
+        imageSlice: IImageData;
+        podSlice: TPicOfTheDay;
+    }, undefined, AnyAction>
+}
+
+export type FormCheckerProps = {
+    searchValue: string,
+    setSearchValue: React.Dispatch<React.SetStateAction<string>>,
+    setToDisableButton: React.Dispatch<React.SetStateAction<boolean>>,
+    dispatch: ThunkDispatch<{
+        globalSlice: IGlobal;
+        imageSlice: IImageData;
+        podSlice: TPicOfTheDay;
+    }, undefined, AnyAction>,
+    pageView: string
+}
+
+export type ItemsGetterProps = {
+    imageData: IImageData,
+    searchValue: string,
+    setSearchValue: React.Dispatch<React.SetStateAction<string>>,
+    dispatch: ThunkDispatch<{
+        globalSlice: IGlobal;
+        imageSlice: IImageData;
+        podSlice: TPicOfTheDay;
+    }, undefined, AnyAction>
+    , pageView: string
+} & AbortType;
+
+export type ImageChangerProps = {
+    movement: string;
+    imageData: IImageData;
+    globalData: IGlobal;
+    dispatch: ThunkDispatch<{
+        globalSlice: IGlobal;
+        imageSlice: IImageData;
+        podSlice: TPicOfTheDay;
+    }, undefined, AnyAction>
+}
+
+export type SearchFormTypes = {
+    setToDisableLoadButton: React.Dispatch<React.SetStateAction<boolean>>,
+    pageView: 'images' | 'articles'
+}
+

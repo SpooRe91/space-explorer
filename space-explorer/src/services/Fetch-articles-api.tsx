@@ -1,7 +1,9 @@
 import axios, { AxiosError } from "axios";
+import { AbortType } from "../Interfaces and types/Types/types";
 
-
-export const fetchArticles = async (signal: AbortSignal, controller: AbortController, searchValue: string) => {
+/**Does an axios fetch request to the endpoint, to fetch ARTICLES and returns the result.*/
+export const fetchArticles = async ({ signal, controller, searchValue }:
+    AbortType & { searchValue: string }) => {
 
     try {
         const res = axios.create({
