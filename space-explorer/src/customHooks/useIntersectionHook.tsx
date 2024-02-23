@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useAppDispatch } from "../App/hooks";
 import { setActiveNavElement } from "../redux-slices/globalSlice";
 
-const useIntersectionHook = (targetRef: React.RefObject<HTMLElement>,
+const useIntersectionHook = (
+    targetRef: React.RefObject<HTMLElement>,
     pageName: string) => {
 
     const [isActive, setIsActive] = useState<boolean>(false);

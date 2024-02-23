@@ -14,7 +14,7 @@ const useGetPod = () => {
 
     const podFetcher = useCallback(async () => {
 
-        const data = await fetchImageOfTheDay(signal, controller);
+        const data = await fetchImageOfTheDay({signal, controller});
 
         setTimeout(() => {
             if (typeof data === 'string') {

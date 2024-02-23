@@ -10,13 +10,13 @@ import {
 import imageChanger from "../../utils/imageChanger";
 import styles from "./ImageModal.module.scss";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { imageState } from "../../redux-slices/imagesSlice";
 import { TImageData } from "../../Interfaces and types/Types/types";
 import pageChanger from "../../utils/pageChanger";
 import { ErrorMessage } from "../../all-imported-components";
 
-const ImageModal = () => {
+const ImageModal: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [disableLoadButton, setToDisableLoadButton] = useState<boolean>(false);
 
@@ -28,16 +28,14 @@ const ImageModal = () => {
   const { signal }: { signal: AbortSignal } = controller;
 
   const handlePageChange = async () => {
-    //2. !IMPORTANT helper function to check numerous conditions
-    // before and after changing a page for next request of images
-    // or if there are any more to request
+
     pageChanger({
       imageData,
       signal,
       controller,
       setToDisableLoadButton,
       dispatch,
-    }); //!READ POINT 2.
+    });
   };
 
   const currentImage: TImageData | undefined =
@@ -64,10 +62,6 @@ const ImageModal = () => {
     setImageLoaded(true);
     dispatch(setIsLoading(false));
   };
-
-  //!IMPORTANT imageChanger func:
-  //HELPER FUNCTION TO MAKE CHECKS OF CERTAIN CONDITIONS
-  //BEFORE EXECUTIN A REQUEST WITH THE GIVEN INPUT
 
   const handleNextImage = () => {
     dispatch(setIsLoading(true));

@@ -18,7 +18,7 @@ import { deviceDetect } from 'react-device-detect';
 
 //--------------------------------------------------------
 
-const NavBar = () => {
+const NavBar: React.FC = () => {
   const globalData = useAppSelector(globalState);
   const dispatch = useAppDispatch();
   const { pathname, hash, key } = useLocation();

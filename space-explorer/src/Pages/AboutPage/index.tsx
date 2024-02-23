@@ -4,7 +4,7 @@ import { useRef } from "react";
 import useIntersectionHook from "../../customHooks/useIntersectionHook";
 import icon from "../../assets/icons/android-chrome-256x256.png";
 
-export const AboutPage = () => {
+export const AboutPage: React.FC = () => {
 
     const divRef = useRef<HTMLDivElement>(null);
     // THIS CONTROLS WHETHER THE CURRENT REF ELEMENT IS ACTIVE, SO IT CAN APPLY STYLES TO IT

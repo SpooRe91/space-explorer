@@ -6,7 +6,7 @@ import { useAppSelector } from "../../App/hooks";
 import { podState } from "../../redux-slices/PODslice";
 import { useEffect } from "react";
 
-const PoDPage = () => {
+const PoDPage:React.FC = () => {
 
     const podData = useAppSelector(podState);
 

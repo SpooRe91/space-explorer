@@ -1,25 +1,15 @@
 import * as imageSlice from "../redux-slices/imagesSlice";
 import { setError, setIsLoading } from "../redux-slices/globalSlice";
+import { FormCheckerProps } from "../Interfaces and types/Types/types";
 
-import { AnyAction } from "redux";
-import { ThunkDispatch } from "@reduxjs/toolkit";
-
-import { IGlobal, IImageData } from "../Interfaces and types/Interfaces/interfaces";
-import { TPicOfTheDay } from "../Interfaces and types/Types/types";
-
-
-const formChecker = async ({ searchValue, setSearchValue, setToDisableButton, dispatch, pageView }: {
-    searchValue: string,
-    setSearchValue: React.Dispatch<React.SetStateAction<string>>,
-    setToDisableButton: React.Dispatch<React.SetStateAction<boolean>>,
-    dispatch: ThunkDispatch<{
-        globalSlice: IGlobal;
-        imageSlice: IImageData;
-        podSlice: TPicOfTheDay;
-    }, undefined, AnyAction>,
-    pageView: string
-
-}) => {
+/**!IMPORTANT helper function to check numerous input conditions */
+const formChecker = async ({
+    searchValue,
+    setSearchValue,
+    setToDisableButton,
+    dispatch,
+    pageView
+}: FormCheckerProps) => {
 
     const forbiddenStrings = ['javascript', 'script', 'code', '/', ':', '<', '>', '\\'];
 

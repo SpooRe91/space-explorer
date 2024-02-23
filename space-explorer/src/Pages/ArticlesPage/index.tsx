@@ -9,7 +9,7 @@ import SearchForm from '../../Components/SearchForm/SearchForm';
 import { articleState } from "../../redux-slices/articleSlice";
 import { globalState } from "../../redux-slices/globalSlice";
 
-const ArticlesPage = () => {
+const ArticlesPage: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
   const isActive = useIntersectionHook(divRef, "#articles");
 

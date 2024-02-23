@@ -1,17 +1,9 @@
-import { ThunkDispatch } from "@reduxjs/toolkit";
-import { AnyAction } from "redux";
-import { IGlobal, IImageData } from "../Interfaces and types/Interfaces/interfaces";
-import { TImageData, TPicOfTheDay } from "../Interfaces and types/Types/types";
+import { IGlobal } from "../Interfaces and types/Interfaces/interfaces";
+import { ImageChangerProps, TImageData } from "../Interfaces and types/Types/types";
 import { setIsLoading, setToExpandImage } from "../redux-slices/globalSlice";
 
 
-function imageChanger({ movement, imageData, globalData, dispatch }: {
-    movement: string; imageData: IImageData; globalData: IGlobal; dispatch: ThunkDispatch<{
-        globalSlice: IGlobal;
-        imageSlice: IImageData;
-        podSlice: TPicOfTheDay;
-    }, undefined, AnyAction>
-}) {
+export const imageChanger = ({ movement, imageData, globalData, dispatch }: ImageChangerProps) => {
 
     if (movement === null) { return }
 

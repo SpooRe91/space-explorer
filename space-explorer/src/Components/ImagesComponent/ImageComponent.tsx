@@ -6,7 +6,7 @@ import { useAppDispatch } from "../../App/hooks";
 import { setIsLoading, setToExpandImage } from "../../redux-slices/globalSlice";
 
 
-const ImageComponent = (item: TImageData) => {
+const ImageComponent: React.FC<TImageData> = (item) => {
 
     const dispatch = useAppDispatch();
 
