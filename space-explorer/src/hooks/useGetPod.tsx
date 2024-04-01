@@ -37,4 +37,4 @@ const useGetPod = () => {
 
     return podFetcher;
 }
-export default useGetPod
+export default useGetPod;

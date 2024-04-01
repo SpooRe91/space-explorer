@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import { globalState, setError, setToShowPoD } from "../../redux-slices/globalSlice";
 import styles from "./ErrorMessage.module.scss";
 
-const ErrorMessage = ({ error }: { error: string }) => {
+export const ErrorMessage = ({ error }: { error: string }) => {
     const globalData = useAppSelector(globalState);
     const dispatch = useAppDispatch();
     globalData.error;
