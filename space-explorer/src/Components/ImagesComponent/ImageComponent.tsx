@@ -5,9 +5,9 @@ import styles from "./ImageComponent.module.scss";
 import { useAppDispatch } from "../../App/hooks";
 import { setIsLoading, setToExpandImage } from "../../redux-slices/globalSlice";
 
-export const ImageComponent = ({ href, data }: TImageData) => {
+export const ImageComponent = ({ href, data, links }: TImageData) => {
     const dispatch = useAppDispatch();
-
+    
     return (
         <div
             onClick={() =>
@@ -16,7 +16,7 @@ export const ImageComponent = ({ href, data }: TImageData) => {
                           dispatch(
                               setToExpandImage({
                                   bool: true,
-                                  href: href,
+                                  href: links[0]?.href,
                                   title: data[0].title,
                               })
                           ),
@@ -26,7 +26,7 @@ export const ImageComponent = ({ href, data }: TImageData) => {
             }
             className={styles["card-component"]}
         >
-            {<img loading="lazy" src={href} alt="No image, sorry! Imagine something cool!" />}
+            {<img loading="lazy" src={links[0]?.href} alt="No image, sorry! Imagine something cool!" />}
             <div className={styles["card-content"]}>
                 <p className={styles["card-content-title"]}>{data[0].title}</p>
             </div>
