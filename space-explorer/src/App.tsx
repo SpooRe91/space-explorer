@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "./App/hooks";
 import { globalState, setIsLoading } from "./redux-slices/globalSlice";
-
-import { AboutPage, ArticlesPage, HomePage, ImagePage, PoDPage } from "./Pages/index";
+//TODO:ADD THE ARTICLES PAGE WHEN READY
+import { AboutPage, HomePage, ImagePage, PoDPage } from "./Pages/index";
 import { ErrorMessage, GlobalLoader, NavBar } from "./Layouts/index";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
