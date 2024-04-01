@@ -9,8 +9,7 @@ const useHandleScreenResize = () => {
     useEffect(() => {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
-            dispatch(setShowNav(screenWidth > WINDOW_WIDTH_THRESHOLD));
-            console.log(screenWidth);
+            dispatch(setShowNav(screenWidth < WINDOW_WIDTH_THRESHOLD));
         };
 
         handleResize();
