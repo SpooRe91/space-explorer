@@ -5,7 +5,7 @@ import styles from "./ImageComponent.module.scss";
 import { useAppDispatch } from "../../App/hooks";
 import { setIsLoading, setToExpandImage } from "../../redux-slices/globalSlice";
 
-const ImageComponent = ({ href, data }: TImageData) => {
+export const ImageComponent = ({ href, data }: TImageData) => {
     const dispatch = useAppDispatch();
 
     return (

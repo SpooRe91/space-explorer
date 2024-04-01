@@ -7,69 +7,29 @@ import { globalState, setIsLoading, setShowNav, setToShowPoD } from "../../redux
 
 import styles from "./NavBar.module.scss";
 import icon from "../../assets/icons/android-chrome-192x192.png";
-import { useCallback, useEffect, useState } from "react";
-import useHideNavOnScroll from "../../customHooks/useHideNavOnScroll";
-import { deviceDetect } from "react-device-detect";
+import { useState } from "react";
+import useHideNavOnScroll from "../../hooks/useHideNavOnScroll";
+
+import useDetectDevice from "../../hooks/useDetectDevice";
+import useHandleScreenResize from "../../hooks/useHandleScreenResize";
+import useScrollIntoItem from "../../hooks/useScrollToItem";
 
 //--------------------------------------------------------
 
-const NavBar = () => {
+export const NavBar = () => {
     const globalData = useAppSelector(globalState);
     const dispatch = useAppDispatch();
-    const { pathname, hash, key } = useLocation();
+    const { hash } = useLocation();
     const [scrollNavUp, setToScrollNavUp] = useState<boolean>(false);
-    const [currentlyIsMobile, setCurrentlyIsMobile] = useState<boolean>(false);
-
-    const detectedDevice = useCallback(() => {
-        const { isMobile } = deviceDetect(navigator.userAgent);
-        return isMobile ?? false;
-    }, []);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const isMobile = detectedDevice();
-            setCurrentlyIsMobile(isMobile);
-
-            isMobile
-                ? console.log("%cMOBILE VIEW 📱", "color: green")
-                : console.log("%cDESKTOP VIEW 💻", "color: orange");
-        }, 5000);
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, []);
+    const { currentlyIsMobile } = useDetectDevice();
+    useHandleScreenResize();
+    useScrollIntoItem(hash);
 
     const checkIfMobile = (): void => {
         if (currentlyIsMobile) {
             dispatch(setShowNav(!globalData.showSideNav));
         }
     };
-
-    useEffect(() => {
-        if (pathname !== "") {
-            hash.replace(hash, "");
-        }
-
-        screen.width > 766 ? dispatch(setShowNav(true)) : "";
-
-        if (hash) {
-            setTimeout(() => {
-                const element = document.querySelector(hash);
-                window.location.hash = "";
-                if (element && element.id !== "home") {
-                    element?.scrollIntoView();
-                }
-                if (element?.id === "home") {
-                    window?.scrollTo({ top: 160, left: 0 });
-                }
-            }, 0);
-        }
-
-        return () => {
-            clearTimeout(0);
-        };
-    }, [pathname, hash, key, dispatch]);
 
     //CUSTOM HOOK TO CONTROL THE SHOWING AND HIDING OF THE NAV BAR on SCROLL
     useHideNavOnScroll(setToScrollNavUp);
@@ -127,7 +87,7 @@ const NavBar = () => {
                                 Gallery
                             </NavLink>
                         </li>
-                        <li className={styles["nav-link-item"]}>
+                        {/* <li className={styles["nav-link-item"]}>
                             <NavLink
                                 aria-label="Articles"
                                 to={"/#articles"}
@@ -140,7 +100,7 @@ const NavBar = () => {
                             >
                                 Articles
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li className={styles["nav-link-item"]}>
                             <NavLink
                                 aria-label="About"

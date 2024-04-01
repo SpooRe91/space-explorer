@@ -63,8 +63,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
     z-index: 10;
+
+    .trigger {
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        margin: auto;
+        background-color: transparent;
+    }
 
     .image-container-heading-container {
         text-align: center;

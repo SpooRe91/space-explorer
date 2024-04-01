@@ -10,9 +10,9 @@ import React, { useState } from "react";
 import { imageState } from "../../redux-slices/imagesSlice";
 import { TImageData } from "../../Interfaces and types/Types/types";
 import pageChanger from "../../utils/pageChanger";
-import { ErrorMessage } from "../../all-imported-components";
+import { ErrorMessage } from "../../Layouts/index";
 
-const ImageModal = () => {
+export const ImageModal = () => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
     const [disableLoadButton, setToDisableLoadButton] = useState<boolean>(false);
 

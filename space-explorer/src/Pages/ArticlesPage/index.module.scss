@@ -70,8 +70,6 @@
         transform: translateX(200%);
         opacity: 0;
         @include article-header-container();
-        animation: slide-out 1s forwards;
-        -webkit-animation: slide-out 1s forwards;
     }
 
     .articles-secondary-container {
@@ -132,32 +130,5 @@
     100% {
         -webkit-transform: translateX(0%) translateY(1px);
         opacity: 1;
-    }
-}
-
-@keyframes slide-out {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-}
-@-webkit-keyframes slide-out {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        -webkit-transform: translateX(-100%);
-        opacity: 0;
     }
 }

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./index.module.scss";
 import { useRef } from "react";
-import useIntersectionHook from "../../customHooks/useIntersectionHook";
+import useIntersectionHook from "../../hooks/useIntersectionHook";
 import icon from "../../assets/icons/android-chrome-256x256.png";
 
 export const AboutPage = () => {

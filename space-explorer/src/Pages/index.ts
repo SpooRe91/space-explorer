@@ -1,0 +1,5 @@
+export * from "./AboutPage/index"
+export * from "./ArticlesPage/index"
+export * from "./HomePage/index"
+export * from "./ImagePage/Index"
+export * from "./PoDPage/index"

@@ -6,7 +6,7 @@ import { TArticleItem } from "../../Interfaces and types/Types/types";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const ArticleCard = ({
+export const ArticleCard = ({
     id,
     news_site,
     image_url,
@@ -22,7 +22,7 @@ const ArticleCard = ({
         if (!id) {
             return;
         }
-        await navigator.clipboard.writeText(news_site);
+        await navigator.clipboard.writeText(url);
         //TEXT SHOULD BE THE HREF OF THE CURRENT ARTICLE
     };
 

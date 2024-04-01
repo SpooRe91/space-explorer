@@ -10,7 +10,7 @@ import formChecker from "../../utils/formChecker";
 import itemsGetter from "../../utils/itemsGetter";
 import { SearchFormTypes } from "../../Interfaces and types/Types/types";
 
-const SearchForm = ({ setToDisableLoadButton, pageView }: SearchFormTypes) => {
+export const SearchForm = ({ setToDisableLoadButton, pageView }: SearchFormTypes) => {
     const [searchValue, setSearchValue] = useState<string>("");
     const [disableButton, setToDisableButton] = useState<boolean>(false);
 

@@ -4,16 +4,16 @@ import styles from "./index.module.scss";
 import { globalState } from "../../redux-slices/globalSlice";
 import { imageState } from "../../redux-slices/imagesSlice";
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
-
-import * as component from "../../all-imported-components";
+import { SearchForm, ImageModal, ImageComponent } from "../../Components/index";
+import { ErrorMessage } from "../../Layouts/index";
 
 import { TImageData } from "../../Interfaces and types/Types/types";
-import useIntersectionHook from "../../customHooks/useIntersectionHook";
+import useIntersectionHook from "../../hooks/useIntersectionHook";
 import pageChanger from "../../utils/pageChanger";
 
 import { ImageListItem } from "@mui/material";
 
-const ImagePage = () => {
+export const ImagePage = () => {
     const divRef = useRef<HTMLDivElement>(null);
     useIntersectionHook(divRef, "#gallery");
 
@@ -42,9 +42,10 @@ const ImagePage = () => {
 
     return (
         <section id="gallery" className={styles["image-container"]}>
-            <div ref={divRef} className={styles["image-container-heading-container"]}>
+            <div className={styles["trigger"]} ref={divRef}></div>
+            <div className={styles["image-container-heading-container"]}>
                 <h1>Gallery</h1>
-                {<component.SearchForm {...{ setToDisableLoadButton, pageView: "images" }} />}
+                {<SearchForm {...{ setToDisableLoadButton, pageView: "images" }} />}
 
                 {hasImageData ? (
                     <p style={{ margin: "1rem 0" }}>
@@ -54,18 +55,18 @@ const ImagePage = () => {
                 ) : null}
             </div>
             {// IF MODAL IS TO BE SHOWN
-            globalData.toExpandImage ? <component.ImageModal /> : null}
+            globalData.toExpandImage ? <ImageModal /> : null}
 
             {hasError ? (
                 <div className={styles["loader-error"]}>
-                    <component.ErrorMessage error={globalData.error.error} />
+                    <ErrorMessage error={globalData.error.error} />
                 </div>
             ) : // IF THERE ARE IMAGES IN THE GLOBAL DATA, SHOW THE LIST OF IMAGES
             hasImageData ? (
                 <div className={styles["image-list"]}>
                     {imageData.allData.map((item: TImageData) => (
                         <ImageListItem className={styles["image-list-item"]} key={item.data[0].nasa_id}>
-                            <component.ImageComponent {...item} />
+                            <ImageComponent {...item} />
                         </ImageListItem>
                     ))}
                 </div>

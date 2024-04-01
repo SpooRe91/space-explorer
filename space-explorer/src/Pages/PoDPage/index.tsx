@@ -1,12 +1,12 @@
 import styles from "./index.module.scss";
 
 import PoDModal from "../../Components/PoDModal/PoDModal";
-import useGetPod from "../../customHooks/useGetPod";
+import useGetPod from "../../hooks/useGetPod";
 import { useAppSelector } from "../../App/hooks";
 import { podState } from "../../redux-slices/PODslice";
 import { useEffect } from "react";
 
-const PoDPage = () => {
+export const PoDPage = () => {
     const podData = useAppSelector(podState);
 
     const podResult = useGetPod();

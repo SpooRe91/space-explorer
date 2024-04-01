@@ -4,9 +4,9 @@ import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import { podState } from "../../redux-slices/PODslice";
 import { globalState, setIsLoading, setToShowPoD } from "../../redux-slices/globalSlice";
 import { Link } from "react-router-dom";
-import { ErrorMessage } from "../../all-imported-components";
+import { ErrorMessage } from "../../Layouts/index";
 
-const PoDModal = () => {
+export const PoDModal = () => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
     const globalData = useAppSelector(globalState);
