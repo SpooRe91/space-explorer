@@ -11,6 +11,7 @@ import { imageState } from "../../redux-slices/imagesSlice";
 import { TImageData } from "../../Interfaces and types/Types/types";
 import pageChanger from "../../utils/pageChanger";
 import { ErrorMessage } from "../../Layouts/index";
+import useChangeImageWithKeys from "../../hooks/useChangeImageWithKeys";
 
 export const ImageModal = () => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
@@ -22,6 +23,18 @@ export const ImageModal = () => {
 
     const controller: AbortController = new AbortController();
     const { signal }: { signal: AbortSignal } = controller;
+
+    const handleNextImage = () => {
+        dispatch(setIsLoading(true));
+        imageChanger({ movement: "next", imageData, globalData, dispatch });
+    };
+
+    const handlePreviousImage = () => {
+        dispatch(setIsLoading(true));
+        imageChanger({ movement: "previous", imageData, globalData, dispatch });
+    };
+
+    useChangeImageWithKeys({ handlePreviousImage, handleNextImage });
 
     const handlePageChange = async () => {
         pageChanger({
@@ -52,16 +65,6 @@ export const ImageModal = () => {
     const handleImageLoaded = (): void => {
         setImageLoaded(true);
         dispatch(setIsLoading(false));
-    };
-
-    const handleNextImage = () => {
-        dispatch(setIsLoading(true));
-        imageChanger({ movement: "next", imageData, globalData, dispatch });
-    };
-
-    const handlePreviousImage = () => {
-        dispatch(setIsLoading(true));
-        imageChanger({ movement: "previous", imageData, globalData, dispatch });
     };
 
     return (

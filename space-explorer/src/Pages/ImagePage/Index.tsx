@@ -36,7 +36,7 @@ export const ImagePage = () => {
         });
     };
 
-    const hasImageData = imageData?.allData[0]?.links[0].href !== undefined;
+    const hasImageData = !!imageData?.allData[0]?.links[0].href;
     const hasError =
         (globalData.error.error && globalData.error.page === "images") || globalData.error.page === "modal";
 
