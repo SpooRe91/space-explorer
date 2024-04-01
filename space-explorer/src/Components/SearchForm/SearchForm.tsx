@@ -1,16 +1,16 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from "react";
 import styles from "./SearchForm.module.scss";
 import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 
-import { setError } from '../../redux-slices/globalSlice';
-import { imageState, setImagePage } from '../../redux-slices/imagesSlice';
-import { useAppSelector, useAppDispatch } from '../../App/hooks';
+import { setError } from "../../redux-slices/globalSlice";
+import { imageState, setImagePage } from "../../redux-slices/imagesSlice";
+import { useAppSelector, useAppDispatch } from "../../App/hooks";
 
-import formChecker from '../../utils/formChecker';
-import itemsGetter from '../../utils/itemsGetter';
-import { SearchFormTypes } from '../../Interfaces and types/Types/types';
+import formChecker from "../../utils/formChecker";
+import itemsGetter from "../../utils/itemsGetter";
+import { SearchFormTypes } from "../../Interfaces and types/Types/types";
 
-const SearchForm: React.FC<SearchFormTypes> = ({ setToDisableLoadButton, pageView }) => {
+const SearchForm = ({ setToDisableLoadButton, pageView }: SearchFormTypes) => {
     const [searchValue, setSearchValue] = useState<string>("");
     const [disableButton, setToDisableButton] = useState<boolean>(false);
 
@@ -28,7 +28,7 @@ const SearchForm: React.FC<SearchFormTypes> = ({ setToDisableLoadButton, pageVie
             setSearchValue,
             setToDisableButton,
             dispatch,
-            pageView
+            pageView,
         });
 
         itemsGetter({ signal, controller, imageData, searchValue, setSearchValue, dispatch, pageView });
@@ -42,13 +42,12 @@ const SearchForm: React.FC<SearchFormTypes> = ({ setToDisableLoadButton, pageVie
     };
 
     return (
-        <form
-            className={styles["search-form"]}
-            onSubmit={(e) => handleSubmit(e)}
-        >
-            <div className={styles['main-element']}>
-                <label className={styles["form-label"]}
-                    htmlFor={pageView === "images" ? "search-images" : "search-articles"}>
+        <form className={styles["search-form"]} onSubmit={(e) => handleSubmit(e)}>
+            <div className={styles["main-element"]}>
+                <label
+                    className={styles["form-label"]}
+                    htmlFor={pageView === "images" ? "search-images" : "search-articles"}
+                >
                     <ImageSearchIcon />
                     Search {pageView === "images" ? "images" : "articles"}
                 </label>
@@ -63,7 +62,7 @@ const SearchForm: React.FC<SearchFormTypes> = ({ setToDisableLoadButton, pageVie
                     pattern="[A-Za-z\d\s]*"
                     minLength={0}
                     maxLength={50}
-                    autoCorrect='true'
+                    autoCorrect="true"
                     required
                 />
             </div>
@@ -74,7 +73,7 @@ const SearchForm: React.FC<SearchFormTypes> = ({ setToDisableLoadButton, pageVie
                 className={styles["form-submit-button"]}
             />
         </form>
-    )
-}
+    );
+};
 
-export default SearchForm
+export default SearchForm;
