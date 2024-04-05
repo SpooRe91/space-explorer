@@ -19,6 +19,6 @@ const useHandleScreenResize = () => {
         return () => {
             window.removeEventListener("resize", handleResize);
         };
-    }, [screen.width, screen.width]);
+    }, [screen.width]);
 };
 export default useHandleScreenResize;
