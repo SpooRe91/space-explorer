@@ -6,7 +6,7 @@ import { globalState, setIsLoading, setToExpandImage } from "../../redux-slices/
 import imageChanger from "../../utils/imageChanger";
 import styles from "./ImageModal.module.scss";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { imageState } from "../../redux-slices/imagesSlice";
 import { TImageData } from "../../Interfaces and types/Types/types";
 import pageChanger from "../../utils/pageChanger";
@@ -34,7 +34,15 @@ export const ImageModal = () => {
         imageChanger({ movement: "previous", imageData, globalData, dispatch });
     };
 
-    useChangeImageWithKeys({ handlePreviousImage, handleNextImage });
+    const currentImage: TImageData | null =
+        imageData.allData.find((el) => el.links[0]?.href === globalData.modalImageHref) || null;
+
+    const currentImageCount = useMemo(
+        () => (currentImage ? imageData?.allData?.indexOf(currentImage) + 1 : 0),
+        [currentImage]
+    );
+
+    useChangeImageWithKeys({ currentImageCount, handlePreviousImage, handleNextImage });
 
     const handlePageChange = async () => {
         pageChanger({
@@ -45,9 +53,6 @@ export const ImageModal = () => {
             dispatch,
         });
     };
-
-    const currentImage: TImageData | undefined =
-        imageData.allData.find((el) => el.links[0]?.href === globalData.modalImageHref) || undefined;
 
     const handleModalClick = (e: React.MouseEvent<HTMLSpanElement>) => {
         if (e.target === e.currentTarget) {
@@ -105,8 +110,7 @@ export const ImageModal = () => {
                         ) : null}
                         <div className={styles["modal-navigation-container"]}>
                             <p>
-                                {currentImage ? imageData?.allData?.indexOf(currentImage) + 1 : "N/A"} /{" "}
-                                {imageData?.allData?.length}
+                                {currentImageCount ? currentImageCount : "N/A"} / {imageData?.allData?.length}
                             </p>
                             <div className={styles["modal-buttons-container"]}>
                                 <button

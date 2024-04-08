@@ -11,7 +11,6 @@ import { useState } from "react";
 import useHideNavOnScroll from "../../hooks/useHideNavOnScroll";
 
 import useDetectDevice from "../../hooks/useDetectDevice";
-import useHandleScreenResize from "../../hooks/useHandleScreenResize";
 import useScrollIntoItem from "../../hooks/useScrollToItem";
 
 //--------------------------------------------------------
@@ -22,7 +21,6 @@ export const NavBar = () => {
     const { hash } = useLocation();
     const [scrollNavUp, setToScrollNavUp] = useState<boolean>(false);
     const { currentlyIsMobile } = useDetectDevice();
-    useHandleScreenResize();
     useScrollIntoItem(hash);
 
     const checkIfMobile = (): void => {
