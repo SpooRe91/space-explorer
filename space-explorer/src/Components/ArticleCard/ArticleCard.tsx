@@ -5,10 +5,10 @@ import styles from "./ArticleCard.module.scss";
 import { TArticleItem } from "../../Interfaces and types/Types/types";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useDetectDevice from "../../hooks/useDetectDevice";
 
 export const ArticleCard = ({
     id,
-    news_site,
     image_url,
     title,
     updated_at,
@@ -17,10 +17,18 @@ export const ArticleCard = ({
     url,
 }: TArticleItem) => {
     const [textCopied, setToCopy] = useState<boolean>(false);
-
+    const { currentlyIsMobile } = useDetectDevice();
     const handleShare = async () => {
         if (!id) {
             return;
+        }
+        if (currentlyIsMobile) {
+            try {
+                await navigator.share({ url });
+                return;
+            } catch (error) {
+                console.error(`We ran into an error while attempting to share: ${error}`);
+            }
         }
         await navigator.clipboard.writeText(url);
         //TEXT SHOULD BE THE HREF OF THE CURRENT ARTICLE
@@ -38,7 +46,7 @@ export const ArticleCard = ({
         <div className={styles["article-card-wrapper"]}>
             <ImageListItem className={styles["article-card-li"]}>
                 <div className={styles["article-img-title-container"]}>
-                    <Link to={news_site} target="_blank" rel="noopener">
+                    <div>
                         <img
                             className={styles["article-card-image"]}
                             src={image_url}
@@ -46,7 +54,7 @@ export const ArticleCard = ({
                             alt={title}
                             loading="lazy"
                         />
-                    </Link>
+                    </div>
                     <h3 className={"article-card-title"}>{title}</h3>
                     {updated_at ? (
                         <Typography>

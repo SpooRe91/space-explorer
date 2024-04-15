@@ -8,10 +8,6 @@
     max-height: 400px;
     transition: all 200ms ease-in-out;
 
-    a:hover {
-        cursor: url("/pointer.png"), auto;
-    }
-
     img {
         height: 200px;
         object-fit: cover;
@@ -36,6 +32,46 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        .card-button {
+            position: relative;
+            display: flex;
+            width: 36px;
+            height: 36px;
+            padding: 0.4rem;
+            background: transparent;
+            border-radius: 8px;
+            border: none;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 5px var(--card-box-shadow-color-hover);
+            transition: all 200ms ease-in-out;
+            &:hover {
+                cursor: url("/pointer.png"), auto;
+                background: #498fbe5b;
+            }
+            &:active {
+                cursor: url("/pointer.png"), auto;
+                cursor: url(/pointer.png), auto;
+                box-shadow: inset 0px 0px 20px 0px #ffffff;
+            }
+            .share-copied {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 50%;
+                left: 115%;
+                width: 65px;
+                height: 30px;
+                color: white;
+                background-color: var(--card-box-shadow-collor-button-hover);
+                padding: 0.1rem;
+                border-radius: 0.3rem;
+                animation: copy 300ms;
+                -webkit-animation: copy 300ms;
+            }
         }
     }
 }

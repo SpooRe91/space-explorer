@@ -12,6 +12,7 @@ import useIntersectionHook from "../../hooks/useIntersectionHook";
 import pageChanger from "../../utils/pageChanger";
 
 import { ImageListItem } from "@mui/material";
+import useDetectDevice from "../../hooks/useDetectDevice";
 
 export const ImagePage = () => {
     const divRef = useRef<HTMLDivElement>(null);
@@ -25,6 +26,7 @@ export const ImagePage = () => {
     const { signal }: { signal: AbortSignal } = controller;
 
     const [disableLoadButton, setToDisableLoadButton] = useState<boolean>(false);
+    const { currentlyIsMobile } = useDetectDevice();
 
     const handlePageChange = async () => {
         pageChanger({
@@ -34,6 +36,21 @@ export const ImagePage = () => {
             setToDisableLoadButton,
             dispatch,
         });
+    };
+
+    const handleShare = async (url: string) => {
+        if (!url) {
+            return;
+        }
+        try {
+            if (currentlyIsMobile) {
+                await navigator.share({ url });
+                return;
+            }
+            await navigator.clipboard.writeText(url);
+        } catch (error) {
+            console.error(`We ran into an error while attempting to share: ${error}`);
+        }
     };
 
     const hasImageData = !!imageData?.allData[0]?.links[0].href;
@@ -66,7 +83,7 @@ export const ImagePage = () => {
                 <div className={styles["image-list"]}>
                     {imageData.allData.map((item: TImageData) => (
                         <ImageListItem className={styles["image-list-item"]} key={item.data[0].nasa_id}>
-                            <ImageComponent {...item} />
+                            <ImageComponent {...{ ...item, handleShare, currentlyIsMobile }} />
                         </ImageListItem>
                     ))}
                 </div>
