@@ -9,7 +9,6 @@ import useDetectDevice from "../../hooks/useDetectDevice";
 
 export const ArticleCard = ({
     id,
-    news_site,
     image_url,
     title,
     updated_at,
@@ -47,7 +46,7 @@ export const ArticleCard = ({
         <div className={styles["article-card-wrapper"]}>
             <ImageListItem className={styles["article-card-li"]}>
                 <div className={styles["article-img-title-container"]}>
-                    <Link to={news_site} target="_blank" rel="noopener">
+                    <div>
                         <img
                             className={styles["article-card-image"]}
                             src={image_url}
@@ -55,7 +54,7 @@ export const ArticleCard = ({
                             alt={title}
                             loading="lazy"
                         />
-                    </Link>
+                    </div>
                     <h3 className={"article-card-title"}>{title}</h3>
                     {updated_at ? (
                         <Typography>
