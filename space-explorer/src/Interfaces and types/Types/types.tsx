@@ -5,8 +5,8 @@ export type TImageData = {
     href: string;
     data: [TDataObject];
     links: [TImageItem];
-    handleShare: (url: string) => void;
-    currentlyIsMobile: boolean;
+    handleShare?: (url: string) => void;
+    currentlyIsMobile?: boolean;
 };
 
 export type TArticleData = {

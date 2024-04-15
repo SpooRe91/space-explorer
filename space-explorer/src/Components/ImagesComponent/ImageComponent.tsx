@@ -33,11 +33,19 @@ export const ImageComponent = ({ href, data, links, handleShare, currentlyIsMobi
             dispatch(setIsLoading(true));
     };
 
+    const handleShareOrCopy = () => {
+        if (typeof handleShare !== "function") {
+            return;
+        }
+        handleToCopyText();
+        handleShare(links[0]?.href);
+    };
+
     return (
         <div className={styles["card-component"]}>
             {
                 <img
-                    onClick={() => (hasImage ? handleImageExpand() : null)}
+                    onClick={() => (hasImage ? handleImageExpand : null)}
                     loading="lazy"
                     src={links[0]?.href}
                     alt="No image, sorry! Imagine something cool!"
@@ -45,10 +53,7 @@ export const ImageComponent = ({ href, data, links, handleShare, currentlyIsMobi
             }
             <div className={styles["card-content"]}>
                 <p className={styles["card-content-title"]}>{data[0].title}</p>
-                <button
-                    className={styles["card-button"]}
-                    onClick={() => [handleShare(links[0]?.href), handleToCopyText()]}
-                >
+                <button title="Share" className={styles["card-button"]} onClick={() => handleShareOrCopy()}>
                     <ShareIcon />
                     {shouldCopyTextOnlyForDesktop ? (
                         <span className={styles["share-copied"]}>Copied!</span>
