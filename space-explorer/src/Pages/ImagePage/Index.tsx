@@ -62,7 +62,7 @@ export const ImagePage = () => {
             <div className={styles["trigger"]} ref={divRef}></div>
             <div className={styles["image-container-heading-container"]}>
                 <h1>Gallery</h1>
-                {<SearchForm {...{ setToDisableLoadButton, pageView: "images" }} />}
+                {<SearchForm setToDisableLoadButton={setToDisableLoadButton} pageView={"images"} />}
 
                 {hasImageData ? (
                     <p style={{ margin: "1rem 0" }}>
@@ -72,7 +72,9 @@ export const ImagePage = () => {
                 ) : null}
             </div>
             {// IF MODAL IS TO BE SHOWN
-            globalData.toExpandImage ? <ImageModal /> : null}
+            globalData.toExpandImage ? (
+                <ImageModal handleShare={handleShare} currentlyIsMobile={currentlyIsMobile} />
+            ) : null}
 
             {hasError ? (
                 <div className={styles["loader-error"]}>
@@ -83,7 +85,11 @@ export const ImagePage = () => {
                 <div className={styles["image-list"]}>
                     {imageData.allData.map((item: TImageData) => (
                         <ImageListItem className={styles["image-list-item"]} key={item.data[0].nasa_id}>
-                            <ImageComponent {...{ ...item, handleShare, currentlyIsMobile }} />
+                            <ImageComponent
+                                {...item}
+                                handleShare={handleShare}
+                                currentlyIsMobile={currentlyIsMobile}
+                            />
                         </ImageListItem>
                     ))}
                 </div>

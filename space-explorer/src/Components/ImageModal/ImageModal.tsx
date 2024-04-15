@@ -12,10 +12,17 @@ import { TImageData } from "../../Interfaces and types/Types/types";
 import pageChanger from "../../utils/pageChanger";
 import { ErrorMessage } from "../../Layouts/index";
 import useChangeImageWithKeys from "../../hooks/useChangeImageWithKeys";
+import ShareIcon from "@mui/icons-material/Share";
 
-export const ImageModal = () => {
+type ImageModalProps = {
+    handleShare?: (url: string) => void;
+    currentlyIsMobile?: boolean;
+};
+
+export const ImageModal = ({ handleShare, currentlyIsMobile }: ImageModalProps) => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);
     const [disableLoadButton, setToDisableLoadButton] = useState<boolean>(false);
+    const [textCopied, setToCopy] = useState<boolean>(false);
 
     const dispatch = useAppDispatch();
     const globalData = useAppSelector(globalState);
@@ -36,6 +43,8 @@ export const ImageModal = () => {
 
     const currentImage: TImageData | null =
         imageData.allData.find((el) => el.links[0]?.href === globalData.modalImageHref) || null;
+
+    const shouldCopyTextOnlyForDesktop = !currentlyIsMobile && textCopied;
 
     const currentImageCount = useMemo(
         () => (currentImage ? imageData?.allData?.indexOf(currentImage) + 1 : 0),
@@ -70,6 +79,24 @@ export const ImageModal = () => {
     const handleImageLoaded = (): void => {
         setImageLoaded(true);
         dispatch(setIsLoading(false));
+    };
+
+    const handleToCopyText = () => {
+        setToCopy(() => true);
+        const timeout = setTimeout(() => {
+            setToCopy(() => false);
+            clearTimeout(timeout);
+        }, 300);
+    };
+
+    const handleShareOrCopy = () => {
+        if (typeof handleShare !== "function") {
+            return;
+        }
+        if (globalData.modalImageHref) {
+            handleToCopyText();
+            handleShare(globalData.modalImageHref);
+        }
     };
 
     return (
@@ -156,6 +183,16 @@ export const ImageModal = () => {
                                 >
                                     <span className={"span-close-image"}>X</span>
                                 </Link>
+                                <button
+                                    title="Share"
+                                    className={styles["card-button"]}
+                                    onClick={() => handleShareOrCopy()}
+                                >
+                                    <ShareIcon />
+                                    {shouldCopyTextOnlyForDesktop ? (
+                                        <span className={styles["share-copied"]}>Copied!</span>
+                                    ) : null}
+                                </button>
                             </div>
                         </div>
                     </>

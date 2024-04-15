@@ -116,7 +116,7 @@
 
         .modal-navigation-container {
             display: flex;
-            width: clamp(220px, 100%, 450px);
+            width: clamp(220px, 100%, 500px);
             flex-wrap: wrap;
             gap: 0.5rem;
             padding: 1.3rem;
@@ -145,10 +145,14 @@
                 }
                 .span-link,
                 .span-close-x {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     text-decoration: none;
                     padding: 0.2rem;
                     font-size: 1.5rem;
-                    width: 50px;
+                    width: 36px;
+                    height: 36px;
                     text-align: center;
                     color: #fff;
                     background-color: var(--component-bgr-transparent-color);
@@ -164,6 +168,45 @@
                     &:active {
                         color: #fff;
                         background: var(--btn-active-bgr);
+                    }
+                }
+                .card-button {
+                    position: relative;
+                    display: flex;
+                    width: 36px;
+                    height: 36px;
+                    padding: 0.4rem;
+                    background: transparent;
+                    border-radius: 8px;
+                    border: none;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0px 0px 5px var(--card-box-shadow-color-hover);
+                    transition: all 200ms ease-in-out;
+                    &:hover {
+                        cursor: url("/pointer.png"), auto;
+                        background: #498fbe5b;
+                    }
+                    &:active {
+                        cursor: url("/pointer.png"), auto;
+                        cursor: url(/pointer.png), auto;
+                        box-shadow: inset 0px 0px 20px 0px #ffffff;
+                    }
+                    .share-copied {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        top: 50%;
+                        left: 115%;
+                        width: 65px;
+                        height: 30px;
+                        color: white;
+                        background-color: var(--card-box-shadow-collor-button-hover);
+                        padding: 0.1rem;
+                        border-radius: 0.3rem;
+                        animation: copy 300ms;
+                        -webkit-animation: copy 300ms;
                     }
                 }
             }
@@ -223,6 +266,45 @@
                         transition: backrgound-color 50ms ease-in-out;
                         &:active {
                             background-color: var(--component-bgr-transparent-color);
+                        }
+                    }
+                    .card-button {
+                        position: relative;
+                        display: flex;
+                        width: 36px;
+                        height: 36px;
+                        padding: 0.4rem;
+                        background: transparent;
+                        border-radius: 8px;
+                        border: none;
+                        justify-content: center;
+                        align-items: center;
+                        box-shadow: 0px 0px 5px var(--card-box-shadow-color-hover);
+                        transition: all 200ms ease-in-out;
+                        &:hover {
+                            cursor: url("/pointer.png"), auto;
+                            background: #498fbe5b;
+                        }
+                        &:active {
+                            cursor: url("/pointer.png"), auto;
+                            cursor: url(/pointer.png), auto;
+                            box-shadow: inset 0px 0px 20px 0px #ffffff;
+                        }
+                        .share-copied {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: absolute;
+                            top: 50%;
+                            left: 115%;
+                            width: 65px;
+                            height: 30px;
+                            color: white;
+                            background-color: var(--card-box-shadow-collor-button-hover);
+                            padding: 0.1rem;
+                            border-radius: 0.3rem;
+                            animation: copy 300ms;
+                            -webkit-animation: copy 300ms;
                         }
                     }
                 }
