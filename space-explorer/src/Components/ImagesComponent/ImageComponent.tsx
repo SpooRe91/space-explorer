@@ -45,7 +45,7 @@ export const ImageComponent = ({ href, data, links, handleShare, currentlyIsMobi
         <div className={styles["card-component"]}>
             {
                 <img
-                    onClick={() => (hasImage ? handleImageExpand : null)}
+                    onClick={() => (hasImage ? handleImageExpand() : null)}
                     loading="lazy"
                     src={links[0]?.href}
                     alt="No image, sorry! Imagine something cool!"
@@ -63,5 +63,4 @@ export const ImageComponent = ({ href, data, links, handleShare, currentlyIsMobi
         </div>
     );
 };
-
 export default ImageComponent;
