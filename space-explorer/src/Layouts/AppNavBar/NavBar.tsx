@@ -1,7 +1,13 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
-import { globalState, setIsLoading, setShowNav, setToShowPoD } from "../../redux-slices/globalSlice";
+import {
+    globalState,
+    setActiveNavElement,
+    setIsLoading,
+    setShowNav,
+    setToShowPoD,
+} from "../../redux-slices/globalSlice";
 
 //SOME COMPLETE TESTING TEXT
 
@@ -11,17 +17,15 @@ import { useState } from "react";
 import useHideNavOnScroll from "../../hooks/useHideNavOnScroll";
 
 import useDetectDevice from "../../hooks/useDetectDevice";
-import useScrollIntoItem from "../../hooks/useScrollToItem";
 
 //--------------------------------------------------------
 
 export const NavBar = () => {
     const globalData = useAppSelector(globalState);
     const dispatch = useAppDispatch();
-    const { hash } = useLocation();
+
     const [scrollNavUp, setToScrollNavUp] = useState<boolean>(false);
     const { currentlyIsMobile } = useDetectDevice();
-    useScrollIntoItem(hash);
 
     const checkIfMobile = (): void => {
         if (currentlyIsMobile) {
@@ -40,9 +44,16 @@ export const NavBar = () => {
             <div className={styles["main-nav-container"]}>
                 <div className={styles["nav-logo-container"]}>
                     <NavLink
-                        to={"/#home"}
+                        to={"/"}
                         className={styles["nav-logo-item"]}
-                        onClick={() => dispatch(setToShowPoD(false))}
+                        onClick={() =>
+                            dispatch(
+                                setActiveNavElement({
+                                    isActive: true,
+                                    activeEl: "home",
+                                })
+                            )
+                        }
                     >
                         <img src={icon} alt="logo" />
                         Space Explorer
@@ -60,12 +71,19 @@ export const NavBar = () => {
                         <li className={styles["nav-link-item"]}>
                             <NavLink
                                 aria-label="Home"
-                                to={"/#home"}
-                                onClick={() => dispatch(setToShowPoD(false))}
+                                to={"/"}
                                 className={() =>
                                     globalData.activeNavElement.activeEl.includes("home")
                                         ? styles["active"]
                                         : styles["pending"]
+                                }
+                                onClick={() =>
+                                    dispatch(
+                                        setActiveNavElement({
+                                            isActive: true,
+                                            activeEl: "home",
+                                        })
+                                    )
                                 }
                             >
                                 Home
@@ -74,12 +92,19 @@ export const NavBar = () => {
                         <li className={styles["nav-link-item"]}>
                             <NavLink
                                 aria-label="Gallery"
-                                to={"/#gallery"}
-                                onClick={() => dispatch(setToShowPoD(false))}
+                                to={"/gallery"}
                                 className={() =>
                                     globalData.activeNavElement.activeEl.includes("gallery")
                                         ? styles["active"]
                                         : styles["pending"]
+                                }
+                                onClick={() =>
+                                    dispatch(
+                                        setActiveNavElement({
+                                            isActive: true,
+                                            activeEl: "gallery",
+                                        })
+                                    )
                                 }
                             >
                                 Gallery
@@ -88,12 +113,19 @@ export const NavBar = () => {
                         {/* <li className={styles["nav-link-item"]}>
                             <NavLink
                                 aria-label="Articles"
-                                to={"/#articles"}
-                                onClick={() => dispatch(setToShowPoD(false))}
+                                to={"/articles"}
                                 className={() =>
                                     globalData.activeNavElement.activeEl.includes("articles")
                                         ? styles["active"]
                                         : styles["pending"]
+                                }
+                                onClick={() =>
+                                    dispatch(
+                                        setActiveNavElement({
+                                            isActive: true,
+                                            activeEl: "articles",
+                                        })
+                                    )
                                 }
                             >
                                 Articles
@@ -102,12 +134,19 @@ export const NavBar = () => {
                         <li className={styles["nav-link-item"]}>
                             <NavLink
                                 aria-label="About"
-                                to={"/#about"}
-                                onClick={() => dispatch(setToShowPoD(false))}
+                                to={"/about"}
                                 className={() =>
                                     globalData.activeNavElement.activeEl.includes("about")
                                         ? styles["active"]
                                         : styles["pending"]
+                                }
+                                onClick={() =>
+                                    dispatch(
+                                        setActiveNavElement({
+                                            isActive: true,
+                                            activeEl: "about",
+                                        })
+                                    )
                                 }
                             >
                                 About
@@ -115,14 +154,6 @@ export const NavBar = () => {
                         </li>
                     </ul>
                     <div className={styles["nav-navbar-collapse"]}>
-                        <Link
-                            to={"https://www.nasa.gov/"}
-                            className={styles["nav-item-nasa"]}
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            NASA
-                        </Link>
                         <button
                             className={styles["nav-item-pod"]}
                             onClick={() => [

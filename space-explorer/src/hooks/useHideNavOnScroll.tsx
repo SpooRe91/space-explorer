@@ -22,6 +22,5 @@ const useHideNavOnScroll = (setToScrollNavUp: React.Dispatch<React.SetStateActio
             window.removeEventListener("scroll", handleNavigation);
         };
     }, [handleNavigation]);
-//TODO: DOUBLE CHECK
 }
 export default useHideNavOnScroll

@@ -1,6 +1,5 @@
-import { useRef, useState } from "react";
-import useIntersectionHook from "../../hooks/useIntersectionHook";
-import styles from "./index.module.scss";
+import { useState } from "react";
+import styles from "./ArticlesPage.module.scss";
 import { ErrorMessage } from "../../Layouts/index";
 import { ArticleCard } from "../../Components/index";
 import { useAppSelector } from "../../App/hooks";
@@ -10,19 +9,26 @@ import SearchForm from "../../Components/SearchForm/SearchForm";
 import { articleState } from "../../redux-slices/articleSlice";
 import { globalState } from "../../redux-slices/globalSlice";
 
+import useGetAgentView from "../../hooks/useGetAgentView";
+
 export const ArticlesPage = () => {
-    const divRef = useRef<HTMLDivElement>(null);
-    const isActive = useIntersectionHook(divRef, "#articles");
+
     const articleData = useAppSelector(articleState);
     const globalData = useAppSelector(globalState);
+
+    const { isMobileWidth } = useGetAgentView();
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [, setToDisableLoadButton] = useState<boolean>(false);
 
     return (
-        <section id="articles" className={styles["articles-main-container"]}>
-            <div className={styles["trigger"]} ref={divRef}></div>
-            <div className={styles[isActive ? "active-header-container" : "inactive-header-container"]}>
+        <section
+            id="articles"
+            style={{ marginTop: isMobileWidth ? "200px" : "" }}
+            className={styles["articles-main-container"]}
+        >
+            <div className={styles["trigger"]}></div>
+            <div className={styles["active-header-container"]}>
                 <h2 className={styles["header"]}>Articles</h2>
                 <div>
                     <SearchForm {...{ setToDisableLoadButton, pageView: "articles" }} />

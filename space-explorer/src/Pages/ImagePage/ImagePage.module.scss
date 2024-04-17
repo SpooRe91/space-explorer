@@ -53,19 +53,17 @@
 
 @mixin image-container {
     width: 100%;
-    padding: 10rem 0;
     margin-bottom: 10rem;
     position: relative;
-    height: clamp(1440px, 100vh, 1620px);
-    box-shadow:
-        0px 0px 15px 6.6px var(--card-box-shadow-color),
-        0px 0px 15px 6.6px var(--card-box-shadow-color);
+    height: clamp(800px, 900px, 1100px);
+    box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color), 0px 0px 15px 6.6px var(--card-box-shadow-color);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
     z-index: 10;
+    margin-top: 100px;
 
     .trigger {
         height: 1px;
@@ -84,6 +82,7 @@
         display: inline-block;
         padding: 1.5rem;
         z-index: 1;
+        margin-top:100px;
 
         h1 {
             font-size: 4.5rem;
@@ -144,6 +143,7 @@
     .image-container {
         height: clamp(900px, 1200px, 1620px);
         margin-bottom: 5rem;
+        margin-top: 200px;
         .image-container-heading-container {
             width: clamp(320px, 40%, 750px);
             background-color: var(--component-bgr-transparent-color);

@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import styles from "./index.module.scss";
+import { useState } from "react";
+import styles from "./ImagePage.module.scss";
 
 import { globalState } from "../../redux-slices/globalSlice";
 import { imageState } from "../../redux-slices/imagesSlice";
@@ -8,15 +8,13 @@ import { SearchForm, ImageModal, ImageComponent } from "../../Components/index";
 import { ErrorMessage } from "../../Layouts/index";
 
 import { TImageData } from "../../Interfaces and types/Types/types";
-import useIntersectionHook from "../../hooks/useIntersectionHook";
+
 import pageChanger from "../../utils/pageChanger";
 
 import { ImageListItem } from "@mui/material";
 import useDetectDevice from "../../hooks/useDetectDevice";
 
 export const ImagePage = () => {
-    const divRef = useRef<HTMLDivElement>(null);
-    useIntersectionHook(divRef, "#gallery");
 
     const imageData = useAppSelector(imageState);
     const globalData = useAppSelector(globalState);
@@ -59,7 +57,6 @@ export const ImagePage = () => {
 
     return (
         <section id="gallery" className={styles["image-container"]}>
-            <div className={styles["trigger"]} ref={divRef}></div>
             <div className={styles["image-container-heading-container"]}>
                 <h1>Gallery</h1>
                 {<SearchForm setToDisableLoadButton={setToDisableLoadButton} pageView={"images"} />}

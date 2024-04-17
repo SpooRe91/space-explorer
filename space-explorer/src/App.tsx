@@ -3,8 +3,8 @@ import { globalState, setIsLoading } from "./redux-slices/globalSlice";
 //TODO:ADD THE ARTICLES PAGE WHEN READY
 import { AboutPage, HomePage, ImagePage, PoDPage } from "./Pages/index";
 import { ErrorMessage, GlobalLoader, NavBar } from "./Layouts/index";
-import { useEffect } from "react";
-import { useLocation } from "react-router";
+import { Suspense, useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router";
 import "./styles/index.scss";
 import sapceVideo from "./assets/space-explorer-earth-view-vid.webm";
 
@@ -23,7 +23,7 @@ function App() {
                 <source src={sapceVideo} type="video/webm" />
             </video>
             <NavBar />
-            <>
+            <Suspense fallback={<GlobalLoader />}>
                 {globalData.loading ? (
                     <div className="loader-comp">
                         <GlobalLoader />
@@ -32,12 +32,14 @@ function App() {
                 {globalData.error.error && globalData.error.page === "app" ? (
                     <ErrorMessage error={globalData.error.error} />
                 ) : null}
-                <HomePage />
-                <ImagePage />
-                {/* <ArticlesPage /> */}
+                <Routes>
+                    <Route path={"/"} Component={HomePage} />
+                    <Route path="/gallery" Component={ImagePage} />
+                    {/* <Route path="/articles" Component={ArticlesPage} /> */}
+                </Routes>
                 <AboutPage />
                 {globalData.showPoD ? <PoDPage /> : null}
-            </>
+            </Suspense>
         </div>
     );
 }

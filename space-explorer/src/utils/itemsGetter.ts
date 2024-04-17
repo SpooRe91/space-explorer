@@ -20,8 +20,7 @@ const itemsGetter = async ({
 
     const data =
         pageView === "images"
-            ?
-            await fetchImages({ signal, controller, page: imageData.imagePage, queryString: searchValue })
+            ? await fetchImages({ signal, controller, page: imageData.imagePage, queryString: searchValue })
             : await fetchArticles({ signal, controller, searchValue });
     setSearchValue('');
     dispatch(setIsLoading(false));

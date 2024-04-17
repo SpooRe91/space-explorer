@@ -13,6 +13,7 @@ export const fetchImages = async ({ signal, controller, page, queryString }:
             return await res.data.collection.items;
         }
     } catch (error: unknown) {
+        console.log(error);
         if (controller.signal.aborted) { return }
         if (typeof error === "string") {
             return error.toUpperCase()
