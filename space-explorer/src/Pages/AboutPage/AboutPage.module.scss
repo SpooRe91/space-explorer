@@ -49,7 +49,7 @@
     height: 500px;
     position: relative;
     justify-content: center;
-    margin-top:100px;
+    margin-top: 100px;
 
     .span-trigger {
         height: 1px;
@@ -91,9 +91,23 @@
             filter: brightness(0.3);
         }
     }
-    .about-links-container{
+    .about-links-container {
         display: flex;
         gap: 1rem;
+        a {
+            display: flex;
+            height: fit-content;
+            &:hover {
+                cursor: url("/pointer.png"), auto;
+                color: #4990be;
+            }
+            svg {
+                &:hover {
+                    cursor: url("/pointer.png"), auto;
+                    color: #4990be;
+                }
+            }
+        }
     }
 }
 
