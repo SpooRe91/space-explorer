@@ -1,7 +1,6 @@
 import { useAppDispatch, useAppSelector } from "./App/hooks";
 import { globalState, setIsLoading } from "./redux-slices/globalSlice";
-//TODO:ADD THE ARTICLES PAGE WHEN READY
-import { AboutPage, HomePage, ImagePage, PoDPage } from "./Pages/index";
+import { AboutPage, ArticlesPage, HomePage, ImagePage, PoDPage } from "./Pages/index";
 import { ErrorMessage, GlobalLoader, NavBar } from "./Layouts/index";
 import { Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router";
@@ -34,7 +33,7 @@ function App() {
                 <Routes>
                     <Route path={"/"} Component={HomePage} />
                     <Route path="/gallery" Component={ImagePage} />
-                    {/* <Route path="/articles" Component={ArticlesPage} /> */}
+                    <Route path="/articles" Component={ArticlesPage} />
                     <Route path="/about" Component={AboutPage} />
                 </Routes>
                 {globalData.showPoD ? <PoDPage /> : null}
