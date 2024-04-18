@@ -9,7 +9,7 @@ const initialState: IGlobal = {
         page: '',
         error: ''
     },
-    showSideNav: true,
+    showTopNav: true,
     toExpandImage: false,
     modalImageHref: '',
     modalImageTitle: '',
@@ -27,16 +27,13 @@ export const globalActions = createSlice({
         setIsLoading: (state: IGlobal, action: IAction<string, boolean>) => {
             state.loading = action.payload;
         },
-
         setError: (state: IGlobal, action: IAction<string, TGLobalError>) => {
             state.error.error = action.payload.error;
             state.error.page = action.payload.page ? action.payload.page : '';
         },
-
-        setShowNav: (state: IGlobal, action: IAction<string, boolean>) => {
-            state.showSideNav = action.payload;
+        setShowTopNav: (state: IGlobal, action: IAction<string, boolean>) => {
+            state.showTopNav = action.payload;
         },
-
         setToExpandImage: (state: IGlobal,
             action: IAction<string,
                 { bool: boolean, href: string | null, title: string }>) => {
@@ -44,21 +41,19 @@ export const globalActions = createSlice({
             state.modalImageHref = action.payload.href;
             state.modalImageTitle = action.payload.title;
         },
-
         setActiveNavElement: (state: IGlobal, action: IAction<string, { isActive: boolean, activeEl: string }>) => {
             state.activeNavElement.isActive = action.payload.isActive;
             state.activeNavElement.activeEl = action.payload.activeEl;
         },
-
         setToShowPoD: (state: IGlobal, action: IAction<string, boolean>) => {
             state.showPoD = action.payload;
-        }
+        },
     }
 });
 
 export const { setIsLoading,
     setError,
-    setShowNav,
+    setShowTopNav,
     setToExpandImage,
     setActiveNavElement,
     setToShowPoD } = globalActions.actions;

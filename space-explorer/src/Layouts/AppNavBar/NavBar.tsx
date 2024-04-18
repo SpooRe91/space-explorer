@@ -5,10 +5,9 @@ import {
     globalState,
     setActiveNavElement,
     setIsLoading,
-    setShowNav,
+    setShowTopNav,
     setToShowPoD,
 } from "../../redux-slices/globalSlice";
-
 //SOME COMPLETE TESTING TEXT
 
 import styles from "./NavBar.module.scss";
@@ -16,7 +15,7 @@ import icon from "../../assets/icons/android-chrome-192x192.png";
 import { useState } from "react";
 import useHideNavOnScroll from "../../hooks/useHideNavOnScroll";
 
-import useDetectDevice from "../../hooks/useDetectDevice";
+import useGetAgentView from "../../hooks/useGetAgentView";
 
 //--------------------------------------------------------
 
@@ -25,12 +24,10 @@ export const NavBar = () => {
     const dispatch = useAppDispatch();
 
     const [scrollNavUp, setToScrollNavUp] = useState<boolean>(false);
-    const { currentlyIsMobile } = useDetectDevice();
+    const { isMobileWidth } = useGetAgentView();
 
     const checkIfMobile = (): void => {
-        if (currentlyIsMobile) {
-            dispatch(setShowNav(!globalData.showSideNav));
-        }
+        dispatch(setShowTopNav(!globalData.showTopNav));
     };
 
     //CUSTOM HOOK TO CONTROL THE SHOWING AND HIDING OF THE NAV BAR on SCROLL
@@ -62,7 +59,7 @@ export const NavBar = () => {
                 <nav
                     className={styles["secondary-nav-container"]}
                     style={
-                        globalData.showSideNav
+                        globalData.showTopNav
                             ? { transform: "translateY(0%)" }
                             : { transform: "translateY(-100%)" }
                     }
@@ -164,9 +161,11 @@ export const NavBar = () => {
                             Picture of the day
                         </button>
                     </div>
-                    <div className={styles["nav-toggler-contaier"]} onClick={() => checkIfMobile()}>
-                        {currentlyIsMobile ? <BiDotsHorizontalRounded /> : null}
-                    </div>
+                    {isMobileWidth && (
+                        <div className={styles["nav-toggler-contaier"]} onClick={() => checkIfMobile()}>
+                            <BiDotsHorizontalRounded />
+                        </div>
+                    )}
                 </nav>
             </div>
         </section>

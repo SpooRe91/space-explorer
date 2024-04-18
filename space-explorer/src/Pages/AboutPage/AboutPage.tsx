@@ -10,7 +10,6 @@ export const AboutPage = () => {
     return (
         // IF THE CURRENT REF ELEMENT IS ACTIVE, IT WILL APPLY A SPECIFIC SYLE TO IT
         <section id="about" className={styles["about-container"]}>
-            <span className={styles["span-trigger"]}></span>
             <div className={styles["slide-in"]}>
                 <h2 className={styles["already-reg"]}>
                     About <span>"Space-explorer"</span>

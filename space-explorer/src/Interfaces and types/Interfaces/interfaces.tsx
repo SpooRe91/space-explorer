@@ -1,24 +1,21 @@
 import { TGLobalError, TImageData } from "../Types/types";
 
-
 export interface IGlobal {
     loading: boolean;
-    error: TGLobalError,
-    showSideNav: boolean;
+    error: TGLobalError;
+    showTopNav: boolean;
     toExpandImage: boolean;
     modalImageHref: string | null;
     modalImageTitle: string;
-    activeNavElement: { isActive: boolean, activeEl: string };
+    activeNavElement: { isActive: boolean; activeEl: string };
     showPoD: boolean;
 }
 
-
 export interface IImageData {
-    allData: TImageData[],
-    imagePage: number,
-    queryString: string
+    allData: TImageData[];
+    imagePage: number;
+    queryString: string;
 }
-
 
 export interface IAction<T, P> {
     readonly type: T;
