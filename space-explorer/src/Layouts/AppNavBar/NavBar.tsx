@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
+import { useState } from "react";
 import {
     globalState,
     setActiveNavElement,
@@ -11,7 +12,6 @@ import {
 
 import styles from "./NavBar.module.scss";
 import icon from "../../assets/icons/android-chrome-192x192.png";
-import { useState } from "react";
 import useHideNavOnScroll from "../../hooks/useHideNavOnScroll";
 
 import useGetAgentView from "../../hooks/useGetAgentView";
