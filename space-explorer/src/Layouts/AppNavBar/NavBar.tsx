@@ -8,7 +8,6 @@ import {
     setShowTopNav,
     setToShowPoD,
 } from "../../redux-slices/globalSlice";
-//SOME COMPLETE TESTING TEXT
 
 import styles from "./NavBar.module.scss";
 import icon from "../../assets/icons/android-chrome-192x192.png";
@@ -16,8 +15,6 @@ import { useState } from "react";
 import useHideNavOnScroll from "../../hooks/useHideNavOnScroll";
 
 import useGetAgentView from "../../hooks/useGetAgentView";
-
-//--------------------------------------------------------
 
 export const NavBar = () => {
     const globalData = useAppSelector(globalState);
