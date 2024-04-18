@@ -19,7 +19,7 @@ export const AboutPage = () => {
                     React, Redux, TypeScript, SCSS, AXIOS, MaterialUi.
                 </span>
                 <p className={styles["already-reg"]}>
-                    A fan page of space exploration, different articles and images from the NASA and othe
+                    A fan page of space exploration, different articles and images from the NASA and other
                     astronomy APIs.
                 </p>
                 <p className={styles["already-reg"]}>
