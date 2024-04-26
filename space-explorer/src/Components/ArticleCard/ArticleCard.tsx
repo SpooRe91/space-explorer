@@ -18,6 +18,7 @@ export const ArticleCard = ({
 }: TArticleItem) => {
     const [textCopied, setToCopy] = useState<boolean>(false);
     const { currentlyIsMobile } = useDetectDevice();
+
     const handleShare = async () => {
         if (!id) {
             return;
@@ -47,13 +48,15 @@ export const ArticleCard = ({
             <ImageListItem className={styles["article-card-li"]}>
                 <div className={styles["article-img-title-container"]}>
                     <div>
-                        <img
-                            className={styles["article-card-image"]}
-                            src={image_url}
-                            srcSet={image_url}
-                            alt={title}
-                            loading="lazy"
-                        />
+                        <Link to={image_url} rel="noopenner" target="_blank">
+                            <img
+                                className={styles["article-card-image"]}
+                                src={image_url}
+                                srcSet={image_url}
+                                alt={title}
+                                loading="lazy"
+                            />
+                        </Link>
                     </div>
                     <h3 className={"article-card-title"}>{title}</h3>
                     {updated_at ? (
@@ -65,17 +68,6 @@ export const ArticleCard = ({
                         <Link to={url} target="_blank" rel="noopener" className={styles["card-link"]}>
                             Read More
                         </Link>
-                        {/* <button
-              className={styles['card-button']}
-            >
-              <Link
-                className={styles["facebook-share"]}
-                target="_blank"
-                to={`https://www.facebook.com/sharer/sharer.php?u=${news_site}`}
-              >
-                <FacebookIcon />
-              </Link>
-            </button> */}
                         <button
                             className={styles["card-button"]}
                             onClick={() => [handleShare(), handleToCopyText()]}
@@ -85,9 +77,6 @@ export const ArticleCard = ({
                         </button>
                     </div>
                 </div>
-                <article className={styles["article-card-text-container"]}>
-                    <p className={styles["article-card-text"]}>{summary}</p>
-                </article>
             </ImageListItem>
         </div>
     );

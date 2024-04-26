@@ -18,20 +18,32 @@
   overflow-x: hidden;
   overflow-y: scroll;
 
+  --component-bgr-transparent-color: #000000c2;
+  --emphasized-text-about: #afb1ff;
+  --text-color-shadow: #ffffffde;
+  --hero-text-shadow-additional: #bbbbbbc2;
+  --box-shadow-color: #1e4d94;
+  --box-shadow-color-secondary: #a7a6a6;
+
   --card-box-shadow-color: #1e4d97;
   --card-box-shadow-color-hover: #4990be;
   --card-box-shadow-collor-button: #454f6c;
-  --about-link-collor: #7382b1;
-  --about-link-collor-hover: #93a0c7;
   --card-box-shadow-collor-button-hover: #1e4d96;
   --card-text-collor-button: #2c70dd;
+
+  --about-link-collor: #7382b1;
+  --about-link-collor-hover: #93a0c7;
   --about-text-collor: #2f78ee;
-  --text-color-shadow: rgba(255, 255, 255, 0.87);
-  --hero-text-shadow-additional: rgba(187, 187, 187, 0.76);
-  --component-bgr-transparent-color: rgba(0, 0, 0, 0.76);
-  --emphasized-text-about: rgba(175, 177, 255, 1);
+
   --btn-active-bgr: #132fba73;
-  --form-input-bgr: rgba(51, 78, 76, 1);
+  --nav-btn-active-bgr: #78787859;
+  --nav-btn-active-main-clr: #0bacc9;
+
+  --form-input-bgr: #334e4c;
+  --form-active-button-bgr-color: #79797959;
+  --form-label-color: #7fcdff;
+  --form-input-valid: #5eff0079;
+  --form-input-invalid: #360000e0;
 }
 
 .main {

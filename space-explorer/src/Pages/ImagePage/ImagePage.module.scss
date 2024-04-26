@@ -6,21 +6,20 @@
     overflow-y: auto;
     padding: 2rem;
     justify-items: center;
-    background-color: rgb(0 0 0 / 0%);
     justify-content: center;
     border-radius: 10px;
     -webkit-background-clip: border-box;
     box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
     align-items: center;
     flex-wrap: wrap;
-    background-color: #00000078;
+    background-color: var(--component-bgr-transparent-color);
     z-index: 10;
 }
 
 @mixin button {
     width: 165px;
     text-align: center;
-    background-color: rgba(000, 000, 000, 50%);
+    background-color: var(--component-bgr-transparent-color);
     border: none;
     border-radius: 10px;
     font-size: 1.3rem;
@@ -30,21 +29,21 @@
     font-weight: 600;
     z-index: 10;
     box-shadow:
-        0px 0px 7px 1px #1e4d94,
-        0px 0px 12px 3px #1e4d94;
+        0px 0px 7px 1px var(--box-shadow-color),
+        0px 0px 12px 3px var(--box-shadow-color);
     transition: all 150ms ease-in-out;
 
     &:hover {
-        cursor: url(/pointer.png), auto;
-        color: #4990be;
+        cursor: url("/pointer.png"), auto;
+        color: var(--card-box-shadow-color-hover);
         box-shadow:
-            0px 0px 7px 1px #1e4d94,
-            0px 0px 12px 3px #a7a6a6;
+            0px 0px 7px 1px var(--box-shadow-color),
+            0px 0px 12px 3px var(--box-shadow-color-secondary);
         text-shadow: 0px 0px 20px #000000;
         backdrop-filter: blur(5px);
     }
     &:active {
-        background-color: rgba(121, 121, 121, 0.35);
+        background-color: var(--form-active-button-bgr-color);
     }
     &:disabled {
         cursor: not-allowed;
@@ -53,17 +52,18 @@
 
 @mixin image-container {
     width: 100%;
-    margin-bottom: 10rem;
     position: relative;
+    top: 10rem;
     height: clamp(800px, 900px, 1100px);
-    box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color), 0px 0px 15px 6.6px var(--card-box-shadow-color);
+    box-shadow:
+        0px 0px 15px 6.6px var(--card-box-shadow-color),
+        0px 0px 15px 6.6px var(--card-box-shadow-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
     z-index: 10;
-    margin-top: 100px;
 
     .trigger {
         height: 1px;
@@ -82,7 +82,7 @@
         display: inline-block;
         padding: 1.5rem;
         z-index: 1;
-        margin-top:100px;
+        margin-top: 100px;
 
         h1 {
             font-size: 4.5rem;
@@ -111,7 +111,7 @@
 }
 .image-container::before {
     content: "";
-    background-color: rgba(0, 0, 0, 0.47);
+    background-color: var(--component-bgr-transparent-color);
     width: 100%;
     height: 100%;
     position: absolute;
@@ -121,7 +121,7 @@
 }
 .image-container::after {
     content: "";
-    background-color: rgba(0, 0, 0, 0.47);
+    background-color: var(--component-bgr-transparent-color);
     width: 100%;
     height: 100%;
     background: url("../../assets/space-explorer-gallery-bgr-webp.webp");
@@ -142,8 +142,7 @@
 @media screen and (max-width: 766px) {
     .image-container {
         height: clamp(900px, 1200px, 1620px);
-        margin-bottom: 5rem;
-        margin-top: 200px;
+        top: 12.5rem;
         .image-container-heading-container {
             width: clamp(320px, 40%, 750px);
             background-color: var(--component-bgr-transparent-color);

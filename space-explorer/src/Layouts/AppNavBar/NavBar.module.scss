@@ -8,7 +8,6 @@
     text-decoration: none;
     color: white;
     padding: 5px 5px;
-    font-weight: 600;
     box-shadow:
         0px 0px 7px 1px #1e4d94,
         0px 0px 12px 3px #1e4d94;
@@ -17,7 +16,7 @@
 
 @mixin nav-buttons-hover {
     cursor: url("/pointer.png"), auto;
-    color: #4990be;
+    color: var(--card-box-shadow-color-hover);
     box-shadow:
         0px 0px 7px 1px #1e4d94,
         0px 0px 12px 3px #a7a6a6;
@@ -26,7 +25,6 @@
 
 @mixin nav-button-active {
     transition: all 150ms ease-in-out;
-    background-color: rgba($color: #797979, $alpha: 0.35);
 }
 
 @mixin main-nav {
@@ -39,10 +37,10 @@
         display: flex;
         gap: 2rem;
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: var(--component-bgr-transparent-color);
         padding: 0.8rem;
         border-radius: 10px;
-        box-shadow: 0px 0px 15px 4px #1e4d94;
+        box-shadow: 0px 0px 15px 4px var(--box-shadow-color);
         transition: all 150ms ease-in-out;
         transform: translateY(0%);
 
@@ -59,7 +57,6 @@
 
                 a {
                     font-size: 1.5rem;
-                    font-weight: 700;
                     color: #ffffff;
                     text-decoration: none;
                     border: none;
@@ -70,14 +67,12 @@
 
                 .active {
                     font-size: 1.5rem;
-                    font-weight: 700;
-                    color: #0bacc9;
+                    color: var(--nav-btn-active-main-clr);
                     text-decoration: none;
                     border: none;
                     border-radius: 10px;
                     padding: 5px 7px;
                     transition: all 150ms ease-in-out;
-                    // @include nav-buttons-hover();
 
                     &:hover {
                         @include nav-buttons-hover();
@@ -89,7 +84,6 @@
 
                 .pending {
                     font-size: 1.5rem;
-                    font-weight: 700;
                     color: #ffffff;
                     text-decoration: none;
                     border: none;
@@ -121,7 +115,6 @@
                 text-decoration: none;
                 color: white;
                 font-size: 1.1rem;
-                font-weight: 700;
                 padding: 5px 7px;
                 transition: all 150ms ease-in-out;
                 &:hover {
@@ -155,8 +148,8 @@
             }
             &:hover {
                 cursor: url("/pointer.png"), auto;
-                color: #4990be;
-                text-shadow: 0px 0px 20px rgba($color: #a7a6a6, $alpha: 1);
+                color: var(--card-box-shadow-color-hover);
+                text-shadow: var(--hero-text-shadow-additional);
             }
             &:active {
                 @include nav-button-active();
@@ -228,12 +221,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: var(--component-bgr-transparent-color);
     z-index: -1;
 }
 
 .secondary-nav-container:hover {
-    box-shadow: 0px 0px 15px 6.6px #1e4d97;
+    box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
 }
 /*DESKTOP NAV SHOULD BE ALWAYS VISIBLE*/
 @media screen and (min-width: 1534px) {
@@ -267,12 +260,12 @@
         background-color: rgba(0, 0, 0, 0.8);
         padding: 0.8rem;
         border-radius: unset;
-        box-shadow: 0px 0px 15px 4px #1e4d94;
+        box-shadow: 0px 0px 15px 4px var(--box-shadow-color);
         transition: all 150ms ease-in-out;
         flex-wrap: wrap;
         justify-content: space-evenly;
         align-items: center;
-        box-shadow: 0px 0px 15px 4px #1e4d94;
+        box-shadow: 0px 0px 15px 4px var(--box-shadow-color);
         position: fixed;
         top: 0;
 
@@ -288,13 +281,11 @@
 
                 a {
                     font-size: 1rem;
-                    font-weight: 700;
                 }
 
                 .active {
                     font-size: 1rem;
-                    font-weight: 700;
-                    color: #0bacc9;
+                    color: var(--nav-btn-active-main-clr);
                     text-decoration: none;
                     border: none;
                     border-radius: unset;
@@ -305,7 +296,6 @@
 
                 .pending {
                     font-size: 1rem;
-                    font-weight: 700;
                     color: #ffffff;
                     text-decoration: none;
                     border: none;
@@ -334,12 +324,11 @@
                 border-radius: 10px;
                 font-size: 1rem;
                 text-decoration: none;
-                color: white;
+                color: #fff;
                 padding: 5px 5px;
-                font-weight: 600;
                 box-shadow:
-                    0px 0px 7px 1px #1e4d94,
-                    0px 0px 12px 3px #1e4d94;
+                    0px 0px 7px 1px var(--box-shadow-color),
+                    0px 0px 12px 3px var(--box-shadow-color);
                 transition: all 150ms ease-in-out;
 
                 &:hover {
@@ -406,12 +395,10 @@
 
                         a {
                             font-size: 1rem;
-                            font-weight: 700;
                         }
 
                         .active {
                             font-size: 1rem;
-                            font-weight: 700;
                             text-decoration: none;
                             border: none;
                             border-radius: unset;
@@ -425,7 +412,6 @@
 
                         .pending {
                             font-size: 1rem;
-                            font-weight: 700;
                             color: #ffffff;
                             text-decoration: none;
                             border: none;

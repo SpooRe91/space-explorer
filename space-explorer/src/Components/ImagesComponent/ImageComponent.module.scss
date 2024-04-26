@@ -1,5 +1,5 @@
 .card-component {
-    background-color: rgba(0, 0, 0, 0.6509803922);
+    background-color: var(--component-bgr-transparent-color);
     border-radius: 10px;
     box-shadow: 0px 0px 15px 6.6px var(--card-box-shadow-color);
     overflow: hidden;
@@ -65,7 +65,7 @@
                 left: 115%;
                 width: 65px;
                 height: 30px;
-                color: white;
+                color: #fff;
                 background-color: var(--card-box-shadow-collor-button-hover);
                 padding: 0.1rem;
                 border-radius: 0.3rem;
@@ -92,13 +92,13 @@
         .card-content {
             position: absolute;
             bottom: 0;
-            background-color: black;
+            background-color: #000;
             width: 100%;
             padding: 0.5rem;
 
             .card-content-title,
             .card-content-description {
-                color: #59b1ea;
+                color: var(--about-text-collor);
                 white-space: nowrap;
                 overflow: hidden;
                 padding: unset;

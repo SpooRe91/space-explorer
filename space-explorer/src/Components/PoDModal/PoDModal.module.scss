@@ -27,7 +27,7 @@
         position: relative;
         display: flex;
         padding: 2.3rem 2rem;
-        background-color: rgba(0, 0, 0, 0.85);
+        background-color: var(--component-bgr-transparent-color);
         flex-wrap: wrap;
         flex-direction: column;
         align-content: center;

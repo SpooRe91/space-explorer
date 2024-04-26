@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { BiDotsHorizontalRounded } from "react-icons/bi";
+import CloseIcon from "@mui/icons-material/Close";
+import MenuIcon from "@mui/icons-material/Menu";
 import { useAppDispatch, useAppSelector } from "../../App/hooks";
 import { useState } from "react";
 import {
@@ -160,7 +161,7 @@ export const NavBar = () => {
                     </div>
                     {isMobileWidth && (
                         <div className={styles["nav-toggler-contaier"]} onClick={() => checkIfMobile()}>
-                            <BiDotsHorizontalRounded />
+                            {globalData.showTopNav ? <CloseIcon /> : <MenuIcon />}
                         </div>
                     )}
                 </nav>

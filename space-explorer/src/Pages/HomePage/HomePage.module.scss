@@ -47,33 +47,6 @@
         .home-hero-small-text {
             font-size: 1.8rem;
         }
-
-        .home-hero-small-text-link:hover {
-            cursor: url("/pointer.png"), auto;
-        }
-
-        .home-hero-small-text-link svg {
-            font-size: 3.8rem;
-            border-radius: 10px;
-            color: white;
-            // box-shadow:
-            //     0px 0px 7px 5px var(--component-bgr-transparent-color),
-            //     0px 0px 20px 0px var(--hero-text-shadow-additional);
-            transition: all 50ms ease-in-out;
-            &:hover {
-                cursor: url("/pointer.png"), auto;
-                color: #a1c2d8;
-                // box-shadow:
-                //     inset 0px 0px 9px 2px rgba(255, 254, 254, 0.76),
-                //     0px 0px 20px 11px rgba(66, 66, 66, 0.76);
-                border: none;
-                border-radius: 10px;
-            }
-            &:active {
-                color: rgba($color: #000000, $alpha: 1);
-                background-color: rgba($color: #ffffff, $alpha: 0.3);
-            }
-        }
     }
 }
 
@@ -81,7 +54,6 @@
     width: 100%;
     height: clamp(560px, 100vh, 750px);
     top: 10rem;
-    margin-bottom: 35rem;
     position: relative;
     // box-shadow: 0px 0px 15px 6.6px #1e4d97;
     .home-hero-container {
@@ -92,7 +64,7 @@
 .home-hero-section::before {
     content: "";
     backdrop-filter: blur(5px);
-    background-color: rgba(0, 0, 0, 0.47);
+    background-color: var(--component-bgr-transparent-color);
     width: 100%;
     height: 100%;
     position: absolute;
@@ -128,7 +100,7 @@
 
                     .home-hero-small-text-link svg {
                         font-size: 2.4rem;
-                        color: white;
+                        color: #fff;
                     }
                 }
             }
@@ -165,7 +137,7 @@
 
                     .home-hero-small-text-link svg {
                         font-size: 2.4rem;
-                        color: white;
+                        color: #fff;
                     }
                 }
             }
