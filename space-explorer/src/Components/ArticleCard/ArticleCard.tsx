@@ -13,7 +13,7 @@ export const ArticleCard = ({
     title,
     updated_at,
     published_at,
-    summary,
+    // summary,
     url,
 }: TArticleItem) => {
     const [textCopied, setToCopy] = useState<boolean>(false);
