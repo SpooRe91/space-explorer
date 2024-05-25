@@ -6,7 +6,7 @@ import { globalState, setIsLoading, setToExpandImage } from "../../redux-slices/
 import imageChanger from "../../utils/imageChanger";
 import styles from "./ImageModal.module.scss";
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { imageState } from "../../redux-slices/imagesSlice";
 import { TImageData } from "../../Interfaces and types/Types/types";
 import pageChanger from "../../utils/pageChanger";
@@ -28,9 +28,6 @@ export const ImageModal = ({ handleShare, currentlyIsMobile }: ImageModalProps) 
     const globalData = useAppSelector(globalState);
     const imageData = useAppSelector(imageState);
 
-    const controller: AbortController = new AbortController();
-    const { signal }: { signal: AbortSignal } = controller;
-
     const handleNextImage = () => {
         dispatch(setIsLoading(true));
         imageChanger({ movement: "next", imageData, globalData, dispatch });
@@ -48,12 +45,14 @@ export const ImageModal = ({ handleShare, currentlyIsMobile }: ImageModalProps) 
 
     const currentImageCount = useMemo(
         () => (currentImage ? imageData?.allData?.indexOf(currentImage) + 1 : 0),
-        [currentImage]
+        [currentImage, imageData.allData]
     );
 
     useChangeImageWithKeys({ currentImageCount, handlePreviousImage, handleNextImage });
 
     const handlePageChange = async () => {
+        const controller = new AbortController();
+        const signal = controller.signal;
         pageChanger({
             imageData,
             signal,

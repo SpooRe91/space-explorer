@@ -15,18 +15,16 @@ import { ImageListItem } from "@mui/material";
 import useDetectDevice from "../../hooks/useDetectDevice";
 
 export const ImagePage = () => {
-
     const imageData = useAppSelector(imageState);
     const globalData = useAppSelector(globalState);
     const dispatch = useAppDispatch();
-
-    const controller: AbortController = new AbortController();
-    const { signal }: { signal: AbortSignal } = controller;
 
     const [disableLoadButton, setToDisableLoadButton] = useState<boolean>(false);
     const { currentlyIsMobile } = useDetectDevice();
 
     const handlePageChange = async () => {
+        const controller = new AbortController();
+        const signal = controller.signal;
         pageChanger({
             imageData,
             signal,

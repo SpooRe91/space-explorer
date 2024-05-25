@@ -14,15 +14,13 @@ export const SearchForm = ({ setToDisableLoadButton, pageView }: SearchFormTypes
     const [searchValue, setSearchValue] = useState<string>("");
     const [disableButton, setToDisableButton] = useState<boolean>(false);
 
-    const controller: AbortController = new AbortController();
-    const { signal }: { signal: AbortSignal } = controller;
-
     const imageData = useAppSelector(imageState);
     const dispatch = useAppDispatch();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
+        const controller = new AbortController();
+        const signal = controller.signal;
         formChecker({
             searchValue,
             setSearchValue,
@@ -44,21 +42,18 @@ export const SearchForm = ({ setToDisableLoadButton, pageView }: SearchFormTypes
     return (
         <form className={styles["search-form"]} onSubmit={(e) => handleSubmit(e)}>
             <div className={styles["main-element"]}>
-                <label
-                    className={styles["form-label"]}
-                    htmlFor={pageView === "images" ? "search-images" : "search-articles"}
-                >
+                <label className={styles["form-label"]} htmlFor={pageView}>
                     <ImageSearchIcon />
-                    Search {pageView === "images" ? "images" : "articles"}
+                    {`Search ${pageView}`}
                 </label>
                 <input
                     className={styles["form-input"]}
                     onChange={(e) => handleInput(e)}
                     type="text"
-                    id={pageView === "images" ? "search-images" : "search-articles"}
-                    name={pageView === "images" ? "search-images" : "search-articles"}
+                    id={pageView}
+                    name={pageView}
                     value={searchValue}
-                    placeholder="e.g. sun spots"
+                    placeholder="e.g. Jupiter"
                     pattern="[A-Za-z\d\s]*"
                     minLength={0}
                     maxLength={50}

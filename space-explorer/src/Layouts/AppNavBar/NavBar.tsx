@@ -128,6 +128,27 @@ export const NavBar = () => {
                         </li> */}
                         <li className={styles["nav-link-item"]}>
                             <NavLink
+                                aria-label="Solar system planets"
+                                to={"/planets"}
+                                className={() =>
+                                    globalData.activeNavElement.activeEl.includes("planets")
+                                        ? styles["active"]
+                                        : styles["pending"]
+                                }
+                                onClick={() =>
+                                    dispatch(
+                                        setActiveNavElement({
+                                            isActive: true,
+                                            activeEl: "planets",
+                                        })
+                                    )
+                                }
+                            >
+                                Planets
+                            </NavLink>
+                        </li>
+                        <li className={styles["nav-link-item"]}>
+                            <NavLink
                                 aria-label="About"
                                 to={"/about"}
                                 className={() =>

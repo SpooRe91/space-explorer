@@ -16,6 +16,19 @@ export type TArticleData = {
     results: TArticleItem[] | null;
 };
 
+export type TPlanetData = {
+    name: string;
+    mass: number;
+    radius: number;
+    period: number;
+    semi_major_axis: number;
+    temperature: number;
+    distance_light_year: number;
+    host_star_mass: number;
+    host_star_temperature: number;
+    image?: string;
+};
+
 export type TArticleItem = {
     events: [];
     featured: boolean;
@@ -133,5 +146,5 @@ export type ImageChangerProps = {
 
 export type SearchFormTypes = {
     setToDisableLoadButton: React.Dispatch<React.SetStateAction<boolean>>;
-    pageView: "images" | "articles";
+    pageView: "images" | "articles" | "planets";
 };

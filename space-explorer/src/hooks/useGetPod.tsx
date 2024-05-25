@@ -5,13 +5,12 @@ import { fetchImageOfTheDay } from "../services/Picture-of-the-day-api";
 import { useAppDispatch, useAppSelector } from "../App/hooks";
 
 const useGetPod = () => {
-    const controller = new AbortController();
-    const { signal } = controller;
-
     const dispatch = useAppDispatch();
     const podData = useAppSelector(podState);
 
     const podFetcher = useCallback(async () => {
+        const controller = new AbortController();
+        const signal = controller.signal;
         try {
             const data = await fetchImageOfTheDay({ signal, controller });
 
@@ -27,7 +26,7 @@ const useGetPod = () => {
                     controller.abort();
                     return data;
                 }
-            }, 10000);
+            }, 30000);
             if (data) {
                 dispatch(setIsLoading(false));
                 dispatch(setPrevPodUrl(podData));

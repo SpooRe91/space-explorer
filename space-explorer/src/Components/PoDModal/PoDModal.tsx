@@ -49,7 +49,12 @@ export const PoDModal = () => {
                             className={styles["img-container"]}
                             onClick={(e: React.MouseEvent<HTMLDivElement>) => handleModalClick(e)}
                         >
-                            <Link to={podData.url} target="_blank" rel="noopener">
+                            <Link
+                                onLoad={() => handleImageLoaded()}
+                                to={podData.url}
+                                target="_blank"
+                                rel="noopener"
+                            >
                                 <img
                                     className={styles["pod-image"]}
                                     src={podData.url}
