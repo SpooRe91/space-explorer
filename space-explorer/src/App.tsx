@@ -6,7 +6,6 @@ import { Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router";
 import spaceVideo from "./assets/space-explorer-earth-view-vid.webm";
 import useGetAgentView from "./hooks/useGetAgentView";
-import PlanetCard from "./Components/PlanetCard/PlanetCard";
 
 function App() {
     const globalData = useAppSelector(globalState);

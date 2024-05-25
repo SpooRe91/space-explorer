@@ -6,7 +6,7 @@ import { globalState, setIsLoading, setToExpandImage } from "../../redux-slices/
 import imageChanger from "../../utils/imageChanger";
 import styles from "./ImageModal.module.scss";
 
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { imageState } from "../../redux-slices/imagesSlice";
 import { TImageData } from "../../Interfaces and types/Types/types";
 import pageChanger from "../../utils/pageChanger";
