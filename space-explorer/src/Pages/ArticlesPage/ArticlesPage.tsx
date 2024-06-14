@@ -20,7 +20,6 @@ export const ArticlesPage = () => {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [, setToDisableLoadButton] = useState<boolean>(false);
-    console.log(articleData);
     return (
         <section
             id="articles"

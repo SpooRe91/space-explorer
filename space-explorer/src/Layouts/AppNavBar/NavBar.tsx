@@ -12,7 +12,7 @@ import {
 } from "../../redux-slices/globalSlice";
 
 import styles from "./NavBar.module.scss";
-import icon from "../../assets/icons/android-chrome-192x192.png";
+import icon from "../../assets/icons/android-chrome-192x192.webp";
 import useHideNavOnScroll from "../../hooks/useHideNavOnScroll";
 
 import useGetAgentView from "../../hooks/useGetAgentView";
