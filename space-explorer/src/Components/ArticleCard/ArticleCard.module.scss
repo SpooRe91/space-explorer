@@ -161,14 +161,28 @@
             -8px 1px 5px -3px #4990be96;
     }
 }
-.share-icon {
-    &:hover {
-        cursor: url("/pointer.png"), auto;
+.card-main-container {
+    transition: all ease-in-out 200ms;
+    border: none;
+    border-radius: 4px;
+
+    .share-icon {
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+        }
     }
-}
-.read-more {
+    .read-more {
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+        }
+    }
+    .header-link {
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+        }
+    }
     &:hover {
-        cursor: url("/pointer.png"), auto;
+        box-shadow: 0px 6px 13px -2px #56a8df;
     }
 }
 

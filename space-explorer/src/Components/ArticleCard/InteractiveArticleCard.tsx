@@ -66,85 +66,94 @@ export const InteractiveArticleCard = ({
     }, [published_at]);
 
     return (
-        <Card
-            sx={{
-                maxWidth: 450,
-                backgroundColor: "var(--card-almost-tranpsarent-bgr)",
-                backdropFilter: "blur(5px)",
-                minWidth: 300,
-            }}
-        >
-            <CardHeader
+        <div className={styles["card-main-container"]}>
+            <Card
                 sx={{
-                    display: "-webkit-box",
-                    WebkitBoxOrient: "vertical",
-                    WebkitLineClamp: 2,
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    padding: "6px",
-                    height: currentlyIsMobile ? "62px" : "85px",
-                }}
-                title={title}
-                titleTypographyProps={{
-                    color: "var(--about-link-collor)",
-                    fontSize: currentlyIsMobile ? "1.2rem" : "1.8rem",
-                }}
-                onClick={() => window.open(url, "_blank")}
-            />
-            <CardHeader
-                sx={{
-                    padding: "6px",
-                }}
-                subheader={`Published: ${publishTime.date}, ${publishTime.time}`}
-                subheaderTypographyProps={{
-                    color: "var(--text-color-shadow)",
-                    fontSize: currentlyIsMobile ? "0.8rem" : "1rem",
-                }}
-            />
-            <CardMedia component="img" height="194" image={image_url} alt="An article image" loading="lazy" />
-            <CardContent
-                sx={{
-                    backgroundColor: "var(--component-bgr-transparent-color)",
-                    height: "90px",
-                    padding: "6px",
-                    display: "-webkit-box",
-                    WebkitBoxOrient: "vertical",
-                    WebkitLineClamp: 4,
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
+                    maxWidth: 450,
+                    backgroundColor: "var(--card-almost-tranpsarent-bgr)",
+                    backdropFilter: "blur(5px)",
+                    minWidth: 300,
                 }}
             >
-                <Typography variant="body2" color="var(--card-box-shadow-color-hover)">
-                    {summary}
-                </Typography>
-            </CardContent>
-            <CardActions disableSpacing sx={{ height: "50px", display: "flex", gap: "1rem" }}>
-                <IconButton
+                <Link to={url} target="_blank" rel="noopener" className={styles["header-link"]}>
+                    <CardHeader
+                        sx={{
+                            display: "-webkit-box",
+                            WebkitBoxOrient: "vertical",
+                            WebkitLineClamp: 2,
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            padding: "6px",
+                            height: currentlyIsMobile ? "62px" : "85px",
+                        }}
+                        title={title}
+                        titleTypographyProps={{
+                            color: "var(--about-link-collor)",
+                            fontSize: currentlyIsMobile ? "1.2rem" : "1.8rem",
+                        }}
+                    />
+                </Link>
+                <CardHeader
                     sx={{
-                        color: "var(--card-text-collor-button-1)",
-                        fontSize: currentlyIsMobile ? "0.9rem" : "1.2rem",
-                        padding: "0px",
+                        padding: "6px",
                     }}
-                    aria-label="read-more"
-                >
-                    <Link to={url} target="_blank" rel="noopener" className={styles["read-more"]}>
-                        Read more
-                    </Link>
-                </IconButton>
-                <IconButton
+                    subheader={`Published: ${publishTime.date}, ${publishTime.time}`}
+                    subheaderTypographyProps={{
+                        color: "var(--text-color-shadow)",
+                        fontSize: currentlyIsMobile ? "0.8rem" : "1rem",
+                    }}
+                />
+                <CardMedia
+                    component="img"
+                    height="194"
+                    image={image_url}
+                    alt="An article image"
+                    loading="lazy"
+                />
+                <CardContent
                     sx={{
-                        color: "var(--card-text-collor-button-1)",
-                        fontSize: currentlyIsMobile ? "0.9rem" : "1.2rem",
-                        padding: "0",
+                        backgroundColor: "var(--component-bgr-transparent-color)",
+                        height: "90px",
+                        padding: "6px",
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 4,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
                     }}
-                    aria-label="share or copy link"
-                    onClick={() => handleShareButtonClick(id)}
                 >
-                    <ShareIcon className={styles["share-icon"]} />
-                    {textCopied ? <span>Copied!</span> : null}
-                </IconButton>
-            </CardActions>
-        </Card>
+                    <Typography variant="body2" color="var(--card-box-shadow-color-hover)">
+                        {summary}
+                    </Typography>
+                </CardContent>
+                <CardActions disableSpacing sx={{ height: "50px", display: "flex", gap: "1rem" }}>
+                    <IconButton
+                        sx={{
+                            color: "var(--card-text-collor-button-1)",
+                            fontSize: currentlyIsMobile ? "0.9rem" : "1.2rem",
+                            padding: "0px",
+                        }}
+                        aria-label="read-more"
+                    >
+                        <Link to={url} target="_blank" rel="noopener" className={styles["read-more"]}>
+                            Read more
+                        </Link>
+                    </IconButton>
+                    <IconButton
+                        sx={{
+                            color: "var(--card-text-collor-button-1)",
+                            fontSize: currentlyIsMobile ? "0.9rem" : "1.2rem",
+                            padding: "0",
+                        }}
+                        aria-label="share or copy link"
+                        onClick={() => handleShareButtonClick(id)}
+                    >
+                        <ShareIcon className={styles["share-icon"]} />
+                        {textCopied ? <span>Copied!</span> : null}
+                    </IconButton>
+                </CardActions>
+            </Card>
+        </div>
     );
 };
 export default InteractiveArticleCard;
