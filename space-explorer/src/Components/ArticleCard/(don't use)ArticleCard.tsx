@@ -2,10 +2,10 @@ import { ImageListItem, Typography } from "@mui/material";
 import ShareIcon from "@mui/icons-material/Share";
 // import FacebookIcon from '@mui/icons-material/Facebook';
 import styles from "./ArticleCard.module.scss";
-import { TArticleItem } from "../../Interfaces and types/Types/types";
+import { TArticleItem } from "@SpaceExplorer/Interfaces and types/Types/types";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import useDetectDevice from "../../hooks/useDetectDevice";
+import useDetectDevice from "@SpaceExplorer/hooks/useDetectDevice";
 
 export const ArticleCard = ({
     id,
