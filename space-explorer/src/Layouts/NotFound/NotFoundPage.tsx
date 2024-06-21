@@ -1,5 +1,5 @@
 import styles from "./NotFoundPage.module.scss";
-import notFoundImage from "../../assets/space-explorer-404.webp";
+import notFoundImage from "@SpaceExplorer/assets/space-explorer-404.webp";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "@SpaceExplorer/App/hooks";

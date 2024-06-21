@@ -1,10 +1,10 @@
 import styles from "./PoDModal.module.scss";
 import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../App/hooks";
-import { podState } from "../../redux-slices/PODslice";
-import { globalState, setIsLoading, setToShowPoD } from "../../redux-slices/globalSlice";
+import { useAppDispatch, useAppSelector } from "@SpaceExplorer/App/hooks";
+import { podState } from "@SpaceExplorer/redux-slices/PODslice";
+import { globalState, setIsLoading, setToShowPoD } from "@SpaceExplorer/redux-slices/globalSlice";
 import { Link } from "react-router-dom";
-import { ErrorMessage } from "../../Layouts/index";
+import { ErrorMessage } from "@SpaceExplorer/Layouts/index";
 
 export const PoDModal = () => {
     const [imageLoaded, setImageLoaded] = useState<boolean>(false);

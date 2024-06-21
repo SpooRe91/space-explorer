@@ -1,9 +1,9 @@
-import { TImageData } from "../../Interfaces and types/Types/types";
+import { TImageData } from "@SpaceExplorer/Interfaces and types/Types/types";
 
 import styles from "./ImageComponent.module.scss";
 
-import { useAppDispatch } from "../../App/hooks";
-import { setIsLoading, setToExpandImage } from "../../redux-slices/globalSlice";
+import { useAppDispatch } from "@SpaceExplorer/App/hooks";
+import { setIsLoading, setToExpandImage } from "@SpaceExplorer/redux-slices/globalSlice";
 import ShareIcon from "@mui/icons-material/Share";
 import { useState } from "react";
 

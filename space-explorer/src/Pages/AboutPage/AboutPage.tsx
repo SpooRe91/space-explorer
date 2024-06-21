@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import styles from "./AboutPage.module.scss";
-import icon from "../../assets/icons/android-chrome-256x256.png";
+import icon from "@SpaceExplorer/assets/icons/android-chrome-256x256.png";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
