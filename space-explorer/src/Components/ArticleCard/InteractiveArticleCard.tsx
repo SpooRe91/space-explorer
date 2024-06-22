@@ -14,7 +14,12 @@ import Typography from "@mui/material/Typography";
 import ShareIcon from "@mui/icons-material/Share";
 
 import { TArticleItem } from "@SpaceExplorer/Interfaces and types/Types/types";
-import useGetAgentView from "@SpaceExplorer/hooks/useGetAgentView";
+
+type InteractiveArticleProps = {
+    textCopied: boolean;
+    isMobileWidth: boolean;
+    handleShareButtonClick: (id: number | null, url: string) => void;
+};
 
 export const InteractiveArticleCard = ({
     id,
@@ -23,43 +28,11 @@ export const InteractiveArticleCard = ({
     published_at,
     summary,
     url,
-}: TArticleItem) => {
-    const [textCopied, setToCopy] = useState<boolean>(false);
+    textCopied,
+    isMobileWidth,
+    handleShareButtonClick,
+}: TArticleItem & InteractiveArticleProps) => {
     const [imgNotLoaded, setImgNotLoaded] = useState<boolean>(false);
-    const { isMobileWidth } = useGetAgentView();
-
-    const handleShare = async (id: number | null) => {
-        if (!id) {
-            return;
-        }
-        if (isMobileWidth) {
-            try {
-                await navigator.share({ url });
-                return;
-            } catch (error) {
-                console.error(`We ran into an error while attempting to share: ${error}`);
-            }
-        }
-        await navigator.clipboard.writeText(url);
-        //TEXT SHOULD BE THE HREF OF THE CURRENT ARTICLE
-    };
-
-    const handleToCopyText = () => {
-        setToCopy(() => true);
-        const timeout = setTimeout(() => {
-            setToCopy(() => false);
-            clearTimeout(timeout);
-        }, 300);
-    };
-
-    const handleShareButtonClick = (id: number | null) => {
-        if (!isMobileWidth) {
-            handleShare(id);
-            handleToCopyText();
-            return;
-        }
-        handleShare(id);
-    };
 
     const handleImgLoadError = () => {
         setImgNotLoaded(true);
@@ -155,7 +128,7 @@ export const InteractiveArticleCard = ({
                             padding: "0",
                         }}
                         aria-label="share or copy link"
-                        onClick={() => handleShareButtonClick(id)}
+                        onClick={() => handleShareButtonClick(id, url)}
                     >
                         <ShareIcon className={styles["share-icon"]} />
                         {textCopied ? <span>Copied!</span> : null}

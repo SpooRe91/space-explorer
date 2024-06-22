@@ -13,6 +13,7 @@ import useGetAgentView from "@SpaceExplorer/hooks/useGetAgentView";
 import { nanoid } from "@reduxjs/toolkit";
 
 export const ArticlesPage = () => {
+    const [textCopied, setToCopy] = useState<boolean>(false);
     const articleData = useAppSelector(articleState);
     const globalData = useAppSelector(globalState);
 
@@ -20,6 +21,39 @@ export const ArticlesPage = () => {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [, setToDisableLoadButton] = useState<boolean>(false);
+
+    const handleShare = async (id: number | null, url: string) => {
+        if (!id) {
+            return;
+        }
+        if (isMobileWidth) {
+            try {
+                await navigator.share({ url });
+                return;
+            } catch (error) {
+                console.error(`We ran into an error while attempting to share: ${error}`);
+            }
+        }
+        await navigator.clipboard.writeText(url);
+        //TEXT SHOULD BE THE HREF OF THE CURRENT ARTICLE
+    };
+
+    const handleToCopyText = () => {
+        setToCopy(() => true);
+        const timeout = setTimeout(() => {
+            setToCopy(() => false);
+            clearTimeout(timeout);
+        }, 300);
+    };
+
+    const handleShareButtonClick = (id: number | null, url: string) => {
+        if (!isMobileWidth) {
+            handleShare(id, url);
+            handleToCopyText();
+            return;
+        }
+        handleShare(id, url);
+    };
 
     return (
         <section
@@ -46,7 +80,15 @@ export const ArticlesPage = () => {
                     </div>
                 ) : articleData.results?.length ? (
                     articleData.results.map((el: TArticleItem) => {
-                        return <InteractiveArticleCard {...el} key={nanoid()} />;
+                        return (
+                            <InteractiveArticleCard
+                                {...el}
+                                handleShareButtonClick={handleShareButtonClick}
+                                textCopied={textCopied}
+                                isMobileWidth={isMobileWidth}
+                                key={nanoid()}
+                            />
+                        );
                     })
                 ) : null}
             </div>
