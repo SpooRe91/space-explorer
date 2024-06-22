@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";
 import dayjs from "dayjs";
+import imgNotFound from "@SpaceExplorer/assets/icons/img-not-found.webp";
 
 import styles from "./ArticleCard.module.scss";
 import Card from "@mui/material/Card";
@@ -13,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import ShareIcon from "@mui/icons-material/Share";
 
 import { TArticleItem } from "@SpaceExplorer/Interfaces and types/Types/types";
-import useDetectDevice from "@SpaceExplorer/hooks/useDetectDevice";
+import useGetAgentView from "@SpaceExplorer/hooks/useGetAgentView";
 
 export const InteractiveArticleCard = ({
     id,
@@ -24,13 +25,14 @@ export const InteractiveArticleCard = ({
     url,
 }: TArticleItem) => {
     const [textCopied, setToCopy] = useState<boolean>(false);
-    const { currentlyIsMobile } = useDetectDevice();
+    const [imgNotLoaded, setImgNotLoaded] = useState<boolean>(false);
+    const { isMobileWidth } = useGetAgentView();
 
     const handleShare = async (id: number | null) => {
         if (!id) {
             return;
         }
-        if (currentlyIsMobile) {
+        if (isMobileWidth) {
             try {
                 await navigator.share({ url });
                 return;
@@ -51,12 +53,16 @@ export const InteractiveArticleCard = ({
     };
 
     const handleShareButtonClick = (id: number | null) => {
-        if (!currentlyIsMobile) {
+        if (!isMobileWidth) {
             handleShare(id);
             handleToCopyText();
             return;
         }
         handleShare(id);
+    };
+
+    const handleImgLoadError = () => {
+        setImgNotLoaded(true);
     };
 
     const publishTime = useMemo(() => {
@@ -84,12 +90,12 @@ export const InteractiveArticleCard = ({
                             overflow: "hidden",
                             textOverflow: "ellipsis",
                             padding: "6px",
-                            height: currentlyIsMobile ? "62px" : "85px",
+                            height: isMobileWidth ? "62px" : "85px",
                         }}
                         title={title}
                         titleTypographyProps={{
                             color: "var(--about-link-collor)",
-                            fontSize: currentlyIsMobile ? "1.2rem" : "1.8rem",
+                            fontSize: isMobileWidth ? "1.2rem" : "1.8rem",
                         }}
                     />
                 </Link>
@@ -100,15 +106,16 @@ export const InteractiveArticleCard = ({
                     subheader={`Published: ${publishTime.date}, ${publishTime.time}`}
                     subheaderTypographyProps={{
                         color: "var(--text-color-shadow)",
-                        fontSize: currentlyIsMobile ? "0.8rem" : "1rem",
+                        fontSize: isMobileWidth ? "0.8rem" : "1rem",
                     }}
                 />
                 <CardMedia
                     component="img"
                     height="194"
-                    image={image_url}
-                    alt="An article image"
+                    image={imgNotLoaded ? imgNotFound : image_url}
+                    alt="Error while fetching image"
                     loading="lazy"
+                    onError={handleImgLoadError}
                 />
                 <CardContent
                     sx={{
@@ -122,15 +129,17 @@ export const InteractiveArticleCard = ({
                         textOverflow: "ellipsis",
                     }}
                 >
-                    <Typography variant="body2" color="var(--card-box-shadow-color-hover)">
-                        {summary}
-                    </Typography>
+                    {summary && (
+                        <Typography variant="body2" color="var(--card-box-shadow-color-hover)">
+                            {summary}
+                        </Typography>
+                    )}
                 </CardContent>
                 <CardActions disableSpacing sx={{ height: "50px", display: "flex", gap: "1rem" }}>
                     <IconButton
                         sx={{
                             color: "var(--card-text-collor-button-1)",
-                            fontSize: currentlyIsMobile ? "0.9rem" : "1.2rem",
+                            fontSize: isMobileWidth ? "0.9rem" : "1.2rem",
                             padding: "0px",
                         }}
                         aria-label="read-more"
@@ -142,7 +151,7 @@ export const InteractiveArticleCard = ({
                     <IconButton
                         sx={{
                             color: "var(--card-text-collor-button-1)",
-                            fontSize: currentlyIsMobile ? "0.9rem" : "1.2rem",
+                            fontSize: isMobileWidth ? "0.9rem" : "1.2rem",
                             padding: "0",
                         }}
                         aria-label="share or copy link"
