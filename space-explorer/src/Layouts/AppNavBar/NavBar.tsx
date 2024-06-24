@@ -16,7 +16,6 @@ import styles from "./NavBar.module.scss";
 import icon from "@SpaceExplorer/assets/icons/android-chrome-192x192.webp";
 import useHideNavOnScroll from "@SpaceExplorer/hooks/useHideNavOnScroll";
 
-
 import useGetAgentView from "@SpaceExplorer/hooks/useGetAgentView";
 import Clock from "@SpaceExplorer/Components/Clock/ClockComponent";
 
