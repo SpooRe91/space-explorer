@@ -13,7 +13,7 @@ import {
 
 import styles from "./NavBar.module.scss";
 
-import icon from "@SpaceExplorer/assets/icons/android-chrome-192x192.png";
+import icon from "@SpaceExplorer/assets/icons/android-chrome-192x192.webp";
 import useHideNavOnScroll from "@SpaceExplorer/hooks/useHideNavOnScroll";
 
 
