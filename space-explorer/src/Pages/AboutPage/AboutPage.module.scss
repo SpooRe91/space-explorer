@@ -94,6 +94,8 @@
     .about-links-container {
         display: flex;
         gap: 1rem;
+        min-width: 210px;
+        align-items: center;
         a {
             display: flex;
             height: fit-content;
