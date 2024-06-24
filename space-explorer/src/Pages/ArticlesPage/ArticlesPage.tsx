@@ -55,6 +55,7 @@ export const ArticlesPage = () => {
         handleShare(id, url);
     };
 
+
     return (
         <section
             id="articles"
