@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useAppDispatch, useAppSelector } from "../../App/hooks";
+import { useAppDispatch, useAppSelector } from "@SpaceExplorer/App/hooks";
 import { useState } from "react";
 import {
     globalState,
@@ -9,13 +9,16 @@ import {
     setIsLoading,
     setShowTopNav,
     setToShowPoD,
-} from "../../redux-slices/globalSlice";
+} from "@SpaceExplorer/redux-slices/globalSlice";
 
 import styles from "./NavBar.module.scss";
-import icon from "../../assets/icons/android-chrome-192x192.webp";
-import useHideNavOnScroll from "../../hooks/useHideNavOnScroll";
 
-import useGetAgentView from "../../hooks/useGetAgentView";
+import icon from "@SpaceExplorer/assets/icons/android-chrome-192x192.png";
+import useHideNavOnScroll from "@SpaceExplorer/hooks/useHideNavOnScroll";
+
+
+import useGetAgentView from "@SpaceExplorer/hooks/useGetAgentView";
+import Clock from "@SpaceExplorer/Components/Clock/ClockComponent";
 
 export const NavBar = () => {
     const globalData = useAppSelector(globalState);
@@ -105,7 +108,7 @@ export const NavBar = () => {
                                 Gallery
                             </NavLink>
                         </li>
-                        {/* <li className={styles["nav-link-item"]}>
+                        <li className={styles["nav-link-item"]}>
                             <NavLink
                                 aria-label="Articles"
                                 to={"/articles"}
@@ -125,7 +128,7 @@ export const NavBar = () => {
                             >
                                 Articles
                             </NavLink>
-                        </li> */}
+                        </li>
                         <li className={styles["nav-link-item"]}>
                             <NavLink
                                 aria-label="Solar system planets"
@@ -179,6 +182,7 @@ export const NavBar = () => {
                         >
                             Picture of the day
                         </button>
+                        <Clock />
                     </div>
                     {isMobileWidth && (
                         <div className={styles["nav-toggler-contaier"]} onClick={() => checkIfMobile()}>

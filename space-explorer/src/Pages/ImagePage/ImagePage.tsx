@@ -1,18 +1,18 @@
 import { useState } from "react";
 import styles from "./ImagePage.module.scss";
 
-import { globalState } from "../../redux-slices/globalSlice";
-import { imageState } from "../../redux-slices/imagesSlice";
-import { useAppDispatch, useAppSelector } from "../../App/hooks";
-import { SearchForm, ImageModal, ImageComponent } from "../../Components/index";
-import { ErrorMessage } from "../../Layouts/index";
+import { globalState } from "@SpaceExplorer/redux-slices/globalSlice";
+import { imageState } from "@SpaceExplorer/redux-slices/imagesSlice";
+import { useAppDispatch, useAppSelector } from "@SpaceExplorer/App/hooks";
+import { SearchForm, ImageModal, ImageComponent } from "@SpaceExplorer/Components/index";
+import { ErrorMessage } from "@SpaceExplorer/Layouts/index";
 
-import { TImageData } from "../../Interfaces and types/Types/types";
+import { TImageData } from "@SpaceExplorer/Interfaces and types/Types/types";
 
-import pageChanger from "../../utils/pageChanger";
+import pageChanger from "@SpaceExplorer/utils/pageChanger";
 
 import { ImageListItem } from "@mui/material";
-import useDetectDevice from "../../hooks/useDetectDevice";
+import useDetectDevice from "@SpaceExplorer/hooks/useDetectDevice";
 
 export const ImagePage = () => {
     const imageData = useAppSelector(imageState);

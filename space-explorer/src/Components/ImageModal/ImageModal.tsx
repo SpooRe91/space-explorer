@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "../../App/hooks";
-import { globalState, setIsLoading, setToExpandImage } from "../../redux-slices/globalSlice";
+import { useAppDispatch, useAppSelector } from "@SpaceExplorer/App/hooks";
+import { globalState, setIsLoading, setToExpandImage } from "@SpaceExplorer/redux-slices/globalSlice";
 
-import imageChanger from "../../utils/imageChanger";
+import imageChanger from "@SpaceExplorer/utils/imageChanger";
 import styles from "./ImageModal.module.scss";
 
 import React, { useMemo, useState } from "react";
-import { imageState } from "../../redux-slices/imagesSlice";
-import { TImageData } from "../../Interfaces and types/Types/types";
-import pageChanger from "../../utils/pageChanger";
-import { ErrorMessage } from "../../Layouts/index";
-import useChangeImageWithKeys from "../../hooks/useChangeImageWithKeys";
+import { imageState } from "@SpaceExplorer/redux-slices/imagesSlice";
+import { TImageData } from "@SpaceExplorer/Interfaces and types/Types/types";
+import pageChanger from "@SpaceExplorer/utils/pageChanger";
+import { ErrorMessage } from "@SpaceExplorer/Layouts/index";
+import useChangeImageWithKeys from "@SpaceExplorer/hooks/useChangeImageWithKeys";
 import ShareIcon from "@mui/icons-material/Share";
 
 type ImageModalProps = {

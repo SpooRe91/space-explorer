@@ -1,6 +1,6 @@
 import Alert from "@mui/material/Alert";
-import { useAppDispatch, useAppSelector } from "../../App/hooks";
-import { globalState, setError, setToShowPoD } from "../../redux-slices/globalSlice";
+import { useAppDispatch, useAppSelector } from "@SpaceExplorer/App/hooks";
+import { globalState, setError, setToShowPoD } from "@SpaceExplorer/redux-slices/globalSlice";
 import styles from "./ErrorMessage.module.scss";
 
 export const ErrorMessage = ({ error }: { error: string }) => {

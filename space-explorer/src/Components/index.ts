@@ -1,4 +1,4 @@
-export * from "./ArticleCard/ArticleCard"
+export * from "./ArticleCard/(don't use)ArticleCard"
 export * from "./ImageModal/ImageModal"
 export * from "./ImagesComponent/ImageComponent"
 export * from "./PoDModal/PoDModal"

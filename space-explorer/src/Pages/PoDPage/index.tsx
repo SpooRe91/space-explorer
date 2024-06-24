@@ -1,9 +1,9 @@
 import styles from "./index.module.scss";
 
-import PoDModal from "../../Components/PoDModal/PoDModal";
-import useGetPod from "../../hooks/useGetPod";
-import { useAppSelector } from "../../App/hooks";
-import { podState } from "../../redux-slices/PODslice";
+import PoDModal from "@SpaceExplorer/Components/PoDModal/PoDModal";
+import useGetPod from "@SpaceExplorer/hooks/useGetPod";
+import { useAppSelector } from "@SpaceExplorer/App/hooks";
+import { podState } from "@SpaceExplorer/redux-slices/PODslice";
 import { useEffect } from "react";
 
 export const PoDPage = () => {

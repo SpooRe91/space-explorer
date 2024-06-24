@@ -85,7 +85,6 @@
                     }
                     &:active {
                         cursor: url("/pointer.png"), auto;
-                        cursor: url(/pointer.png), auto;
                         box-shadow: inset 0px 0px 20px 0px #ffffff;
                     }
                     .share-copied {
@@ -158,31 +157,34 @@
         }
     }
     &:hover {
-        box-shadow:
-            999px 0px 40px 0px #56a8df,
-            inset -20px 0px 100px -25px #56a8df,
+        box-shadow: 999px 0px 40px 0px #56a8df, inset -20px 0px 100px -25px #56a8df,
             -8px 1px 5px -3px #4990be96;
     }
 }
-// .article-card-wrapper:before {
-//     content: "";
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background-color: rgba($color: #000000, $alpha: 0.65);
-//     border-radius: 16px;
-// }
-// .article-card-wrapper:after {
-//     content: "";
-//     position: absolute;
-//     top: 0;
-//     left: 34%;
-//     width: 2px;
-//     height: 100%;
-//     background-color: var(--card-box-shadow-collor-button);
-// }
+.card-main-container {
+    transition: all ease-in-out 200ms;
+    border: none;
+    border-radius: 4px;
+
+    .share-icon {
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+        }
+    }
+    .read-more {
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+        }
+    }
+    .header-link {
+        &:hover {
+            cursor: url("/pointer.png"), auto;
+        }
+    }
+    &:hover {
+        box-shadow: 0px 6px 13px -2px #56a8df;
+    }
+}
 
 @keyframes copy {
     0% {
