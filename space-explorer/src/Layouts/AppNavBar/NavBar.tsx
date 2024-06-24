@@ -16,6 +16,7 @@ import icon from "@SpaceExplorer/assets/icons/android-chrome-192x192.png";
 import useHideNavOnScroll from "@SpaceExplorer/hooks/useHideNavOnScroll";
 
 import useGetAgentView from "@SpaceExplorer/hooks/useGetAgentView";
+import Clock from "@SpaceExplorer/Components/Clock/ClockComponent";
 
 export const NavBar = () => {
     const globalData = useAppSelector(globalState);
@@ -179,6 +180,7 @@ export const NavBar = () => {
                         >
                             Picture of the day
                         </button>
+                        <Clock />
                     </div>
                     {isMobileWidth && (
                         <div className={styles["nav-toggler-contaier"]} onClick={() => checkIfMobile()}>
