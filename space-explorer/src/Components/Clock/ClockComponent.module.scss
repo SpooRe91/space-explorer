@@ -1,11 +1,15 @@
+@mixin clock-frame-mixin {
+    border: 1px solid var(--box-shadow-color);
+    border-radius: 5px;
+    padding: 2.5px 4px;
+    box-shadow: 0px 0px 6px 0px var(--card-text-collor-button-1);
+}
+
 .clock-main-container {
     position: relative;
     display: flex;
     .clock-frame {
-        border: 1px solid var(--box-shadow-color);
-        border-radius: 5px;
-        padding: 2.5px 4px;
-        box-shadow: 0px 0px 6px 0px var(--card-text-collor-button-1);
+        @include clock-frame-mixin();
         .clock-dial {
             color: var(--text-color-shadow);
             font-size: 1.1rem;
@@ -18,10 +22,7 @@
     display: flex;
     min-width: 165px;
     .clock-frame {
-        border: 1px solid var(--box-shadow-color);
-        border-radius: 5px;
-        padding: 2.5px 4px;
-        box-shadow: 0px 0px 6px 0px var(--card-text-collor-button-1);
+        @include clock-frame-mixin();
         width: 100%;
         text-align: center;
         line-height: 1;

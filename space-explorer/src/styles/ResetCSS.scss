@@ -66,7 +66,7 @@ select {
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-@media screen and (max-width: 766px) {
+@media screen and (max-width: 767px) {
   body {
     background-image: url("../assets/space-explorer-desktop-wallpaper-vertical-background-vertical-vertical-space.webp");
     background-position: center;
