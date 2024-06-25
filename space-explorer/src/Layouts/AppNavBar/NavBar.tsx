@@ -52,7 +52,7 @@ export const NavBar = () => {
                             )
                         }
                     >
-                        <img src={icon} alt="logo" />
+                        <img src={icon} alt="logo" loading="lazy" />
                         Space Explorer
                     </NavLink>
                 </div>

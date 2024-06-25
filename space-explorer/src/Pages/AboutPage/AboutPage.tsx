@@ -43,7 +43,7 @@ export const AboutPage = () => {
                 </div>
             </div>
             <div className={styles["img-container"]}>
-                <img src={icon} alt="logo" className={styles["slide-in-img"]} />
+                <img src={icon} alt="logo" className={styles["slide-in-img"]} loading="lazy" />
             </div>
         </section>
     );
