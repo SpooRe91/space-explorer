@@ -23,7 +23,12 @@ const PlanetCard = ({ handleCloseModal }: PlanetCardProps) => {
                 <div className={styles["planet-loading-text"]}>LOADING...</div>
             ) : (
                 <>
-                    <button className={styles[!isMobileWidth?"planet-close-modal":"planet-close-modal-mobile"]} onClick={() => handleCloseModal()}>
+                    <button
+                        className={
+                            styles[!isMobileWidth ? "planet-close-modal" : "planet-close-modal-mobile"]
+                        }
+                        onClick={() => handleCloseModal()}
+                    >
                         <CloseIcon />
                     </button>
 
@@ -45,6 +50,7 @@ const PlanetCard = ({ handleCloseModal }: PlanetCardProps) => {
                                 className={styles["planet-image"]}
                                 src={planetData?.image}
                                 alt="Some planet image"
+                                loading="lazy"
                             />
                         </div>
                     )}
