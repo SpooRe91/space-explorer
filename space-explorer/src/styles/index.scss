@@ -1,8 +1,7 @@
 @import url("ResetCSS.scss");
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans&family=Titillium+Web&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=PT+Sans&family=Titillium+Web&family=Ubuntu&display=swap");
 :root {
-  font-family: "Titillium Web", "PT Sans", "Ubuntu", sans-serif;
+  font-family: "Titillium Web", "PT Sans", sans-serif;
   line-height: 1.5;
   font-weight: 400;
   cursor: url("/cursor.png"), auto;

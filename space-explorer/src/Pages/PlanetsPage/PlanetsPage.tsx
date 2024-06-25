@@ -1,83 +1,39 @@
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 
 import styles from "./PlanetsPage.module.scss";
-import { globalState, setError, setIsLoading } from "@SpaceExplorer/redux-slices/globalSlice";
+import { globalState } from "@SpaceExplorer/redux-slices/globalSlice";
 import { useAppDispatch, useAppSelector } from "@SpaceExplorer/App/hooks";
 import useGetAgentView from "@SpaceExplorer/hooks/useGetAgentView";
 
 import { ErrorMessage } from "@SpaceExplorer/Layouts";
 import PlanetButton from "@SpaceExplorer/Components/PlanetButton/PlanetButton";
-import * as planets from "@SpaceExplorer/assets/Planets/index";
 
-import { fetchPlanets } from "@SpaceExplorer/services/Fetch-planets-api";
-import {
-    planetState,
-    resetPlanetData,
-    setPlanet,
-    setPlanetImage,
-} from "@SpaceExplorer/redux-slices/planetSlice";
+import { resetPlanetData } from "@SpaceExplorer/redux-slices/planetSlice";
 import PlanetCard from "@SpaceExplorer/Components/PlanetCard/PlanetCard";
-import { TGLobalError } from "@SpaceExplorer/Interfaces and types/Types/types";
+import useGetCachedPlanetImages from "@SpaceExplorer/hooks/useGetCachedPlanetImages";
+import useGetCurrentlySelectedPlanet from "@SpaceExplorer/hooks/useGetCurrentlySelectedPlanet";
 
 export const PlanetsPage = () => {
-    const globalData = useAppSelector(globalState);
-    const planetData = useAppSelector(planetState);
-
     const dispatch = useAppDispatch();
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    const scrollPosition = useRef<number>(0);
-    const currentlySelectedPlanet = useRef<string>(planetData.name);
-
-    const planetsListImages = useMemo(() => {
-        return Object.entries(planets);
-    }, []);
+    const globalData = useAppSelector(globalState);
     const { isMobileWidth } = useGetAgentView();
+    const { planetsListImages } = useGetCachedPlanetImages();
 
-    const handleFetchPlanetData = useCallback(
-        async (planetName: string) => {
-            if (currentlySelectedPlanet.current.toLowerCase() === planetName.toLowerCase()) return;
-            if (!planetName) return;
-            currentlySelectedPlanet.current = planetName;
-            scrollPosition.current = window.scrollY;
-
-            try {
-                dispatch(setIsLoading(true));
-                const controller = new AbortController();
-                const signal = controller.signal;
-
-                const res = await fetchPlanets({
-                    signal,
-                    controller: controller,
-                    searchValue: planetName,
-                });
-                if (res && Array.isArray(res)) {
-                    dispatch(setPlanet(res));
-                }
-                const planetImage = Object.values(planets).find((el) =>
-                    el.includes(planetName.toLowerCase())
-                );
-                dispatch(setPlanetImage(planetImage || ""));
-                setIsModalOpen(true);
-            } catch (error) {
-                console.error("Failed to fetch planet data", error);
-                dispatch(setError(error as TGLobalError));
-                setIsModalOpen(false);
-            } finally {
-                dispatch(setIsLoading(false));
-                window.scrollTo(0, scrollPosition.current);
-            }
-        },
-        [dispatch]
-    );
+    const {
+        isModalOpen,
+        setIsModalOpen,
+        handleFetchPlanetData,
+        currentlySelectedPlanet,
+    } = useGetCurrentlySelectedPlanet();
 
     const renderPlanets = useMemo(
         () =>
-            planetsListImages.map((el) => (
+            planetsListImages.map(([planetName, imageUrl]) => (
                 <PlanetButton
                     key={nanoid()}
-                    image={el[1]}
-                    planetName={el[0]}
+                    image={imageUrl}
+                    planetName={planetName}
                     handleFetchPlanetData={handleFetchPlanetData}
                 />
             )),
@@ -88,7 +44,7 @@ export const PlanetsPage = () => {
         dispatch(resetPlanetData());
         setIsModalOpen(false);
         currentlySelectedPlanet.current = "";
-    }, [dispatch]);
+    }, [dispatch, setIsModalOpen, currentlySelectedPlanet]);
 
     return (
         <section

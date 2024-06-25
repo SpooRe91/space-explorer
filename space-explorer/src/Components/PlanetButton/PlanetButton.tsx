@@ -1,13 +1,13 @@
 import useGetAgentView from "@SpaceExplorer/hooks/useGetAgentView";
 import styles from "./PlanetButton.module.scss";
 
-type PlaneButtonProps = {
+type PlanetButtonProps = {
     image: string;
     planetName: string;
-    handleFetchPlanetData: (planetName: string) => void;
+    handleFetchPlanetData: (planetName: string) => Promise<void>;
 };
 
-export const PlanetButton = ({ image, planetName, handleFetchPlanetData }: PlaneButtonProps) => {
+export const PlanetButton = ({ image, planetName, handleFetchPlanetData }: PlanetButtonProps) => {
     const { isMobileWidth } = useGetAgentView();
 
     return (

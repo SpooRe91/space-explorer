@@ -1,11 +1,15 @@
 import { useAppDispatch, useAppSelector } from "./App/hooks";
 import { globalState, setIsLoading } from "./redux-slices/globalSlice";
-import { AboutPage, ArticlesPage, HomePage, ImagePage, PlanetsPage, PoDPage } from "./Pages/index";
+import { AboutPage, HomePage, PoDPage } from "./Pages/index";
 import { ErrorMessage, GlobalLoader, NavBar, NotFound } from "./Layouts/index";
-import { Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router";
 import spaceVideo from "./assets/space-explorer-earth-view-vid.webm";
 import useGetAgentView from "./hooks/useGetAgentView";
+
+const ImagePageComponent = lazy(() => import("@SpaceExplorer/Pages/ImagePage/ImagePage"));
+const ArticlePageComponent = lazy(() => import("@SpaceExplorer/Pages/ArticlesPage/ArticlesPage"));
+const PlanetPageComponent = lazy(() => import("@SpaceExplorer/Pages/PlanetsPage/PlanetsPage"));
 
 function App() {
     const globalData = useAppSelector(globalState);
@@ -28,21 +32,23 @@ function App() {
             )}
             <Suspense fallback={<GlobalLoader />}>
                 <NavBar />
-                {globalData.loading && (
-                    <div className="loader-comp">
-                        <GlobalLoader />
-                    </div>
-                )}
+            </Suspense>
+            {globalData.loading && (
+                <div className="loader-comp">
+                    <GlobalLoader />
+                </div>
+            )}
+            <Suspense fallback={<GlobalLoader />}>
                 {hasErrorOnApp ? <ErrorMessage error={globalData.error.error} /> : null}
                 <Routes>
-                    <Route path={"/"} element={<HomePage />} />
-                    <Route path="/gallery" element={<ImagePage />} />
-                    <Route path="/articles" element={<ArticlesPage />} />
-                    <Route path="/planets" element={<PlanetsPage />} />
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/gallery" element={<ImagePageComponent />} />
+                    <Route path="/articles" element={<ArticlePageComponent />} />
+                    <Route path="/planets" element={<PlanetPageComponent />} />
                     <Route path="/about" element={<AboutPage />} />
+                    {globalData.showPoD ? <PoDPage /> : null}
                     <Route path="*" element={<NotFound />} />
                 </Routes>
-                {globalData.showPoD ? <PoDPage /> : null}
             </Suspense>
         </div>
     );
