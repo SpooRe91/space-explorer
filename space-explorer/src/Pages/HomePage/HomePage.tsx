@@ -12,10 +12,10 @@ export const HomePage = () => {
                             <RocketIcon />
                         </span>
                     </h1>
-                    <h3 className={styles["home-hero-header3"]}>
+                    <h2 className={styles["home-hero-header3"]}>
                         Delve into the vast cosmos, read many topics and articles, find astronomy images,
                         learn with NASA.
-                    </h3>
+                    </h2>
                     <div className={styles["home-hero-small-text-container"]}>
                         <p className={styles["home-hero-small-text"]}>Discover the experience</p>
                     </div>
