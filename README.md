@@ -80,21 +80,21 @@ Before you begin, ensure you have the following installed on your machine:
 
 Upon visiting the home page, you will be greeted with NASA's picture of the day, alongside captivating articles and media related to space exploration.
 
-### **Features**
+### **Articles Page**
 
-- **NASA Picture of the Day:** Updated daily to keep the space spirit alive.
-- **Articles & Media:** Explore various articles and media content to deepen your understanding of the universe.
----
+Discover a wealth of knowledge on our Articles page. Explore a variety of informative articles covering topics from celestial phenomena to groundbreaking discoveries. Share articles easily with friends and stay informed about the latest in space exploration.
 
-## **Contributing**
+### **Planets Page**
 
-We welcome contributions to enhance the functionality and user experience of Space Explorer. Please follow these steps to contribute:
+Embark on a journey through our Planets page and explore the wonders of our solar system. Click on planet buttons to uncover detailed information about each planet, complete with stunning imagery and essential facts. Perfect for both enthusiasts and learners alike.
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature-name`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/your-feature-name`).
-5. Open a pull request.
+### **Images Page**
+
+Immerse yourself in breathtaking visuals on our Images page. Browse through a curated collection of high-resolution images from NASA and beyond. Use the search form to find specific images or load more images to discover more cosmic wonders.
+
+### **About Page**
+
+Learn more about Space Explorer on our About page. This project celebrates the marvels of space exploration, bringing together articles and images sourced from NASA and other astronomy APIs. Connect with us on social media and explore more space-related content at NASA's official website.
 
 ---
 
@@ -106,7 +106,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## **Contact**
 
-For any inquiries or issues, please open an issue on the repository or contact the project maintainers.
+For any inquiries or issues, please open an issue on the repository or contanct me directly via [Email](mailto:m.bogdanov9110@gmail.com).
 
 ---
 
