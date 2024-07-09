@@ -52,6 +52,7 @@ function App() {
                 </Routes>
             </Suspense>
             <Analytics />
+            
         </div>
     );
 }
