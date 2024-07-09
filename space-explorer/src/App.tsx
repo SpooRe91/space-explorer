@@ -4,6 +4,7 @@ import { AboutPage, HomePage, PoDPage } from "./Pages/index";
 import { ErrorMessage, GlobalLoader, NavBar, NotFound } from "./Layouts/index";
 import { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router";
+import { Analytics } from "@vercel/analytics/react";
 import spaceVideo from "./assets/space-explorer-earth-view-vid.webm";
 import useGetAgentView from "./hooks/useGetAgentView";
 
@@ -50,6 +51,7 @@ function App() {
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Suspense>
+            <Analytics />
         </div>
     );
 }
