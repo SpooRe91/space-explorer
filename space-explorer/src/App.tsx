@@ -41,13 +41,13 @@ function App() {
             )}
             <Suspense fallback={<GlobalLoader />}>
                 {hasErrorOnApp ? <ErrorMessage error={globalData.error.error} /> : null}
+                {globalData.showPoD ? <PoDPage /> : null}
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/gallery" element={<ImagePageComponent />} />
                     <Route path="/articles" element={<ArticlePageComponent />} />
                     <Route path="/planets" element={<PlanetPageComponent />} />
                     <Route path="/about" element={<AboutPage />} />
-                    {globalData.showPoD ? <PoDPage /> : null}
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Suspense>
