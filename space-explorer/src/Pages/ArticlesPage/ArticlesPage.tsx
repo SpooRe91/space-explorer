@@ -10,7 +10,7 @@ import { articleState } from "@SpaceExplorer/redux-slices/articleSlice";
 import { globalState } from "@SpaceExplorer/redux-slices/globalSlice";
 
 import useGetAgentView from "@SpaceExplorer/hooks/useGetAgentView";
-import { nanoid } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 export const ArticlesPage = () => {
     const [textCopied, setToCopy] = useState<boolean>(false);
@@ -87,7 +87,7 @@ export const ArticlesPage = () => {
                                 handleShareButtonClick={handleShareButtonClick}
                                 textCopied={textCopied}
                                 isMobileWidth={isMobileWidth}
-                                key={nanoid()}
+                                key={uuidv4()}
                             />
                         );
                     })

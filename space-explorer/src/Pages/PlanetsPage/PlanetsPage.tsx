@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from "react";
-import { nanoid } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 import styles from "./PlanetsPage.module.scss";
 import { globalState } from "@SpaceExplorer/redux-slices/globalSlice";
@@ -20,18 +20,14 @@ export const PlanetsPage = () => {
     const { isMobileWidth } = useGetAgentView();
     const { planetsListImages } = useGetCachedPlanetImages();
 
-    const {
-        isModalOpen,
-        setIsModalOpen,
-        handleFetchPlanetData,
-        currentlySelectedPlanet,
-    } = useGetCurrentlySelectedPlanet();
+    const { isModalOpen, setIsModalOpen, handleFetchPlanetData, currentlySelectedPlanet } =
+        useGetCurrentlySelectedPlanet();
 
     const renderPlanets = useMemo(
         () =>
             planetsListImages.map(([planetName, imageUrl]) => (
                 <PlanetButton
-                    key={nanoid()}
+                    key={uuidv4()}
                     image={imageUrl}
                     planetName={planetName}
                     handleFetchPlanetData={handleFetchPlanetData}
