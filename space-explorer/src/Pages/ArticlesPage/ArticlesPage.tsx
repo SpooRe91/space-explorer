@@ -13,7 +13,6 @@ import useGetAgentView from "@SpaceExplorer/hooks/useGetAgentView";
 import { v4 as uuidv4 } from "uuid";
 
 export const ArticlesPage = () => {
-    const [textCopied, setToCopy] = useState<boolean>(false);
     const articleData = useAppSelector(articleState);
     const globalData = useAppSelector(globalState);
 
@@ -37,24 +36,6 @@ export const ArticlesPage = () => {
         await navigator.clipboard.writeText(url);
         //TEXT SHOULD BE THE HREF OF THE CURRENT ARTICLE
     };
-
-    const handleToCopyText = () => {
-        setToCopy(() => true);
-        const timeout = setTimeout(() => {
-            setToCopy(() => false);
-            clearTimeout(timeout);
-        }, 300);
-    };
-
-    const handleShareButtonClick = (id: number | null, url: string) => {
-        if (!isMobileWidth) {
-            handleShare(id, url);
-            handleToCopyText();
-            return;
-        }
-        handleShare(id, url);
-    };
-
 
     return (
         <section
@@ -84,9 +65,7 @@ export const ArticlesPage = () => {
                         return (
                             <InteractiveArticleCard
                                 {...el}
-                                handleShareButtonClick={handleShareButtonClick}
-                                textCopied={textCopied}
-                                isMobileWidth={isMobileWidth}
+                                handleShare={handleShare}
                                 key={uuidv4()}
                             />
                         );

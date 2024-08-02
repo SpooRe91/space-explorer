@@ -14,11 +14,10 @@ import Typography from "@mui/material/Typography";
 import ShareIcon from "@mui/icons-material/Share";
 
 import { TArticleItem } from "@SpaceExplorer/Interfaces and types/Types/types";
+import useGetAgentView from "@SpaceExplorer/hooks/useGetAgentView";
 
-type InteractiveArticleProps = {
-    textCopied: boolean;
-    isMobileWidth: boolean;
-    handleShareButtonClick: (id: number | null, url: string) => void;
+type ShareProps = {
+    handleShare: (id: number | null, url: string) => void;
 };
 
 export const InteractiveArticleCard = ({
@@ -28,14 +27,32 @@ export const InteractiveArticleCard = ({
     published_at,
     summary,
     url,
-    textCopied,
-    isMobileWidth,
-    handleShareButtonClick,
-}: TArticleItem & InteractiveArticleProps) => {
+    handleShare,
+}: TArticleItem & ShareProps) => {
     const [imgNotLoaded, setImgNotLoaded] = useState<boolean>(false);
+    const [textCopied, setToCopy] = useState<boolean>(false);
 
+    const { isMobileWidth } = useGetAgentView();
+    
     const handleImgLoadError = () => {
         setImgNotLoaded(true);
+    };
+
+    const handleToCopyText = () => {
+        setToCopy(() => true);
+        const timeout = setTimeout(() => {
+            setToCopy(() => false);
+            clearTimeout(timeout);
+        }, 300);
+    };
+
+    const handleShareButtonClick = (id: number | null, url: string) => {
+        if (!isMobileWidth) {
+            handleShare(id, url);
+            handleToCopyText();
+            return;
+        }
+        handleShare(id, url);
     };
 
     const publishTime = useMemo(() => {
