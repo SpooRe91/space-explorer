@@ -3,6 +3,8 @@
     flex-direction: column;
     flex-wrap: wrap;
     gap: 1rem;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
 
     .planet-image-name {
         font-size: 2.2rem;
@@ -21,7 +23,8 @@
         overflow: hidden;
         padding: 0;
         position: relative;
-        transition: all 200ms ease-in-out;
+        transition: all 250ms ease-in-out;
+        filter: brightness(0.5);
 
         .planet-image {
             height: 333px;
@@ -37,7 +40,14 @@
         &:hover {
             cursor: url("/pointer.png"), auto;
             box-shadow: 0px 0px 20px var(--card-box-shadow-color);
-            transform: scale3d(1.1, 1.1, 1.1);
+            transform: translate3d(-10px, -10px, 30px);
+            filter: brightness(1);
+        }
+        &:focus-within,
+        &:focus-visible {
+            transform: translate3d(-10px, -10px, 30px);
+            box-shadow: 0px 0px 20px var(--card-box-shadow-color);
+            filter: brightness(1);
         }
     }
 }
